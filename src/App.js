@@ -1,9 +1,14 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState, useReducer  } from 'react';
 //import logo from './logo.svg';
 //import './App.css';
 import { withAuthenticator } from 'aws-amplify-react'
-import Amplify, { Auth } from 'aws-amplify';
 import aws_exports from './aws-exports';
+import Amplify, { API, graphqlOperation, Storage, Auth } from 'aws-amplify';
+//listPropertys
+
+
+//import Store from './src/store/store'
+//import reducer from './src/reducers/reducer'
 
 
 
@@ -44,6 +49,8 @@ const App = () =>{
 
 const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  //get properties data
+
 
 
 
