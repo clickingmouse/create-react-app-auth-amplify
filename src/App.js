@@ -4,6 +4,7 @@ import React, { useEffect, useState, useReducer  } from 'react';
 import { withAuthenticator } from 'aws-amplify-react'
 import aws_exports from './aws-exports';
 import Amplify, { API, graphqlOperation, Storage, Auth } from 'aws-amplify';
+import {listPropertys, listFavoritess} from './graphql/queries'
 //listPropertys
 
 
@@ -49,13 +50,49 @@ const App = () =>{
 
 const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const [isLoading, setIsLoading] = useState(true)
+  const [properties, setProperties]= useState()
   //get properties data
 
+  useEffect(()=>{
+    //checkUser()
+    fetchProperties()
+    //fetchFavorites()
+    //checkUser()
+    //fetchFonts()
+  },[])
+
+  const fetchProperties = async () =>{
+    console.log('fetching propereties...')
+    try {
+      setIsLoading(true)
+      const propertyListData = await API.graphql(graphqlOperation(listPropertys))
+      console.log(propertyListData)
+   const propertiesList = await Promise.all(propertyListData.data.listPropertys.items.map(async property => {
+     const image = await Storage.get(property.coverPhoto)
+     property.s3Image = image
+
+    //console.log('properties list', propertiesLisData)
+      console.log(property)
+      return property
+    }))
+      setProperties(propertiesList)
+      //dispatch({type: 'FETCH_PROPERTIES',payload: propertiesList});
+      //-setProperties(propertyListData.data.listPropertys.items)
+//
+      setIsLoading(false)
+      //console.log(properties)
+      //console.log(state)
+
+    } catch(error){
+      console.log('ERROR', error)
+    }
+}
 
 
 
 
-
+console.log(properties)
   //render() {
     return (<div>
 
