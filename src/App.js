@@ -24,7 +24,7 @@ import Landing from './components/landing/landing'
 import Favorites from './components/favorites/favorites'
 import Profile from './components/profile/profile'
 import MyBid from './components/myBid/myBid'
-
+import PropertiesList from './components/propertyList/propertiesList' 
 ///
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
@@ -39,7 +39,11 @@ Amplify.configure(aws_exports);
 
 const useStyles = makeStyles({
   BottomNavigation: {
-    width: 500,
+    width: '100%',
+    position: 'fixed',
+    //bottom: 23,
+    top: 607,
+    backgroundColor:"#000000"
   },
 });
 
@@ -120,7 +124,7 @@ console.log(properties)
         setValue(newValue);
       }}
       showLabels
-      className={classes.root}
+      className={classes.BottomNavigation}
     >
       <BottomNavigationAction label="Explore" icon={<RestoreIcon component={Link} to='/explore'/>} />
       <BottomNavigationAction label="Saved" icon={<FavoriteIcon />} component={Link} to='/favorites' />

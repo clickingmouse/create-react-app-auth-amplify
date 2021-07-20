@@ -31,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
     divider: {
         margin: theme.spacing(2, 0),
       },
+      CurrentBidCard:{
+        maxHeight:87,
+        width:337
+      }
   }));
 
 
@@ -101,7 +105,7 @@ const Landing = ()=>{
     <div className={classes.root}>
 
     <Typography variant="subtitle1" gutterBottom>
-        Material-UI Grid:
+        Current Bid
       </Typography>
       <Grid container spacing={1}>
 
