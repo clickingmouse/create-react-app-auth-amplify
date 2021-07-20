@@ -10,8 +10,9 @@ import ProfileDetails from './profileDetails'
 import ProfileContactUs from './profileContactUs';
 const Profile = ()=>{
     return(
-        <Container maxWidth="sm">
+        <Container maxWidth="sm" >
             <ProfileHeader/>
+            
             <MembershipCard/>
             <ProfileDetails/>
             <ProfileContactUs/>

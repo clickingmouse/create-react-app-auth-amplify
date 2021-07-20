@@ -13,7 +13,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
+import UpNext from './upNext'
+import PropertyType from './propertyType'
+import Communities from './communities'
 
+import NewRelease from './newRelease';
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -40,51 +44,11 @@ const useStyles = makeStyles((theme) => ({
 
 const Landing = ()=>{
     const classes = useStyles();
-    function UpNext() {
-        return (
-          <React.Fragment>
-            <Grid item xs={6}>
-              <Paper className={classes.paper}>item</Paper>
-            </Grid>
-            <Grid item xs={6}>
-              <Paper className={classes.paper}>item</Paper>
-            </Grid>
 
-          </React.Fragment>
-        );
-      }
 
-      function PropertyType() {
-        return (
-          <React.Fragment>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>item</Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>item</Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>item</Paper>
-            </Grid>
-          </React.Fragment>
-        );
-      }
 
-      function Communities() {
-        return (
-          <React.Fragment>
-            <Grid item xs={3.5}>
-              <Paper className={classes.paper}>item</Paper>
-            </Grid>
-            <Grid item xs={3.5}>
-              <Paper className={classes.paper}>item</Paper>
-            </Grid>
-            <Grid item xs={3.5}>
-              <Paper className={classes.paper}>item</Paper>
-            </Grid>
-          </React.Fragment>
-        );
-      }
+
+
 
       function FormRow() {
         return (
@@ -143,7 +107,7 @@ const Landing = ()=>{
     <Grid container spacing={1}>
 
         <Grid container item xs={12} spacing={1}>
-          <UpNext />
+          <NewRelease />
         </Grid>
 
       </Grid>
@@ -154,20 +118,7 @@ const Landing = ()=>{
 
 
     <Grid container spacing={1}>
-        <List style={{ display: 'flex', flexDirection: 'row', padding: 0 }}>
-            <ListItem button>hehe</ListItem>
-            <ListItem button>hehe1</ListItem>
-            <ListItem button>hehe</ListItem>
-            <ListItem button>hehe1</ListItem>
-            <ListItem button>hehe</ListItem>
-            <ListItem button>hehe1</ListItem>
-            <ListItem button>hehe</ListItem>
-            <ListItem button>hehe1</ListItem>
-            <ListItem button>hehe</ListItem>
-            <ListItem button>hehe1</ListItem>           
-            <ListItem button>hehe</ListItem>
-            <ListItem button>hehe1</ListItem>
-        </List>
+
         <Grid container item xs={12} spacing={1}>
           <Communities />
         </Grid>
@@ -177,7 +128,11 @@ const Landing = ()=>{
 
     </div>
 
+    <List style={{ display: 'flex', flexDirection: 'row', padding: 0 }}>
+            <ListItem button>hehe</ListItem>
+            <ListItem button>hehe1</ListItem>
 
+        </List>
 
         </Container>)
 }
