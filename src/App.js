@@ -24,7 +24,8 @@ import Landing from './components/landing/landing'
 import Favorites from './components/favorites/favorites'
 import Profile from './components/profile/profile'
 import MyBid from './components/myBid/myBid'
-import PropertiesList from './components/propertyList/propertiesList' 
+import PropertiesList from './components/propertyList/propertiesList'
+import PropertyDetails from './components/propertyDetails/propertyDetails' 
 ///
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
@@ -104,7 +105,7 @@ console.log(properties)
 
 <Switch>
           <Route path="/explore">
-            <PropertiesList />
+            <PropertyDetails />
           </Route>
           <Route path="/saved">
             <Favorites />

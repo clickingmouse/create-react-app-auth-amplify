@@ -6,7 +6,7 @@ import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
 const useStyles = makeStyles({
     root: {
         display:"flex",
-        flex:1,
+        //flex:1,
 //        width:43.62,
         width:props => `${props.radius}px`,
         height:props => `${props.radius}px`,
