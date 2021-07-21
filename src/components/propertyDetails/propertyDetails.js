@@ -10,6 +10,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
+
+
+
+import PropertyDetailsMenu from './propertyDetailsMenu'
+import PropertySummary from './propertySummary'
+import PropertyMoreInfo from './propertyMoreInfo'
 // Import Swiper styles
 import 'swiper/swiper.scss';
 import "swiper/swiper.min.css";
@@ -17,12 +23,15 @@ import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 
+
+
 import AppBar from '@material-ui/core/AppBar';
 
 //import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 import Slider from "react-slick";
+import { Typography } from "@material-ui/core";
 // Import css files
 //import "slick-carousel/slick/slick.css";
 //import "slick-carousel/slick/slick-theme.css";
@@ -55,6 +64,19 @@ const images = [
     title: {
       flexGrow: 1,
     },
+    buttonGroup: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        '& > *': {
+          margin: theme.spacing(1),
+        },
+    },
+    button:{
+        display:'flex!important',
+        flexDirection:'column',
+        //alignItems: 'center'
+    }
   }));
 const PropertyDetails = ()=>{
     const classes = useStyles();
@@ -90,7 +112,10 @@ const PropertyDetails = ()=>{
       
     </Swiper>
 
-
+<PropertyDetailsMenu/>
+<PropertySummary/>
+<PropertyMoreInfo/>
+<button/>
         </Container>
 </>
     )
