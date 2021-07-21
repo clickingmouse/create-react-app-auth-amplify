@@ -105,16 +105,19 @@ console.log(properties)
 
 <Switch>
           <Route path="/explore">
-            <PropertyDetails />
+            <Landing />
           </Route>
           <Route path="/saved">
-            <Favorites />
+            <PropertiesList />
           </Route>
           <Route path="/myBid">
             <MyBid />
           </Route>
           <Route path="/profile">
             <Profile />
+          </Route>
+          <Route path="/placeholder">
+            <PropertyDetails />
           </Route>
 
         </Switch>
@@ -128,7 +131,9 @@ console.log(properties)
       className={classes.BottomNavigation}
     >
       <BottomNavigationAction label="Explore" icon={<RestoreIcon component={Link} to='/explore'/>} />
+      <BottomNavigationAction label="placeholder" icon={<FavoriteIcon />} component={Link} to='/placeholder' />
       <BottomNavigationAction label="Saved" icon={<FavoriteIcon />} component={Link} to='/favorites' />
+
       <BottomNavigationAction label="MyBid" icon={<LocationOnIcon />} component={Link} to='/myBid'/>
       <BottomNavigationAction label="Profile" icon={<LocationOnIcon />} component={Link} to='/profile'/>
     </BottomNavigation>
