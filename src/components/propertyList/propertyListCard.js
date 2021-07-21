@@ -3,7 +3,7 @@ import Fab from '@material-ui/core/Fab';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { size } from 'lodash';
+import { findLastIndex, size } from 'lodash';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -11,15 +11,23 @@ import PropertyCardContent from './propertyCardContent';
 import IconButton from '@material-ui/core/IconButton';
 //import Fab from '@material-ui/core/Fab'
 //import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+
+import FavoriteButton from '../buttons/favoriteButton'
+
 import Bed from '../../assets/propertyListing/bed.svg'
 const useStyles = makeStyles({
     root: {
       maxWidth: 356,
-      height: 205
+      height: 205,
+      //display:'flex'
+      
     },
     media: {
         width:345,
       height: 152,
+      display:"flex",
+      flexDirection:"column",
+      justifyContent:"space-between"
     },
     content:{
 padding:0,
@@ -33,14 +41,27 @@ paddingRight:19
 
 const PropertyListCard = ()=>{
     const classes = useStyles();
+
+    const handleClick = ()=>{
+      console.log("clicked")
+    }
+
+
     return(
 <>
-<Card className={classes.root}>
+<Card className={classes.root} onClick={handleClick}>
     <CardMedia
           className={classes.media}
           image={require("../../assets/placeholders/propertyListing.png")}
           title=" Reptile"
-        ><Fab size="Small"><FavoriteBorderIcon/></Fab><Typography>Residential</Typography></CardMedia>
+        >
+          
+          <div styles={{flex:1}}><FavoriteButton radius="30" /></div>
+          <div styles={{flex:1}}><Typography inline align="right">Residential</Typography></div>
+          
+         
+          </CardMedia>
+          
         <CardContent className={classes.content}>
            <PropertyCardContent/>
         </CardContent>
@@ -48,7 +69,7 @@ const PropertyListCard = ()=>{
 </>
     )
 }
-
+//<div styles={{display:'flex', flex:'auto',flexGrow:1, flexDirection:'column', justifyContent:"flex-end" }}>
 export default PropertyListCard
 
 const placeholderData = {

@@ -104,7 +104,7 @@ console.log(properties)
 
 <Switch>
           <Route path="/explore">
-            <Landing />
+            <PropertiesList />
           </Route>
           <Route path="/saved">
             <Favorites />
