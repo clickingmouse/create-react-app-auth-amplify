@@ -46,19 +46,31 @@ const PropertyDetailsMenu=()=>{
 
     return(
         <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
-        <Button 
-        //classess={{root:classes.root, label:classes.label}}
-        className={classes.label}
-        >
-            <div styles={{flex:1}}><img src={require("../../assets/buttons/photos.png")} /> </div>
-            <Typography styles={{flex:1}}>Photos</Typography></Button>
+        <Button >
+            <Grid container direction="row" alignItems="center">
+                <img src={require("../../assets/buttons/photos.png")} /> 
+            <Typography styles={{flex:1}}>Photos</Typography>
+            </Grid>
+        </Button>
+
         <Button>
         <Grid container direction="row" alignItems="center">
      <img src={require("../../assets/buttons/video.png")} /> Video
 </Grid>
             </Button>
-        <Button>360 VR</Button>
-        <Button>Design Plan</Button>
+
+
+        <Button>
+        <Grid container direction="row" alignItems="center">
+        <img src={require("../../assets/buttons/360vr.png")} />
+        <Typography styles={{flex:1}}>
+            360 VR</Typography></Grid></Button>
+        <Button>
+        <Grid container direction="row" alignItems="center">
+        <img src={require("../../assets/buttons/designplan.png")} />
+        <Typography styles={{flex:1}}>
+            Design Plan</Typography>
+            </Grid></Button>
       </ButtonGroup>
     )
 

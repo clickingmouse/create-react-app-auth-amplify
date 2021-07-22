@@ -42,20 +42,42 @@ const useStyles = makeStyles((theme) => ({
     </AccordionSummary>
     <AccordionDetails>
         <Grid container direction='column'>
-        <Grid container direction='row'>
+        <Grid container direction='row' justifyContent="space-between">
 <Grid item>
 address
 </Grid>
 <Grid item>
     <button>Map View</button>
 </Grid>
+</Grid>
 
+<Grid container direction='row' justifyContent="space-between">
+            <Grid item>
+                Saleable Area: <br/>
+                Gross Area: <br/>
+                Building Age: <br/>
+                Floor Zone: <br/>
+                Property Orientation: <br/>
+                Views:<br/>
+                
+
+            </Grid>
+            <Grid item>
+            520 sqft <br/>
+                680 sqft <br/>
+                19 <br/>
+                High<br/>
+                South-West<br/>
+                Sea, Open, Garden<br/>
+
+            </Grid>
         </Grid>
         <Grid container>
-            data
-        </Grid>
-        <Grid container>
-            Facilitiese
+            Clubhouse /& Facilities:<br/>
+
+
+
+
             </Grid>
 
       <Typography>
