@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
+import { Typography } from '@material-ui/core';
 const useStyles = makeStyles({
     root: {
         display:"flex",
@@ -14,7 +15,8 @@ const useStyles = makeStyles({
         backgroundColor:props=>`${props.color}`,
         borderRadius:30,
         alignItems:"center",
-        justifyContent:"center"
+        justifyContent:"center",
+        color:"white",
         
        
     }
@@ -31,7 +33,7 @@ const BackButton = (props)=>{
     return (
         <div className = {classes.root} onClick={handleClick}>
             
-        <ArrowBackIosRoundedIcon/>
+        <Typography>{props.title}</Typography>
         </div>
     )
 }

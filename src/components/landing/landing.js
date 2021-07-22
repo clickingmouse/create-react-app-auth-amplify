@@ -16,7 +16,8 @@ import Grid from '@material-ui/core/Grid';
 import UpNext from './upNext'
 import PropertyType from './propertyType'
 import Communities from './communities'
-
+import BidCard from '../cards/bidCard'
+import BidPanel from '../bidPanels/bidPanels'
 import NewRelease from './newRelease';
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -69,13 +70,13 @@ const Landing = ()=>{
     <div className={classes.root}>
 
     <Typography variant="subtitle1" gutterBottom>
-        Current Bid
+        Today's Auction
       </Typography>
       <Grid container spacing={1}>
 
         <Grid container item xs={12} spacing={3}>
-        
-          <CurrentBidCard />
+          <BidCard/>
+          <BidPanel height="60" width="337" amt="6,850,000" color="#000000" closingtime="23:55:30"/>
        
         </Grid>
     </Grid>

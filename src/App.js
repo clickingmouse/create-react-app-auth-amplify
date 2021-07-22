@@ -5,6 +5,7 @@ import { withAuthenticator } from 'aws-amplify-react'
 import aws_exports from './aws-exports';
 import Amplify, { API, graphqlOperation, Storage, Auth } from 'aws-amplify';
 import {listPropertys, listFavoritess} from './graphql/queries'
+
 //listPropertys
 
 
@@ -34,18 +35,45 @@ import RestoreIcon from '@material-ui/icons/Restore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
-
-
+import ExploreOutlinedIcon from '@material-ui/icons/ExploreOutlined';
+import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
+import GavelOutlinedIcon from '@material-ui/icons/GavelOutlined';
+import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
 Amplify.configure(aws_exports);
 
 const useStyles = makeStyles({
+  root:{
+    padding:'0px 12px 0px 0px',
+  },
   BottomNavigation: {
-    width: '100%',
+    //maxWidth: 300,
+    height:57,
     position: 'fixed',
+    borderRadius:30,
+
     //bottom: 23,
     top: 607,
+    left:'5%',
     backgroundColor:"#000000"
   },
+  navWrapper:{
+    width:283,
+    height:57,
+    borderRadius:30,
+    backgroundColor:'black',
+    position:'fixed',
+    top:'60%',
+    left:'10%'
+
+
+  },
+  wrapper:{
+    padding:0,
+  },
+
+
+  label:{color:'white'},
 });
 
 
@@ -121,7 +149,9 @@ console.log(properties)
           </Route>
 
         </Switch>
-       
+       <div className={classes.navWrapper}>
+
+       </div>
 <BottomNavigation
       value={value}
       onChange={(event, newValue) => {
@@ -130,12 +160,12 @@ console.log(properties)
       showLabels
       className={classes.BottomNavigation}
     >
-      <BottomNavigationAction label="Explore" icon={<RestoreIcon component={Link} to='/explore'/>} />
-      <BottomNavigationAction label="placeholder" icon={<FavoriteIcon />} component={Link} to='/placeholder' />
-      <BottomNavigationAction label="Saved" icon={<FavoriteIcon />} component={Link} to='/favorites' />
+      <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label }} label="Explore" icon={<ExploreOutlinedIcon style={{fill:"white"}}/>}  component={Link} to='/explore'/>} />
 
-      <BottomNavigationAction label="MyBid" icon={<LocationOnIcon />} component={Link} to='/myBid'/>
-      <BottomNavigationAction label="Profile" icon={<LocationOnIcon />} component={Link} to='/profile'/>
+      <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label}} label="Saved" icon={<FavoriteBorderOutlinedIcon style={{fill:"white"}} />} component={Link} to='/favorites' />
+
+      <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label}} label="MyBid" icon={<GavelOutlinedIcon style={{fill:"white"}}/>} component={Link} to='/myBid'/>
+      <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label}} label="Profile" icon={<PersonOutlineOutlinedIcon style={{fill:"white"}}/>} component={Link} to='/profile'/>
     </BottomNavigation>
     </Router>
 </div>

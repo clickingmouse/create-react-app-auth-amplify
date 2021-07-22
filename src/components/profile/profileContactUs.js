@@ -1,6 +1,6 @@
 import React from 'react'
 
-import CircleButton from './circleButton';
+import CircleButton from '../buttons/circleButton';
 import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import Icon from '@material-ui/core/Icon';
@@ -20,16 +20,16 @@ spacing ={3}
   alignItems="center">
 
       <Grid item>
-<CircleButton icon={<SmsRoundedIcon/>}/>
+<CircleButton icon={<SmsRoundedIcon style={{fill:"white"}}/>} radius="43.62" color="#A88663"/> 
 </Grid>
-<Grid item><CircleButton icon = {<MailOutlineRoundedIcon/>}/>
+<Grid item><CircleButton icon = {<MailOutlineRoundedIcon style={{fill:"white"}}/> }radius="43.62" color="#A88663"/>
 </Grid>
 
 <Grid item>
-<CircleButton icon={<WhatsAppIcon/>}/>
+<CircleButton icon={<WhatsAppIcon style={{fill:"white"}}/>} radius="43.62" color="#A88663"/>
 </Grid>
 <Grid item>
-<Fab size='medium'><WhatsAppIcon size='large'/></Fab>
+<Fab size='medium'><WhatsAppIcon size='large' radius="43.62" color="#A88663"/></Fab>
 </Grid>
 </Grid>
 

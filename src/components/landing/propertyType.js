@@ -12,8 +12,8 @@ const handleClick= () =>{
 return(
     
         <Grid container direction="row">
-            <Grid item>< img src={require("../../assets/placeholders/propertyTypeCommercial.png")} alt="residential image"/></Grid>
-            <Grid item>< img src={require("../../assets/placeholders/propertyTypeCommercial.png")} alt="industrial image"/></Grid>
+            <Grid item>< img src={require("../../assets/placeholders/propertyTypeResidential.png")} alt="residential image"/></Grid>
+            <Grid item>< img src={require("../../assets/placeholders/propertyTypeIndustrial.png")} alt="industrial image"/></Grid>
             <Grid item>< img src={require("../../assets/placeholders/propertyTypeCommercial.png")} alt="commercial image"/></Grid>
 
         </Grid>
