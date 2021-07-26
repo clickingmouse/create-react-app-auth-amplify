@@ -57,31 +57,31 @@ const useStyles = makeStyles({
   });
 
 
-const PropertyCardContent =()=>{
+const PropertyCardContent =({p})=>{
     const classes = useStyles();
 
     return(<div style={{backgroundColor:'white', flexGrow:1}}>
         <Grid container direction="row" justifyContent="space-between" alignItems="center">
             <Grid  item direction="column" xs={6} container>
                 <Grid item container direction="row" alignItems="baseline">
-                    <Grid item><Typography className={classes.price}>8,600,000</Typography></Grid>
+                    <Grid item><Typography className={classes.price}>{p.price}</Typography></Grid>
                     <Grid item><Typography className={classes.hkd}>HKD</Typography></Grid>
                     <Grid item><Typography className={classes.valuation}>(Valuation)</Typography></Grid>
                 </Grid>
 
                 <Grid item>
-                <Typography className={classes.location}>Tseung Kwan O</Typography>
+                <Typography className={classes.location}>{p.district}</Typography>
                 </Grid>
             </Grid>
 
             <Grid  item direction="column" xs={6} container >
                 <Grid item container direction="row" alignItems="baseline" spacing={1} justifyContent="flex-end">
                 <KingBedIcon fontSize="small"/>
-                <Typography className={classes.info}> 2 </Typography>
+                <Typography className={classes.info}> {p.bedrooms} </Typography>
                 <BathtubRoundedIcon fontSize="small"/>
-                <Typography className={classes.info}> 2 </Typography>
+                <Typography className={classes.info}> {p.bathrooms} </Typography>
                 <HeightRoundedIcon fontSize="small" className={classes.area}/>
-                <Typography className={classes.info}> 680sqft</Typography>
+                <Typography className={classes.info}> {p.saleableArea}sqft</Typography>
                 </Grid>
             </Grid>
 

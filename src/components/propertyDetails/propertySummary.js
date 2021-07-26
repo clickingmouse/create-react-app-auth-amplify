@@ -2,7 +2,7 @@ import React from 'react'
 import Grid from '@material-ui/core/Grid'
 
 
-const PropertySummary =()=>{
+const PropertySummary =({p})=>{
 
     return(
 
@@ -10,14 +10,14 @@ const PropertySummary =()=>{
             <Grid item>L
                 <Grid container direction="column">
                     <Grid item>
-                        8,000,0900 hkd
+                        {p.price} hkd
                             
                         </Grid>
                         <Grid item>
-                        Tsenung kwan O
+                        {p.district}
                         </Grid>
                         <Grid item>
-                        22 680sqft
+                        {p.saleableArea}sqft
                     </Grid>
                 </Grid>
                 </Grid>

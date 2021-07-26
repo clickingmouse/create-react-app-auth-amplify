@@ -5,15 +5,12 @@ import { withAuthenticator } from 'aws-amplify-react'
 import aws_exports from './aws-exports';
 import Amplify, { API, graphqlOperation, Storage, Auth } from 'aws-amplify';
 import {listPropertys, listFavoritess} from './graphql/queries'
-
+import Store from './store/store'
+import reducer from './reducers/reducers'
 //listPropertys
-
 
 //import Store from './src/store/store'
 //import reducer from './src/reducers/reducer'
-
-
-
 
 import {
   BrowserRouter as Router,
@@ -85,6 +82,7 @@ const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const [isLoading, setIsLoading] = useState(true)
   const [properties, setProperties]= useState()
+  const [state, dispatch]= useReducer(reducer, {})
   //get properties data
 
   useEffect(()=>{
@@ -109,6 +107,7 @@ const classes = useStyles();
       console.log(property)
       return property
     }))
+      dispatch({type: 'FETCH_PROPERTIES',payload: propertiesList});
       setProperties(propertiesList)
       //dispatch({type: 'FETCH_PROPERTIES',payload: propertiesList});
       //-setProperties(propertyListData.data.listPropertys.items)
@@ -125,13 +124,14 @@ const classes = useStyles();
 
 
 
-console.log(properties)
+//console.log(properties)
   //render() {
     return (<div>
-
+      <Store.Provider value = {{state, dispatch}}>
+{isLoading? <p>...Loading...</p>:
 <Router>
 
-<Switch>
+<Switch>  
           <Route path="/explore">
             <Landing />
           </Route>
@@ -147,11 +147,14 @@ console.log(properties)
           <Route path="/placeholder">
             <PropertyDetails />
           </Route>
-
+          <Route path="/residential-listings">
+            <PropertiesList propertyType='1' />
+          </Route>
+          <Route path="/property/:propertyId">
+            <PropertyDetails  />
+          </Route>
         </Switch>
-       <div className={classes.navWrapper}>
-
-       </div>
+   
 <BottomNavigation
       value={value}
       onChange={(event, newValue) => {
@@ -167,7 +170,8 @@ console.log(properties)
       <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label}} label="MyBid" icon={<GavelOutlinedIcon style={{fill:"white"}}/>} component={Link} to='/myBid'/>
       <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label}} label="Profile" icon={<PersonOutlineOutlinedIcon style={{fill:"white"}}/>} component={Link} to='/profile'/>
     </BottomNavigation>
-    </Router>
+    </Router>}
+    </Store.Provider>
 </div>
     );
   //}

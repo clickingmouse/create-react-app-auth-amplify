@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import BidPanel from '../bidPanels/bidPanels'
+import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
 const useStyles = makeStyles({
   root: {
     maxWidth: 337,

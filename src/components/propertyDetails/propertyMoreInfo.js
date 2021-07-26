@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-  const PropertyMoreInfo =()=>{
+  const PropertyMoreInfo =({p})=>{
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
   
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
         <Grid container direction='column'>
         <Grid container direction='row' justifyContent="space-between">
 <Grid item>
-address
+{p.address}
 </Grid>
 <Grid item>
     <button>Map View</button>
@@ -63,12 +63,12 @@ address
 
             </Grid>
             <Grid item>
-            520 sqft <br/>
-                680 sqft <br/>
-                19 <br/>
-                High<br/>
-                South-West<br/>
-                Sea, Open, Garden<br/>
+            {p.saleableArea} sqft <br/>
+                {p.grossArea} sqft <br/>
+                {p.buildingAge} <br/>
+                {p.floor}<br/>
+                {p.propertyDirection}<br/>
+                {p.propertyView}<br/>
 
             </Grid>
         </Grid>

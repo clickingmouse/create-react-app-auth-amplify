@@ -3,6 +3,8 @@ import Fab from '@material-ui/core/Fab';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import Store from '../../store/store'
+
 import { findLastIndex, size } from 'lodash';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import CardContent from '@material-ui/core/CardContent';
@@ -15,6 +17,15 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteButton from '../buttons/favoriteButton'
 
 import Bed from '../../assets/propertyListing/bed.svg'
+
+import {
+ // BrowserRouter as Router,
+ // Switch,
+//  Route,
+  Link,
+//  useParams
+} from "react-router-dom";
+
 const useStyles = makeStyles({
     root: {
       maxWidth: 356,
@@ -39,9 +50,15 @@ paddingRight:19
 
 
 
-const PropertyListCard = ()=>{
+const PropertyListCard = ({propertyid})=>{
     const classes = useStyles();
-
+    const data = React.useContext(Store)
+    console.log(data)
+    const properties = data.state.properties
+    console.log(properties)
+    const property = properties.find(property => property.id == propertyid)
+    console.log(property)
+    //const img = require.context('assets/img', true);
     const handleClick = ()=>{
       console.log("clicked")
     }
@@ -49,11 +66,17 @@ const PropertyListCard = ()=>{
 
     return(
 <>
+<Link to= {`/property/${property.id}`} >
 <Card className={classes.root} onClick={handleClick}>
     <CardMedia
           className={classes.media}
-          image={require("../../assets/placeholders/propertyListing.png")}
-          title=" Reptile"
+          //image={require("../../assets/placeholders/propertyListing.png")}
+          //component="img"
+          //src = {property.s3Image}
+          //s3://fgbucket135655-devf/嘉湖山莊-cover.jpg
+          //https://fgbucket135655-devf.s3.ap-southeast-1.amazonaws.com/%E5%98%89%E6%B9%96%E5%B1%B1%E8%8E%8A-cover.jpg
+          image= {property.s3Image}
+          title=" placeholder"
         >
           
           <div styles={{flex:1}}><FavoriteButton radius="30" /></div>
@@ -63,9 +86,10 @@ const PropertyListCard = ()=>{
           </CardMedia>
           
         <CardContent className={classes.content}>
-           <PropertyCardContent/>
+           <PropertyCardContent p={property}/>
         </CardContent>
         </Card>
+      </Link>
 </>
     )
 }

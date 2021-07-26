@@ -10,7 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
-
+import Store from '../../store/store'
 
 
 import PropertyDetailsMenu from './propertyDetailsMenu'
@@ -22,7 +22,13 @@ import "swiper/swiper.min.css";
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
-
+import {
+//  BrowserRouter as Router,
+//  Switch,
+//  Route,
+//  Link,
+  useParams
+} from "react-router-dom";
 
 
 import AppBar from '@material-ui/core/AppBar';
@@ -80,6 +86,15 @@ const images = [
   }));
 const PropertyDetails = ()=>{
     const classes = useStyles();
+    let { propertyId } = useParams();
+    
+    const data = React.useContext(Store)
+    console.log(data)
+    const properties = data.state.properties
+    console.log(properties)
+    const property = properties.find(property => property.id == propertyId)
+    console.log(property)
+    console.log(propertyId)
 
     return(<>
 
@@ -112,9 +127,9 @@ const PropertyDetails = ()=>{
       
     </Swiper>
 
-<PropertyDetailsMenu/>
-<PropertySummary/>
-<PropertyMoreInfo/>
+<PropertyDetailsMenu />
+<PropertySummary p={property}/>
+<PropertyMoreInfo p={property}/>
 <button/>
         </Container>
 </>
