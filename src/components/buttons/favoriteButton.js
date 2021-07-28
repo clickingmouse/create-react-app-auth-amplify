@@ -30,7 +30,7 @@ const FavoriteButton = (props)=>{
     return (
         <div className = {classes.root} onClick={handleClick}>
             
-        <FavoriteBorderIcon/>
+        <FavoriteBorderIcon style={{fill:'white'}}/>
         </div>
     )
 }

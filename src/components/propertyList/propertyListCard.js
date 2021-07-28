@@ -17,6 +17,7 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteButton from '../buttons/favoriteButton'
 
 import Bed from '../../assets/propertyListing/bed.svg'
+import Grid from '@material-ui/core/Grid'
 
 import {
  // BrowserRouter as Router,
@@ -30,7 +31,7 @@ const useStyles = makeStyles({
     root: {
       maxWidth: 356,
       height: 205,
-      display:'flex'
+      //display:'flex'
       
     },
     media: {
@@ -38,12 +39,31 @@ const useStyles = makeStyles({
       height: 152,
       display:"flex",
       flexDirection:"column",
-      justifyContent:"space-between"
+      justifyContent:"space-between",
+
     },
     content:{
 padding:0,
 paddingLeft:14,
 paddingRight:19
+    },
+    type:{
+      //backgroundColor:"white",
+
+      //textAlign:"right",
+      //flex:1, 
+      display:"flex", 
+      flexDirection:"row-reverse",
+      backgroundColor:"white"
+
+
+    },
+    typetxt:{
+      fontSize:10,
+      color:"#A88663",
+    },
+    fav:{
+      flex:1, display:"flex", flexDirection:"row-reverse",
     }
   });
 
@@ -66,7 +86,7 @@ const PropertyListCard = ({propertyid})=>{
 
     return(
 <>
-<Link to= {`/property/${property.id}`} >
+<Link to= {`/property/${property.id}`} style={{textDecoration: 'none'}}>
 <Card className={classes.root} onClick={handleClick}>
     <CardMedia
           className={classes.media}
@@ -79,8 +99,9 @@ const PropertyListCard = ({propertyid})=>{
           title=" placeholder"
         >
           
-          <div styles={{flex:1}}><FavoriteButton radius="30" /></div>
-          <div styles={{flex:1}}><Typography inline align="right">Residential</Typography></div>
+          <div id="1" className={classes.fav}><FavoriteButton radius="30" /></div>
+          
+          <div className={classes.type}><Typography className={classes.typetxt} >Residential</Typography></div>
           
          
           </CardMedia>

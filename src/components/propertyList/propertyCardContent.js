@@ -74,13 +74,13 @@ const PropertyCardContent =({p})=>{
                 </Grid>
             </Grid>
 
-            <Grid  item direction="column" xs={6} container >
+            <Grid  item direction="column" xs={6} container alignItems="baseline">
                 <Grid item container direction="row" alignItems="baseline" spacing={1} justifyContent="flex-end">
-                <KingBedIcon fontSize="small"/>
+                <KingBedIcon fontSize="small" style={{fill: "#A88663"}}/>
                 <Typography className={classes.info}> {p.bedrooms} </Typography>
-                <BathtubRoundedIcon fontSize="small"/>
+                <BathtubRoundedIcon fontSize="small" style={{fill: "#A88663"}}/>
                 <Typography className={classes.info}> {p.bathrooms} </Typography>
-                <HeightRoundedIcon fontSize="small" className={classes.area}/>
+                <HeightRoundedIcon fontSize="small" style={{fill: "#A88663"}} className={classes.area}/>
                 <Typography className={classes.info}> {p.saleableArea}sqft</Typography>
                 </Grid>
             </Grid>

@@ -9,6 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import Fab from '@material-ui/core/Fab';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import BackButton from '../buttons/backButton';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -72,9 +73,9 @@ const handleFilter =()=>{
 }
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" color="white" elevation={0}>
         <Toolbar>
-            <Fab/>
+            <BackButton/>
           <Typography className={classes.title} variant="h6" noWrap>
             
           </Typography>

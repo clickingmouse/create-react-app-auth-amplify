@@ -1,5 +1,7 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
+import BidIncButton  from './bidIncButton'
+import BidDecButton from './bidDecButton'
 const BidPanel = ()=>{
     return(
         <>
@@ -35,7 +37,7 @@ const BidPanel = ()=>{
         </Grid>
 
         <Grid container>
-            <button/>0000000<button/>
+            <BidDecButton radius="39"/>0000000<BidIncButton radius="39"/>
         </Grid>
 
         </>

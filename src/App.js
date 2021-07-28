@@ -90,9 +90,9 @@ const classes = useStyles();
   //get properties data
 
   useEffect(async()=>{
-     checkUser()
+    //checkUser()
      fetchProperties()
-    fetchFavorites()
+    //fetchFavorites()
     //checkUser()
     //fetchFonts()
   },[])
