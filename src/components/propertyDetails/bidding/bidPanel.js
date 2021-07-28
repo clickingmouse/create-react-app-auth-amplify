@@ -2,6 +2,7 @@ import React from 'react'
 import Grid from '@material-ui/core/Grid'
 const BidPanel = ()=>{
     return(
+        <>
         <Grid container direction="row">
             <Grid item>
                 <Grid container direction="column">
@@ -37,7 +38,7 @@ const BidPanel = ()=>{
             <button/>0000000<button/>
         </Grid>
 
-
+        </>
     )
 }
 
