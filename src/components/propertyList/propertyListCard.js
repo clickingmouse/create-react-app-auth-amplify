@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     root: {
       maxWidth: 356,
       height: 205,
-      //display:'flex'
+      display:'flex'
       
     },
     media: {

@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import Container from "@material-ui/core/Container"
 import BackButton from '../buttons/backButton'
 import FavoriteButton from '../buttons/favoriteButton'
@@ -12,7 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import Store from '../../store/store'
 
-
+import CapsuleButton from '../buttons/capsuleButton'
 import PropertyDetailsMenu from './propertyDetailsMenu'
 import PropertySummary from './propertySummary'
 import PropertyMoreInfo from './propertyMoreInfo'
@@ -32,6 +32,8 @@ import {
 
 
 import AppBar from '@material-ui/core/AppBar';
+import Enquire from './enquire'
+import Bid from './bid'
 
 //import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
@@ -96,6 +98,12 @@ const PropertyDetails = ()=>{
     console.log(property)
     console.log(propertyId)
 
+    //const [liveAuction, setLiveAuction] = useState(true)
+
+
+    //setLiveAuction(false)
+    //const actionButtons = liveAuction?return(<><button/><button/></>):<button/> 
+    const liveAuction = true
     return(<>
 
         <Container xs={12}>
@@ -130,7 +138,10 @@ const PropertyDetails = ()=>{
 <PropertyDetailsMenu />
 <PropertySummary p={property}/>
 <PropertyMoreInfo p={property}/>
-<button/>
+
+
+{liveAuction?<><Enquire/><Bid/></>:<CapsuleButton title="Enquire" color="black" width="160" height="37.11"/> }
+
         </Container>
 </>
     )

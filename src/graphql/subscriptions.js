@@ -1,120 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateAuction = /* GraphQL */ `
-  subscription OnCreateAuction {
-    onCreateAuction {
-      id
-      auctionRefNo
-      openingBid
-      reservePrice
-      auctionDate
-      auctionStarTime
-      auctionEndTime
-      winningBid
-      lastBid
-      prn
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateAuction = /* GraphQL */ `
-  subscription OnUpdateAuction {
-    onUpdateAuction {
-      id
-      auctionRefNo
-      openingBid
-      reservePrice
-      auctionDate
-      auctionStarTime
-      auctionEndTime
-      winningBid
-      lastBid
-      prn
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteAuction = /* GraphQL */ `
-  subscription OnDeleteAuction {
-    onDeleteAuction {
-      id
-      auctionRefNo
-      openingBid
-      reservePrice
-      auctionDate
-      auctionStarTime
-      auctionEndTime
-      winningBid
-      lastBid
-      prn
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateBid = /* GraphQL */ `
-  subscription OnCreateBid {
-    onCreateBid {
-      id
-      bidAmount
-      bidderID
-      prn
-      timestamp
-      auctionID
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateBid = /* GraphQL */ `
-  subscription OnUpdateBid {
-    onUpdateBid {
-      id
-      bidAmount
-      bidderID
-      prn
-      timestamp
-      auctionID
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteBid = /* GraphQL */ `
-  subscription OnDeleteBid {
-    onDeleteBid {
-      id
-      bidAmount
-      bidderID
-      prn
-      timestamp
-      auctionID
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-  }
-`;
 export const onCreateFavorite = /* GraphQL */ `
   subscription OnCreateFavorite {
     onCreateFavorite {
@@ -183,6 +69,7 @@ export const onCreateProperty = /* GraphQL */ `
       address
       propertyDirection
       prn
+      testAuctionDay
       _version
       _deleted
       _lastChangedAt
@@ -217,6 +104,7 @@ export const onUpdateProperty = /* GraphQL */ `
       address
       propertyDirection
       prn
+      testAuctionDay
       _version
       _deleted
       _lastChangedAt
@@ -251,6 +139,7 @@ export const onDeleteProperty = /* GraphQL */ `
       address
       propertyDirection
       prn
+      testAuctionDay
       _version
       _deleted
       _lastChangedAt

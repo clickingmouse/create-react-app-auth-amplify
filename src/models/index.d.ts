@@ -2,32 +2,46 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
-
+export declare class Message {
+  readonly id: string;
+  readonly channelID: string;
+  readonly author: string;
+  readonly body: string;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<Message>);
+}
 
 export declare class Auction {
   readonly id: string;
-  readonly auctionRefNo?: string;
-  readonly openingBid?: string;
-  readonly reservePrice?: string;
-  readonly auctionDate?: string;
-  readonly auctionStarTime?: string;
+  readonly auctionID: string;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  readonly auctionStart?: string;
+  readonly auctionEnd?: string;
+  readonly auctionStartTime?: string;
   readonly auctionEndTime?: string;
-  readonly winningBid?: number;
-  readonly lastBid?: number;
-  readonly prn?: string;
+  readonly startingBid: number;
+  readonly reservePrice: number;
+  readonly bidIncrement?: number;
+  readonly latestBid?: number;
+  readonly currentBid?: number;
+  readonly finalBid?: number;
+  readonly propertyID: string;
+  readonly testAuctionDay?: number;
   constructor(init: ModelInit<Auction>);
-  static copyOf(source: Auction, mutator: (draft: MutableModel<Auction>) => MutableModel<Auction> | void): Auction;
 }
 
 export declare class Bid {
   readonly id: string;
-  readonly bidAmount?: number;
-  readonly bidderID?: string;
-  readonly prn?: string;
-  readonly timestamp?: string;
-  readonly auctionID?: string;
+  readonly auctionID: string;
+  readonly bidderName: string;
+  readonly bidderID: string;
+  readonly bid: number;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  readonly submissionTime?: string;
   constructor(init: ModelInit<Bid>);
-  static copyOf(source: Bid, mutator: (draft: MutableModel<Bid>) => MutableModel<Bid> | void): Bid;
 }
 
 export declare class Favorite {
@@ -62,6 +76,7 @@ export declare class Property {
   readonly address?: string;
   readonly propertyDirection?: string;
   readonly prn: string;
+  readonly testAuctionDay?: number;
   constructor(init: ModelInit<Property>);
   static copyOf(source: Property, mutator: (draft: MutableModel<Property>) => MutableModel<Property> | void): Property;
 }

@@ -4,11 +4,12 @@ import { schema } from './schema';
 
 
 
-const { Auction, Bid, Favorite, Property } = initSchema(schema);
+const { Favorite, Property, Message, Auction, Bid } = initSchema(schema);
 
 export {
-  Auction,
-  Bid,
   Favorite,
-  Property
+  Property,
+  Message,
+  Auction,
+  Bid
 };

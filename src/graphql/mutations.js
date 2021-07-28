@@ -1,138 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createAuction = /* GraphQL */ `
-  mutation CreateAuction(
-    $input: CreateAuctionInput!
-    $condition: ModelAuctionConditionInput
-  ) {
-    createAuction(input: $input, condition: $condition) {
-      id
-      auctionRefNo
-      openingBid
-      reservePrice
-      auctionDate
-      auctionStarTime
-      auctionEndTime
-      winningBid
-      lastBid
-      prn
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateAuction = /* GraphQL */ `
-  mutation UpdateAuction(
-    $input: UpdateAuctionInput!
-    $condition: ModelAuctionConditionInput
-  ) {
-    updateAuction(input: $input, condition: $condition) {
-      id
-      auctionRefNo
-      openingBid
-      reservePrice
-      auctionDate
-      auctionStarTime
-      auctionEndTime
-      winningBid
-      lastBid
-      prn
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteAuction = /* GraphQL */ `
-  mutation DeleteAuction(
-    $input: DeleteAuctionInput!
-    $condition: ModelAuctionConditionInput
-  ) {
-    deleteAuction(input: $input, condition: $condition) {
-      id
-      auctionRefNo
-      openingBid
-      reservePrice
-      auctionDate
-      auctionStarTime
-      auctionEndTime
-      winningBid
-      lastBid
-      prn
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createBid = /* GraphQL */ `
-  mutation CreateBid(
-    $input: CreateBidInput!
-    $condition: ModelBidConditionInput
-  ) {
-    createBid(input: $input, condition: $condition) {
-      id
-      bidAmount
-      bidderID
-      prn
-      timestamp
-      auctionID
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateBid = /* GraphQL */ `
-  mutation UpdateBid(
-    $input: UpdateBidInput!
-    $condition: ModelBidConditionInput
-  ) {
-    updateBid(input: $input, condition: $condition) {
-      id
-      bidAmount
-      bidderID
-      prn
-      timestamp
-      auctionID
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteBid = /* GraphQL */ `
-  mutation DeleteBid(
-    $input: DeleteBidInput!
-    $condition: ModelBidConditionInput
-  ) {
-    deleteBid(input: $input, condition: $condition) {
-      id
-      bidAmount
-      bidderID
-      prn
-      timestamp
-      auctionID
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-  }
-`;
 export const createFavorite = /* GraphQL */ `
   mutation CreateFavorite(
     $input: CreateFavoriteInput!
@@ -213,6 +81,7 @@ export const createProperty = /* GraphQL */ `
       address
       propertyDirection
       prn
+      testAuctionDay
       _version
       _deleted
       _lastChangedAt
@@ -250,6 +119,7 @@ export const updateProperty = /* GraphQL */ `
       address
       propertyDirection
       prn
+      testAuctionDay
       _version
       _deleted
       _lastChangedAt
@@ -287,6 +157,7 @@ export const deleteProperty = /* GraphQL */ `
       address
       propertyDirection
       prn
+      testAuctionDay
       _version
       _deleted
       _lastChangedAt

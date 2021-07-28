@@ -1,4 +1,5 @@
 import React from 'react';
+import LandingHeader from './landingHeader';
 import Container from '@material-ui/core/Container';
 
 import CurrentBidCard from './currentBidCard';
@@ -19,6 +20,14 @@ import Communities from './communities'
 import BidCard from '../cards/bidCard'
 import BidPanel from '../bidPanels/bidPanels'
 import NewRelease from './newRelease';
+import { DateRange } from '@material-ui/icons';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom"
+import Store from '../../store/store'
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -46,36 +55,29 @@ const useStyles = makeStyles((theme) => ({
 const Landing = ()=>{
     const classes = useStyles();
 
+const today = new Date()
+const day = today.getDay()
+console.log(today)
+console.log(day)
 
+// find today's auction
+const allProperties = React.useContext(Store).state.properties
+console.log(allProperties)
+const inAuctionProperty = allProperties.find(property => property.testAuctionDay === day )
+console.log(inAuctionProperty)
 
-
-
-
-      function FormRow() {
-        return (
-          <React.Fragment>
-            <Grid item xs={4}>
-              <Paper className={classes.paper}>item</Paper>
-            </Grid>
-            <Grid item xs={4}>
-              <Paper className={classes.paper}>item</Paper>
-            </Grid>
-            <Grid item xs={4}>
-              <Paper className={classes.paper}>item</Paper>
-            </Grid>
-          </React.Fragment>
-        );
-      }
-    return(<Container maxWidth="sm">
+    return(
+    
+    <Container maxWidth="sm">
+      <LandingHeader/>
     <div className={classes.root}>
 
-    <Typography variant="subtitle1" gutterBottom>
-        Today's Auction
-      </Typography>
+    <Typography variant="subtitle1" gutterBottom>Today's Auction</Typography>
       <Grid container spacing={1}>
 
-        <Grid container item xs={12} spacing={3}>
-          <BidCard/>
+        <Grid container item xs={12} spacing={1}>
+        <Link to= {`/property/${inAuctionProperty.id}`} >
+          <BidCard p={inAuctionProperty}/></Link>
           <BidPanel height="60" width="337" amt="6,850,000" color="#000000" closingtime="23:55:30"/>
        
         </Grid>

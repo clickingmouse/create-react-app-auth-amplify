@@ -4,7 +4,8 @@ import React, { useEffect, useState, useReducer  } from 'react';
 import { withAuthenticator } from 'aws-amplify-react'
 import aws_exports from './aws-exports';
 import Amplify, { API, graphqlOperation, Storage, Auth } from 'aws-amplify';
-import {listPropertys, listFavoritess} from './graphql/queries'
+import {listPropertys, listFavorites} from './graphql/queries'
+import {createFavorite} from './graphql/mutations'
 import Store from './store/store'
 import reducer from './reducers/reducers'
 //listPropertys
@@ -81,14 +82,17 @@ const App = () =>{
 const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const [isLoading, setIsLoading] = useState(true)
+  const [isLoadingFavorites, setIsLoaadingFavorites]= useState(true)
   const [properties, setProperties]= useState()
+  const [userProfile, setUserProfile]= useState()
   const [state, dispatch]= useReducer(reducer, {})
+
   //get properties data
 
-  useEffect(()=>{
-    //checkUser()
-    fetchProperties()
-    //fetchFavorites()
+  useEffect(async()=>{
+     checkUser()
+     fetchProperties()
+    fetchFavorites()
     //checkUser()
     //fetchFonts()
   },[])
@@ -121,7 +125,62 @@ const classes = useStyles();
     }
 }
 
+const checkUser= async()=> {
+  //let user = await Auth.currentAuthenticatedUser();
+  let user = await Auth.currentUserInfo()
+  //setIsLoading(true);
+  if (!!user) {  
+  console.log(user)
+  setUserProfile(user.attributes)
+  }
+  console.log(userProfile)
+  }
+//////
 
+const fetchFavorites = async ()=>{
+  console.log('...fetching favorites')
+  //kevin.alex.ko@gmail.com
+  let user = await Auth.currentUserInfo()
+  let uid = user.attributes.sub
+  console.log(user)
+  try {
+    setIsLoading(true)
+    const favoriteslist = await API.graphql(graphqlOperation(listFavorites, {
+      filter:{
+        uid:{eq:uid}
+      } 
+    }
+    ))
+    console.log(favoriteslist);
+    console.log(favoriteslist.data.listFavorites.items.length)
+    if (favoriteslist.data.listFavorites.items.length == 0){
+      // create new list
+      console.log('NO FAVORITE LIST FOUND')  
+      try {
+    const result = await API.graphql(graphqlOperation(createFavorite,{input:{uid:uid}}))
+    console.log('new favoritlist result', + result)
+      dispatch({type: 'FETCH_FAVORITES',payload: [] });
+      setIsLoading(false)
+      } catch (error){ 
+        console.log(error)
+      }
+
+      
+    } else {
+      favoriteslist.data.listFavorites.items[0].properties =  (favoriteslist.data.listFavorites.items[0].properties == null) ? []: favoriteslist.data.listFavorites.items[0].properties 
+      console.log('FETCHED FAVORITES IS', favoriteslist.data.listFavorites.items[0].properties)
+      //dispatch({type: 'FETCH_FAVORITES', payload: favoriteslist.data.listFavoritess.items[0].savedProperties});
+      //dispatch({type: 'FETCH_FAVORITES', payload: ['ab0a6ca3-6c1b-4d0c-9f86-77903ac4bbd0']});
+      dispatch({type: 'FETCH_FAVORITES', payload: favoriteslist.data.listFavoritess.items[0].properties ?favoriteslist.data.listFavoritess.items[0].savedProperties:[]});
+      setIsLoading(false)
+    }
+
+console.log(state)
+  }catch(error){
+    console.log(error)
+  }
+
+}
 
 
 //console.log(properties)

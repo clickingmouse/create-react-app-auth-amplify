@@ -1,164 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getAuction = /* GraphQL */ `
-  query GetAuction($id: ID!) {
-    getAuction(id: $id) {
-      id
-      auctionRefNo
-      openingBid
-      reservePrice
-      auctionDate
-      auctionStarTime
-      auctionEndTime
-      winningBid
-      lastBid
-      prn
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listAuctions = /* GraphQL */ `
-  query ListAuctions(
-    $filter: ModelAuctionFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listAuctions(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        auctionRefNo
-        openingBid
-        reservePrice
-        auctionDate
-        auctionStarTime
-        auctionEndTime
-        winningBid
-        lastBid
-        prn
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncAuctions = /* GraphQL */ `
-  query SyncAuctions(
-    $filter: ModelAuctionFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncAuctions(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        auctionRefNo
-        openingBid
-        reservePrice
-        auctionDate
-        auctionStarTime
-        auctionEndTime
-        winningBid
-        lastBid
-        prn
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getBid = /* GraphQL */ `
-  query GetBid($id: ID!) {
-    getBid(id: $id) {
-      id
-      bidAmount
-      bidderID
-      prn
-      timestamp
-      auctionID
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listBids = /* GraphQL */ `
-  query ListBids(
-    $filter: ModelBidFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listBids(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        bidAmount
-        bidderID
-        prn
-        timestamp
-        auctionID
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncBids = /* GraphQL */ `
-  query SyncBids(
-    $filter: ModelBidFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncBids(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        bidAmount
-        bidderID
-        prn
-        timestamp
-        auctionID
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
 export const getFavorite = /* GraphQL */ `
   query GetFavorite($id: ID!) {
     getFavorite(id: $id) {
@@ -249,6 +91,7 @@ export const getProperty = /* GraphQL */ `
       address
       propertyDirection
       prn
+      testAuctionDay
       _version
       _deleted
       _lastChangedAt
@@ -288,6 +131,7 @@ export const listPropertys = /* GraphQL */ `
         address
         propertyDirection
         prn
+        testAuctionDay
         _version
         _deleted
         _lastChangedAt
@@ -336,6 +180,7 @@ export const syncProperties = /* GraphQL */ `
         address
         propertyDirection
         prn
+        testAuctionDay
         _version
         _deleted
         _lastChangedAt

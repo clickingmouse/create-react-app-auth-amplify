@@ -4,6 +4,8 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
 import { Typography } from '@material-ui/core';
+
+
 const useStyles = makeStyles({
     root: {
         display:"flex",
@@ -23,7 +25,7 @@ const useStyles = makeStyles({
 })
 
 
-const BackButton = (props)=>{
+const CapsuleButton = (props)=>{
     //console.log(props)
     const classes = useStyles(props);
     //classes = {...props, {width:props.width}, {height:props.height}}
@@ -31,11 +33,11 @@ const BackButton = (props)=>{
     //classes.root.height = props.radius
     const handleClick = ()=>{}
     return (
-        <div className = {classes.root} onClick={handleClick}>
+        <div className = {classes.root} onClick={props.onClick}>
             
         <Typography>{props.title}</Typography>
         </div>
     )
 }
 
-export default BackButton
+export default CapsuleButton

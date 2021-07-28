@@ -9,6 +9,10 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import BidPanel from '../bidPanels/bidPanels'
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
+
+import KingBedIcon from '@material-ui/icons/KingBed';
+import BathtubRoundedIcon from '@material-ui/icons/BathtubRounded';
+import HeightRoundedIcon from '@material-ui/icons/HeightRounded';
 const useStyles = makeStyles({
   root: {
     maxWidth: 337,
@@ -20,7 +24,7 @@ const useStyles = makeStyles({
   },
 });
 
-function CurrentBidCard() {
+function CurrentBidCard({p}) {
   const classes = useStyles();
 
   return (
