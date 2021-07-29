@@ -9,6 +9,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import Fab from '@material-ui/core/Fab';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import FilterButton from '../buttons/filterButton';
+import FiberManualRecordSharpIcon from '@material-ui/icons/FiberManualRecordSharp';
 //import Logo from '../../assets/images/logo'
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,6 +64,37 @@ const useStyles = makeStyles((theme) => ({
         width: '20ch',
       },
     },
+    wrapper:{
+      width:51,
+      height:36,
+      backgroundColor:"#A88663",
+      borderTopLeftRadius:"50%",
+      borderBottomLeftRadius:25,
+      position:"absolute"
+  },
+  circle:{
+    width:8,
+    height: 8,
+    backgroundColor: 'white',
+    borderRadius: '50%',
+    position: "absolute",
+    //top:"50%",
+    //position: "relative",
+    transform: "translateX(100%) translateY(175%)",
+    //translateX:"-50%",
+    //translateY:"-50%" 
+  },
+  line:{
+      height:2,
+      width:16,
+      //length:20,
+      backgroundColor: 'white',
+      position:"absolute",
+      top:"45%",
+      left:"8%"
+      //translateX:"-300%",
+      //translateY:"-200%"
+  },
   },
 }));
 
@@ -92,6 +125,7 @@ const handleFilter =()=>{
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
+          
           <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -99,8 +133,29 @@ const handleFilter =()=>{
                 onClick={handleFilter}
                 color="inherit"
               >
-                <AccountCircle />
+                
+                <div style={{    width:51,
+      height:36,
+      backgroundColor:"#A88663",
+      borderTopLeftRadius:"50%",
+      borderBottomLeftRadius:25,
+      position:"absolute"}}>
+                      <div style={{width:8,height: 8,
+    backgroundColor: 'white',
+    borderRadius: '50%',
+    position: "absolute",
+    transform: "translateX(100%) translateY(165%)"}}/>
+
+          <div style={{height:2,
+            width:16,
+            //length:20,
+            backgroundColor: 'white',
+            position:"absolute",
+            top:"45%",
+            left:"8%"}}/>
+        </div>
               </IconButton>
+
         </Toolbar>
       </AppBar>
     </div>
