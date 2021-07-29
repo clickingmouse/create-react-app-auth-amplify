@@ -3,6 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
+
+import { useHistory } from "react-router-dom";
+
 const useStyles = makeStyles({
     root: {
         display:"flex",
@@ -22,12 +25,16 @@ const useStyles = makeStyles({
 
 
 const BackButton = (props)=>{
+    let history = useHistory();
     //console.log(props)
     const classes = useStyles(props);
     //classes = {...props, {width:props.width}, {height:props.height}}
     //classes.root.width = props.radius
     //classes.root.height = props.radius
-    const handleClick = ()=>{}
+    const handleClick = ()=>{
+        console.log('back clicked')
+        history.goBack()
+    }
     return (
         <div className = {classes.root} onClick={handleClick}>
             

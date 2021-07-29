@@ -29,6 +29,7 @@ import {
 //  Link,
   useParams
 } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
 import AppBar from '@material-ui/core/AppBar';
@@ -88,6 +89,7 @@ const images = [
   }));
 const PropertyDetails = ()=>{
     const classes = useStyles();
+ 
     let { propertyId } = useParams();
     
     const data = React.useContext(Store)
@@ -110,7 +112,7 @@ const PropertyDetails = ()=>{
         <AppBar position="absolute" color="transparent" elevation={0} styles={{color: "transparent!important"}}>
         <Toolbar styles={{justifyContent:"space-between"}}>
         <Button>
-        <BackButton radius="39"/>
+        <BackButton radius="39" />
         </Button>
         
         <FavoriteButton radius="39"/>

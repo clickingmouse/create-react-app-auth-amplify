@@ -54,13 +54,15 @@ paddingRight:19
       //flex:1, 
       display:"flex", 
       flexDirection:"row-reverse",
-      backgroundColor:"white"
+      //backgroundColor:"white"
 
 
     },
     typetxt:{
       fontSize:10,
       color:"#A88663",
+      backgroundColor:"white"
+      
     },
     fav:{
       flex:1, display:"flex", flexDirection:"row-reverse",
