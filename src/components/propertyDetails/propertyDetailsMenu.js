@@ -18,24 +18,30 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
     },
     buttonGroup: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        '& > *': {
-          margin: theme.spacing(1),
-        },
+        //display: 'flex',
+        //flexDirection: 'column',
+        //alignItems: 'center',
+        //'& > *': {
+        //  margin: theme.spacing(1),
+        //},
+        backgroundColor:"transparent",
+        width:297,
+        height:62
     },
     button:{
         //display:'flex',
         //flexDirection:'column',
         //alignItems: 'center'
+        backgroundColor:"transparent"
     },
     label: {
         // Aligns the content of the button vertically.
         display:'flex',
         flexDirection: 'column',
-        backgroundColor:'grey',
+        color:'#3c3c3c',
         //justifyContent:'center'
+        fontSize:10,
+        textTransform: "none",
     }
   }));
 
@@ -45,31 +51,33 @@ const PropertyDetailsMenu=()=>{
     const classes = useStyles();
 
     return(
-        <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
-        <Button >
-            <Grid container direction="row" alignItems="center">
+        <ButtonGroup variant="contained" fullWidth color="primary" aria-label="contained primary button group" className={classes.buttonGroup}>
+        <Button className={classes.button}>
+            <Grid container direction="row" justifyContent="center">
                 <img src={require("../../assets/buttons/photos.png")} /> 
-            <Typography styles={{flex:1}}>Photos</Typography>
+            <Typography styles={{flex:1}} className={classes.label}>Photos</Typography>
             </Grid>
         </Button>
 
-        <Button>
-        <Grid container direction="row" alignItems="center">
-     <img src={require("../../assets/buttons/video.png")} /> Video
+        <Button className={classes.button}>
+        <Grid container direction="row" justifyContent="center">
+     <img src={require("../../assets/buttons/video.png")} /> 
+     <Typography styles={{flex:1}} className={classes.label}>Video</Typography>
 </Grid>
             </Button>
 
 
-        <Button>
-        <Grid container direction="row" alignItems="center">
+        <Button className={classes.button}>
+        <Grid container direction="row" justifyContent="center">
         <img src={require("../../assets/buttons/360vr.png")} />
-        <Typography styles={{flex:1}}>
-            360 VR</Typography></Grid></Button>
-        <Button>
-        <Grid container direction="row" alignItems="center">
+        <Typography styles={{flex:1}} className={classes.label}>360 VR</Typography>
+        </Grid>
+        </Button>
+
+        <Button className={classes.button}>
+        <Grid container direction="row" justifyContent="center">
         <img src={require("../../assets/buttons/designplan.png")} />
-        <Typography styles={{flex:1}}>
-            Design Plan</Typography>
+        <Typography styles={{flex:1}} className={classes.label}>Design Plan</Typography>
             </Grid></Button>
       </ButtonGroup>
     )

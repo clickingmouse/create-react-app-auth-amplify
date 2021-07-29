@@ -16,11 +16,29 @@ const useStyles = makeStyles((theme) => ({
       //theme.typography.pxToRem(15),
       flexBasis: '60%',
       flexShrink: 0,
+      backgroundColor:"#FBFBFB",
+color:"#A88663",
+fontSize:15,
     },
     secondaryHeading: {
       fontSize: theme.typography.pxToRem(15),
       color: theme.palette.text.secondary,
     },
+    accordianHeader:{
+
+
+    },
+    label:{
+      fontSize:13,
+      color:"#A88663"
+    },
+    info:{
+      fontSize:13,
+      color:"#3C3C3C",
+      //alignItems:"flex-start",
+      justifyContent:"flex-start"
+
+    }
   }));
 
   const PropertyMoreInfo =({p})=>{
@@ -31,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
       setExpanded(isExpanded ? panel : false);
     };
     return(
-    <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+    <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} elevation={0} className={classes.accordianHeader}>
     <AccordionSummary
       expandIcon={<ExpandMoreIcon />}
       aria-controls="panel1bh-content"
@@ -44,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
         <Grid container direction='column'>
         <Grid container direction='row' justifyContent="space-between">
 <Grid item>
+<Typography className={classes.label}>Address</Typography>
 {p.address}
 </Grid>
 <Grid item>
@@ -51,29 +70,29 @@ const useStyles = makeStyles((theme) => ({
 </Grid>
 </Grid>
 
-<Grid container direction='row' justifyContent="space-between">
-            <Grid item>
-                Saleable Area: <br/>
-                Gross Area: <br/>
-                Building Age: <br/>
-                Floor Zone: <br/>
-                Property Orientation: <br/>
-                Views:<br/>
+<Grid container direction='row' xs={12}>
+            <Grid item xs={6}>
+                <Typography className={classes.label}>Saleable Area: </Typography>
+                <Typography className={classes.label}>Gross Area: </Typography>
+                <Typography className={classes.label}>Building Age: </Typography>
+                <Typography className={classes.label}>Floor Zone: </Typography>
+                <Typography className={classes.label}>Property Orientation: </Typography>
+                <Typography className={classes.label}>Views:</Typography>
                 
 
             </Grid>
-            <Grid item>
-            {p.saleableArea} sqft <br/>
-                {p.grossArea} sqft <br/>
-                {p.buildingAge} <br/>
-                {p.floor}<br/>
-                {p.propertyDirection}<br/>
-                {p.propertyView}<br/>
+            <Grid item xs={6}>
+            <Typography className={classes.info}>{p.saleableArea} sqft </Typography>
+                <Typography className={classes.info}>{p.grossArea} sqft </Typography>
+                <Typography className={classes.info}>{p.buildingAge}  </Typography>
+                <Typography className={classes.info}>{p.floor} level</Typography>
+                <Typography className={classes.info}>{p.propertyDirection}</Typography>
+                <Typography className={classes.info}>{p.propertyView}</Typography>
 
             </Grid>
         </Grid>
         <Grid container>
-            Clubhouse /& Facilities:<br/>
+            <Typography className={classes.label}>Clubhouse /& Facilities:</Typography><br/>
 
 
 

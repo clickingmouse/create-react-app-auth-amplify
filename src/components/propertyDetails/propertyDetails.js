@@ -85,7 +85,12 @@ const images = [
         display:'flex!important',
         flexDirection:'column',
         //alignItems: 'center'
+    },
+    oprions:{
+justifyContent:"space-apart",
+flexGrow:1
     }
+    
   }));
 const PropertyDetails = ()=>{
     const classes = useStyles();
@@ -136,13 +141,14 @@ const PropertyDetails = ()=>{
       <SwiperSlide><img src={require("../../assets/placeholders/駿景園04.jpg")} height="287"/></SwiperSlide>
       
     </Swiper>
-
-<PropertyDetailsMenu />
+<Grid container direction="row" justifyContent="center">
+  <Grid item>
+<PropertyDetailsMenu /></Grid></Grid>
 <PropertySummary p={property}/>
 <PropertyMoreInfo p={property}/>
 
 
-{liveAuction?<><Enquire/><Bid/></>:<CapsuleButton title="Enquire" color="black" width="160" height="37.11"/> }
+{liveAuction?<Grid container justifyContent="center" direction="row"  className={classes.options} spacing={2}><Grid item><Enquire/></Grid>  <Grid item><Bid/></Grid></Grid>:<Grid container direction="row"><CapsuleButton title="Enquire" color="black" width="160" height="37.11"/></Grid> }
 
         </Container>
 </>
