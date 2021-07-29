@@ -112,7 +112,7 @@ const PropertyDetails = ()=>{
         <AppBar position="absolute" color="transparent" elevation={0} styles={{color: "transparent!important"}}>
         <Toolbar styles={{justifyContent:"space-between"}}>
         <Button>
-        <BackButton radius="39" />
+        <BackButton radius="39" fill="#A88663" iconColor="black" />
         </Button>
         
         <FavoriteButton radius="39"/>

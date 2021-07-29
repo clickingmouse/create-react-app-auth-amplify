@@ -10,7 +10,7 @@ const useStyles = makeStyles({
         width:props => `${props.radius}px`,
         height:props => `${props.radius}px`,
 //        height:43.62,
-        backgroundColor:"#A88663",
+        backgroundColor:props=>`${props.color}`,
         borderRadius:30,
         alignItems:"center",
         justifyContent:"center"
@@ -30,7 +30,7 @@ const FavoriteButton = (props)=>{
     return (
         <div className = {classes.root} onClick={handleClick}>
             
-        <FavoriteBorderIcon style={{fill:'white'}}/>
+        <FavoriteBorderIcon style={{fill:'white', fontSize:"medium"}} />
         </div>
     )
 }

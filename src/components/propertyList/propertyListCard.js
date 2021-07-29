@@ -61,7 +61,8 @@ paddingRight:19
     typetxt:{
       fontSize:10,
       color:"#A88663",
-      backgroundColor:"white"
+      backgroundColor:"white",
+      borderTopLeftRadius:"15",
       
     },
     fav:{

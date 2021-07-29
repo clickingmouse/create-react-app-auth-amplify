@@ -14,7 +14,9 @@ const useStyles = makeStyles({
         width:props => `${props.radius}px`,
         height:props => `${props.radius}px`,
 //        height:43.62,
-        backgroundColor:"#FFFFFF",
+        //backgroundColor:"#FFFFFF",
+        backgroundColor:props=>`${props.fill}`,
+
         borderRadius:30,
         alignItems:"center",
         justifyContent:"center"
@@ -38,7 +40,7 @@ const BackButton = (props)=>{
     return (
         <div className = {classes.root} onClick={handleClick}>
             
-        <ArrowBackIosRoundedIcon/>
+        <ArrowBackIosRoundedIcon style={{fill:props.iconColor}}/>
         </div>
     )
 }

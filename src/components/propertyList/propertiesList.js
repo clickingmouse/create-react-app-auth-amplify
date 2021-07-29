@@ -24,9 +24,10 @@ const PropertiesList = ({propertyType})=>{
     )        
     } ) 
 
-    return(
+    return(<>
+        <PropertyListHeader/>
         <Container>
-            <PropertyListHeader/>
+           
             <List>
                 {list}
 
@@ -36,6 +37,7 @@ const PropertiesList = ({propertyType})=>{
 
 
         </Container>
+        </>
     )
 }
 

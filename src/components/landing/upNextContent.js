@@ -61,7 +61,7 @@ const UpNextContent =()=>{
     const classes = useStyles();
 
     return(<div style={{backgroundColor:'white', flexGrow:1}}>
-        <Grid container direction="row" justifyContent="space-between" alignItems="center">
+        <Grid container direction="column" alignContent="flex-end" alignItems="left" >
             
                 <Grid item container direction="row" alignItems="baseline">
                     <Grid item><Typography className={classes.price}>8,600,000</Typography></Grid>
@@ -73,12 +73,12 @@ const UpNextContent =()=>{
                 <Typography className={classes.location}>Tseung Kwan O</Typography>
                 </Grid>
 
-                <Grid item container direction="row" alignItems="baseline" spacing={1} justifyContent="flex-end">
-                <KingBedIcon fontSize="small"/>
+                <Grid item container direction="row" alignItems="baseline" spacing={1} justifyContent="flex-start" >
+                <KingBedIcon fontSize="small" style={{fill: "#A88663"}}/>
                 <Typography className={classes.info}> 2 </Typography>
-                <BathtubRoundedIcon fontSize="small"/>
+                <BathtubRoundedIcon fontSize="small" style={{fill: "#A88663"}}/>
                 <Typography className={classes.info}> 2 </Typography>
-                <HeightRoundedIcon fontSize="small" className={classes.area}/>
+                <HeightRoundedIcon fontSize="small" style={{fill: "#A88663"}} className={classes.area}/>
                 <Typography className={classes.info}> 680sqft</Typography>
                 </Grid>
 

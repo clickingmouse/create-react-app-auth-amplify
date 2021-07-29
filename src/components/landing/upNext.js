@@ -6,9 +6,12 @@ const UpNext = ()=>{
 
 return(
     <div styles={{}}>
-    <Grid container direction="row" styles={{overflow:'auto'}}>
+    <Grid container direction="row" styles={{overflow:'auto'}} spacing={1}>
+        <Grid item>
+        <UpNextCard/></Grid>
+        <Grid item>
         <UpNextCard/>
-        <UpNextCard/>
+        </Grid>
 
     </Grid>
     </div>
