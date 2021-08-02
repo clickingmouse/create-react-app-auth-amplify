@@ -19,6 +19,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
+
 import Landing from './components/landing/landing'
 import Favorites from './components/favorites/favorites'
 import Profile from './components/profile/profile'
@@ -82,17 +84,18 @@ const App = () =>{
 const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const [isLoading, setIsLoading] = useState(true)
+  const [isLoadingFav, setIsLoadingFav] = useState(true)
   const [isLoadingFavorites, setIsLoaadingFavorites]= useState(true)
   const [properties, setProperties]= useState()
   const [userProfile, setUserProfile]= useState()
-  const [state, dispatch]= useReducer(reducer, {})
+  const [state, dispatch]= useReducer(reducer, {favorites:[],properties:[],profile:{}})
 
   //get properties data
 
   useEffect(async()=>{
     //checkUser()
      fetchProperties()
-    //fetchFavorites()
+    fetchFavorites()
     //checkUser()
     //fetchFonts()
   },[])
@@ -108,7 +111,7 @@ const classes = useStyles();
      property.s3Image = image
 
     //console.log('properties list', propertiesLisData)
-      console.log(property)
+      //console.log(property)
       return property
     }))
       dispatch({type: 'FETCH_PROPERTIES',payload: propertiesList});
@@ -144,7 +147,7 @@ const fetchFavorites = async ()=>{
   let uid = user.attributes.sub
   console.log(user)
   try {
-    setIsLoading(true)
+    setIsLoadingFav(true)
     const favoriteslist = await API.graphql(graphqlOperation(listFavorites, {
       filter:{
         uid:{eq:uid}
@@ -160,19 +163,26 @@ const fetchFavorites = async ()=>{
     const result = await API.graphql(graphqlOperation(createFavorite,{input:{uid:uid}}))
     console.log('new favoritlist result', + result)
       dispatch({type: 'FETCH_FAVORITES',payload: [] });
-      setIsLoading(false)
+      setIsLoadingFav(false)
       } catch (error){ 
         console.log(error)
       }
 
       
     } else {
-      favoriteslist.data.listFavorites.items[0].properties =  (favoriteslist.data.listFavorites.items[0].properties == null) ? []: favoriteslist.data.listFavorites.items[0].properties 
+      //favoriteslist.data.listFavorites.items[0].properties =  (favoriteslist.data.listFavorites.items[0].properties == null) ? []: favoriteslist.data.listFavorites.items[0].properties 
       console.log('FETCHED FAVORITES IS', favoriteslist.data.listFavorites.items[0].properties)
+      console.log(favoriteslist.data.listFavorites.items[0])
+      console.log(favoriteslist.data.listFavorites.items)
       //dispatch({type: 'FETCH_FAVORITES', payload: favoriteslist.data.listFavoritess.items[0].savedProperties});
       //dispatch({type: 'FETCH_FAVORITES', payload: ['ab0a6ca3-6c1b-4d0c-9f86-77903ac4bbd0']});
-      dispatch({type: 'FETCH_FAVORITES', payload: favoriteslist.data.listFavoritess.items[0].properties ?favoriteslist.data.listFavoritess.items[0].savedProperties:[]});
-      setIsLoading(false)
+      //favoriteslist.data.listFavorites.items > 0? 
+      //dispatch({type: 'FETCH_FAVORITES', payload: favoriteslist.data.listFavoritess.items[0].properties ?favoriteslist.data.listFavoritess.items[0].properties:[]}):
+      //dispatch({type: 'FETCH_FAVORITES', payload: favoriteslist.data.listFavoritess.items
+      //dispatch({type: 'FETCH_FAVORITES', payload: favoriteslist.data.listFavoritess.items[0].properties ?favoriteslist.data.listFavoritess.items[0].savedProperties:[]}):
+      dispatch({type: 'FETCH_FAVORITES', payload: favoriteslist.data.listFavorites.items[0].properties ?favoriteslist.data.listFavorites.items[0].properties:[]})
+
+      setIsLoadingFav(false)
     }
 
 console.log(state)
@@ -182,12 +192,16 @@ console.log(state)
 
 }
 
+  const toggleFav =(property)=>{
+    //const isFavorite = favorites.find(favorite=>favorite.id === props.item)
+    //isFavorite? dispatch({type: 'TOGGLE_REMOVE_FAVORITE', payload: props.property}) : dispatch({type: 'TOGGLE_ADD_FAVORITE', payload: props.property})
+  }
 
 //console.log(properties)
   //render() {
     return (<div>
       <Store.Provider value = {{state, dispatch}}>
-{isLoading? <p>...Loading...</p>:
+{isLoading&&isLoadingFav? <p>...Loading...</p>:
 <Router>
 
 <Switch>  
@@ -195,7 +209,7 @@ console.log(state)
             <Landing />
           </Route>
           <Route path="/saved">
-            <PropertiesList />
+            <Favorites />
           </Route>
           <Route path="/myBid">
             <MyBid />
@@ -224,7 +238,7 @@ console.log(state)
     >
       <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label }} label="Explore" icon={<ExploreOutlinedIcon style={{fill:"white"}}/>}  component={Link} to='/explore'/>} />
 
-      <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label}} label="Saved" icon={<FavoriteBorderOutlinedIcon style={{fill:"white"}} />} component={Link} to='/favorites' />
+      <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label}} label="Saved" icon={<FavoriteBorderOutlinedIcon style={{fill:"white"}} />} component={Link} to='/saved' />
 
       <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label}} label="MyBid" icon={<GavelOutlinedIcon style={{fill:"white"}}/>} component={Link} to='/myBid'/>
       <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label}} label="Profile" icon={<PersonOutlineOutlinedIcon style={{fill:"white"}}/>} component={Link} to='/profile'/>

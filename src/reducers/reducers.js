@@ -58,7 +58,11 @@ export default function reducer(state, action){
                 
         // return {...state, favorites:newFavorites}
         case TOGGLE_ADD_FAVORITE: 
-        return {...state, favorites: state.favorites.push(action.payload)}
+        console.log(state)
+        console.log(action)
+        //return {...state, favorites: state.favorites.push(action.payload)}
+        return {...state, favorites: state.favorites.concat(action.payload)}
+
         case TOGGLE_REMOVE_FAVORITE: 
         return {...state, favorites: state.favorites.filter(propertyid => propertyid !== action.payload)}
 

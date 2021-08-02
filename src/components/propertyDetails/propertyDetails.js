@@ -120,7 +120,7 @@ const PropertyDetails = ()=>{
         <BackButton radius="39" fill="#A88663" iconColor="black" />
         </Button>
         
-        <FavoriteButton radius="39"/>
+        <FavoriteButton radius="39" item={property.id} property={property}/>
         
         </Toolbar>
       </AppBar>

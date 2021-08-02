@@ -70,7 +70,7 @@ fontSize:15,
 </Grid>
 </Grid>
 
-<Grid container direction='row' xs={12}>
+<Grid container direction='row' >
             <Grid item xs={6}>
                 <Typography className={classes.label}>Saleable Area: </Typography>
                 <Typography className={classes.label}>Gross Area: </Typography>

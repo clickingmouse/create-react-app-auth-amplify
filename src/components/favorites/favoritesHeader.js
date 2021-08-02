@@ -7,7 +7,9 @@ import InputBase from '@material-ui/core/InputBase';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-
+import Fab from '@material-ui/core/Fab';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import BackButton from '../buttons/backButton';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -20,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
     [theme.breakpoints.up('xs')]: {
       display: 'block',
-      color:"#A88663",
+      color:'#A88663',
       fontSize:24
     },
   },
@@ -66,22 +68,64 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const MyBidHeader=()=> {
+const FavoritesHeader=()=> {
   const classes = useStyles();
-
+const handleFilter =()=>{
+    console.log('filter clicked')
+}
   return (
     <div className={classes.root}>
       <AppBar position="static" color="white" elevation={0}>
         <Toolbar>
-
+            
           <Typography className={classes.title} variant="h6" noWrap>
-            My Bid
+            Saved
           </Typography>
-          
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </div>
+          <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleFilter}
+                color="inherit"
+              >
+                               <div style={{    width:51,
+      height:36,
+      backgroundColor:"#A88663",
+      borderTopLeftRadius:"50%",
+      borderBottomLeftRadius:25,
+      position:"absolute"}}>
+                      <div style={{width:8,height: 8,
+    backgroundColor: 'white',
+    borderRadius: '50%',
+    position: "absolute",
+    transform: "translateX(100%) translateY(165%)"}}/>
+
+          <div style={{height:2,
+            width:16,
+            //length:20,
+            backgroundColor: 'white',
+            position:"absolute",
+            top:"45%",
+            left:"8%"}}/>
+        </div>
+              </IconButton>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
 
-export default MyBidHeader
+export default FavoritesHeader

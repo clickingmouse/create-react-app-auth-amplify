@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
@@ -37,42 +37,40 @@ const FavoriteButton = (props)=>{
     const store = React.useContext(Store)
     console.log(store)
     const {
-        state:{favorites=[]},
+        state,
         //state,
         dispatch
         } = React.useContext(Store)
 
-    //const favorites = state.favorites
-    const [isFavorited, setIsFavorited]= useState()
+    const [isFavorited, setIsFavorited] = useState(false)    
+        useEffect(()=>{
+            console.log(state.favorites)
+            const isFavorite = state.favorites.find(favorite=>favorite.id === props.item)
+            console.log(isFavorite)
+    
+            setIsFavorited(isFavorite)
+              },[isFavorited])
+    
 
-    console.log(store.state.favorites)
-    console.log(favorites)
-    const [favorite, setFavorite] = useState(false)
-    const isFavorite = favorites.find(favorite=>favorite.id === props.item)
+    // const favorites = state.favorites
 
-    // useEffect(()=>{
-
-    //     const isFavorite = favorites.find(favorite=>favorite.id === props.item)
-    //     console.log(isFavorite)
-
-    //     setIsFavorited(isFavorite)
-    //       },[isFavorited])
-
-
-
-
+    // console.log(store.state.favorites)
+    // console.log(favorites)
+    // const [favorite, setFavorite] = useState(false)
+    // const isFavorite = favorites.find(favorite=>favorite.id === props.item)
+    // console.log(isFavorite)
 
 
-    const handleClick = (event)=>{
-        event.stopPropagation();
-        event.preventDefault();
-        console.log('adding' + props.item +' to favorites')
 
+
+
+
+    const handleClick = ()=>{
         //check if currently favorite
-        isFavorite?console.log('iscurrentlyfavorite'):console.log('is not currently favorite') 
-        isFavorite? dispatch({type: 'TOGGLE_REMOVE_FAVORITE', payload: props.property}) : dispatch({type: 'TOGGLE_ADD_FAVORITE', payload: props.property})
+        isFavorited?console.log('iscurrentlyfavorite'):console.log('is not currently favorite') 
+        isFavorited? dispatch({type: 'TOGGLE_REMOVE_FAVORITE', payload: props.property}) : dispatch({type: 'TOGGLE_ADD_FAVORITE', payload: props.property})
         //const isFavorite = favorites.find(propertyID=>propertyID === props.item)
-        isFavorite?console.log('newly added favorite'):console.log('nog longer favorite') 
+        isFavorited?console.log('newly added favorite'):console.log('nog longer favorite') 
       
         
        }
@@ -83,7 +81,7 @@ const FavoriteButton = (props)=>{
         //value.addToFavorites(props.item)
     }
     return (
-        <div className = {classes.root } style={ {backgroundColor:isFavorite ? '#A88663':'black'}} onClick={handleClick}>
+        <div className = {classes.root } style={ {backgroundColor:isFavorited ? '#A88663':'black'}} onClick={handleClick}>
             
         <FavoriteBorderIcon style={{fill:'white', fontSize:"medium"}} />
         </div>

@@ -15,7 +15,7 @@ import IconButton from '@material-ui/core/IconButton';
 //import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 import FavoriteButton from '../buttons/favoriteButton'
-
+//import ListingFavoriteButton from './listingFavoriteButton'
 import Bed from '../../assets/propertyListing/bed.svg'
 import Grid from '@material-ui/core/Grid'
 
@@ -102,7 +102,7 @@ const PropertyListCard = ({propertyid})=>{
           title=" placeholder"
         >
           
-          <div id="1" className={classes.fav}><FavoriteButton radius="30" /></div>
+          <div id="1" className={classes.fav}><FavoriteButton radius="30" item={property.id} property={property}/></div>
           
           <div className={classes.type}><Typography className={classes.typetxt} >Residential</Typography></div>
           

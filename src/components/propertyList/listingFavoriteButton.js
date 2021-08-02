@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 })
 
 
-const FavoriteButton = (props)=>{
+const ListingFavoriteButton = (props)=>{
     console.log(props)
     console.log(props.property)
     const classes = useStyles(props);
@@ -42,37 +42,31 @@ const FavoriteButton = (props)=>{
         dispatch
         } = React.useContext(Store)
 
-    //const favorites = state.favorites
-    const [isFavorited, setIsFavorited]= useState()
-
     console.log(store.state.favorites)
+    //console.log(store.state.favorites[0])
+    console.log(typeof(favorites))
     console.log(favorites)
+    console.log(favorites[0])
+
     const [favorite, setFavorite] = useState(false)
     const isFavorite = favorites.find(favorite=>favorite.id === props.item)
-
-    // useEffect(()=>{
-
-    //     const isFavorite = favorites.find(favorite=>favorite.id === props.item)
-    //     console.log(isFavorite)
-
-    //     setIsFavorited(isFavorite)
-    //       },[isFavorited])
+    console.log(isFavorite)
 
 
 
 
 
 
-    const handleClick = (event)=>{
-        event.stopPropagation();
-        event.preventDefault();
-        console.log('adding' + props.item +' to favorites')
+    const handleClick = ()=>{
+
+
+
 
         //check if currently favorite
-        isFavorite?console.log('iscurrentlyfavorite'):console.log('is not currently favorite') 
+        isFavorite?console.log('iscurrentlyfavorite, removing from favorite'):console.log('is not currently favorite, adding to favorite...') 
         isFavorite? dispatch({type: 'TOGGLE_REMOVE_FAVORITE', payload: props.property}) : dispatch({type: 'TOGGLE_ADD_FAVORITE', payload: props.property})
         //const isFavorite = favorites.find(propertyID=>propertyID === props.item)
-        isFavorite?console.log('newly added favorite'):console.log('nog longer favorite') 
+        //isFavorite?console.log('newly added favorite'):console.log('nog longer favorite') 
       
         
        }
@@ -99,4 +93,4 @@ const styles = {
     },
 }
 
-export default FavoriteButton
+export default ListingFavoriteButton

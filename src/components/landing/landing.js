@@ -63,7 +63,8 @@ console.log(day)
 // find today's auction
 const allProperties = React.useContext(Store).state.properties
 console.log(allProperties)
-const inAuctionProperty = allProperties.find(property => property.testAuctionDay === day )
+//const inAuctionProperty = allProperties.find(property => property.testAuctionDay === day )
+const inAuctionProperty = allProperties.find(property => property.testAuctionDay == "2" )
 console.log(inAuctionProperty)
 
     return(
