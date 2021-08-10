@@ -54,14 +54,15 @@ const useStyles = makeStyles((theme) => ({
 
 const Landing = ()=>{
     const classes = useStyles();
-
 const today = new Date()
 const day = today.getDay()
 console.log(today)
 console.log(day)
 
 // find today's auction
+
 const allProperties = React.useContext(Store).state.properties
+console.log(React.useContext(Store))
 console.log(allProperties)
 //const inAuctionProperty = allProperties.find(property => property.testAuctionDay === day )
 const inAuctionProperty = allProperties.find(property => property.testAuctionDay == "2" )

@@ -1,24 +1,35 @@
-# type Auction @model @auth(rules: [{allow: public}]) {
-#   id: ID!
-#   auctionRefNo: String
-#   openingBid: String
-#   reservePrice: String
-#   auctionDate: String
-#   auctionStarTime: String
-#   auctionEndTime: String
-#   winningBid: Int
-#   lastBid: Int
-#   prn: String
-# }
+type Message @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  channelID: String
+  author: String
+  body: String
+}
 
-# type Bid @model @auth(rules: [{allow: public}]) {
-#   id: ID!
-#   bidAmount: Int
-#   bidderID: ID
-#   prn: String
-#   timestamp: AWSDateTime
-#   auctionID: String
-# }
+type Auction @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  auctionID: ID
+  auctionStart: AWSDateTime
+  auctionStartTime: AWSTime
+  auctionEndTime: AWSTime
+  auctionEnd: AWSDateTime
+  startingBid: Int
+  reservePrice: Int
+  bidIncrement: Int
+  lastestBid: Int
+  currentBid: Int
+  finalBid: Int
+  propertyID: String
+  testAuctionDay: String
+}
+
+type Bid @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  auctionID: ID
+  bidderName: String
+  bidderID: String
+  bid: Int
+  submittedTime: AWSDateTime
+}
 
 type Favorite @model @auth(rules: [{allow: public}]) {
   id: ID!
@@ -53,72 +64,3 @@ type Property @model @auth(rules: [{allow: public}]) {
   testAuctionDay: Int
 }
  
-# /*
-# type Auction2 @model @auth(rules: [{allow: public}]) {
-#   id: ID!
-#   AuctionBids: [Auction2Bid2] @connection(keyName: "byAuction2", fields: ["id"])
-#   openingBid: Int
-#   reservePrice: Int
-#   auctionDate: AWSDate
-#   auctionStartTime: AWSTime
-#   auctionEndTime: AWSTime
-#   winningBid: Int
-#   bidAmount: Int
-# }
-
-# type Bid2 @model @auth(rules: [{allow: public}]) {
-#   id: ID!
-#   auctions: [Auction2Bid2] @connection(keyName: "byBid2", fields: ["id"])
-#   bidAmount: Int
-#   bidderID: ID
-# }
-
-
-# type Auction2Bid2 @model(queries: null) @key(name: "byAuction2", fields: ["auction2ID", "bid2ID"]) @key(name: "byBid2", fields: ["bid2ID", "auctionID"]) @auth(rules: [{allow: public}, {allow: public}]) {
-#   id: ID!
-#   auction2ID: ID!
-#   bidderID: ID!
-#   auction: Auction! @connection(fields: ["auctionID"])
-#   bid2: Bid2! @connection(fields: ["bid2ID"])
-  
-# } 
-# */
-
-type Message {
-  id: ID!
-  channelID: ID!
-  author: String!
-  body: String!
-  createdAt: AWSDateTime
-  updatedAt: AWSDateTime
-}
-
-type Auction {
-  id: ID!
-  auctionID: ID!
-  createdAt: AWSDateTime
-  updatedAt: AWSDateTime
-  auctionStart: AWSDateTime
-  auctionEnd: AWSDateTime
-  auctionStartTime: AWSTime
-  auctionEndTime: AWSTime
-  startingBid: Int!
-  reservePrice: Int!
-  bidIncrement: Int
-  latestBid: Int
-  currentBid: Int
-  finalBid: Int
-  propertyID: ID!
-  testAuctionDay: Int
-}
-
-type Bid {
-  id: ID!
-  auctionID: ID!
-  bidderName: String!
-  bidderID: ID!
-  bid: Int!
-  createdAt: AWSDateTime
-  updatedAt: AWSDateTime
-  submissionTime: AWSDateTime
-}

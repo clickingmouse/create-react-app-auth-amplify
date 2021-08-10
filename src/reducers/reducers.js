@@ -7,7 +7,9 @@ const FETCH_FAVORITES = 'FETCH_FAVORITES'
 const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE'
 const TOGGLE_ADD_FAVORITE = 'TOGGLE_ADD_FAVORITE'
 const TOGGLE_REMOVE_FAVORITE='TOGGLE_REMOVE_FAVORITE'
-
+const FETCH_AUCTIONS = 'FETCH_AUCTIONS'
+const FETCH_BIDS = 'FETCH_BIDS'
+const FETCH_USER = 'FETCH_USER'
 const initial = 'INITIAL'
 export default function reducer(state, action){
     console.log(state)
@@ -65,7 +67,18 @@ export default function reducer(state, action){
 
         case TOGGLE_REMOVE_FAVORITE: 
         return {...state, favorites: state.favorites.filter(propertyid => propertyid !== action.payload)}
+        
+        case FETCH_AUCTIONS:
+            console.log('reudcer: FETCH AUCTIONS', action)
+            //Object.assign(state, {favorites:action.payload})
+            return Object.assign(state, {auctions: action.payload})
 
+        case 'FETCH_BIDS':
+            console.log('reducer: FETCH BIDS', action)
+            return Object.assign(state, {bids: [...action.payload]})
+        case 'FETCH_USER':
+            console.log('reducer: FETCH USER', action)
+            return Object.assign(state, {user: action.payload})
         default:
             return state
 

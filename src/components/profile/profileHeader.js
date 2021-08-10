@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
     [theme.breakpoints.up('xs')]: {
       display: 'block',
+      color:'#A88663',
+      fontSize:24
+    
     },
   },
   search: {
@@ -69,25 +72,13 @@ const ProfileHeader=()=> {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static"  color="white" elevation={0}>
         <Toolbar>
 
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Typography className={classes.title} >
             Profile
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
+ 
         </Toolbar>
       </AppBar>
     </div>

@@ -26,7 +26,7 @@ const BidDecButton = (props)=>{
 //    classes.root.height = props.height
     
     return (
-        <div className = {classes.root} onClick={console.log("clicked")}>
+        <div className = {classes.root} onClick={props.onClick}>
             <RemoveCircleIcon />
         </div>
     )

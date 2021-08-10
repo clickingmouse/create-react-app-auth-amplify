@@ -8,10 +8,24 @@ import SmsRoundedIcon from '@material-ui/icons/SmsRounded';
 import MailOutlineRoundedIcon from '@material-ui/icons/MailOutlineRounded';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles({
+  hdr:{
+    fontSize:13,
+    color:'#A88663',
+  }
+})
+
 
 const ProfileContactUs = ()=>{
+
+  const classes= useStyles()
 return (<>
-Contact Us
+<Typography className={classes.hdr}>
+Contact Us</Typography>
 <hr/>
 <Grid container
 spacing ={3}
@@ -28,9 +42,7 @@ spacing ={3}
 <Grid item>
 <CircleButton icon={<WhatsAppIcon style={{fill:"white"}}/>} radius="43.62" color="#A88663"/>
 </Grid>
-<Grid item>
-<Fab size='medium'><WhatsAppIcon size='large' radius="43.62" color="#A88663"/></Fab>
-</Grid>
+
 </Grid>
 
 
@@ -39,3 +51,6 @@ spacing ={3}
 }
 
 export default ProfileContactUs
+//<Grid item>
+//<Fab size='medium'><WhatsAppIcon size='large' radius="43.62" color="#A88663"/></Fab>
+//</Grid>

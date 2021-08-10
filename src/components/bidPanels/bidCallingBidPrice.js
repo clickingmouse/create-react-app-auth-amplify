@@ -1,43 +1,50 @@
 import React from 'react'
-
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
 import  Typography  from '@material-ui/core/Typography'
-import { alpha, makeStyles } from '@material-ui/core/styles';
+//import { makeStyles } from '@material-ui/core/styles';
+//import { alpha, makeStyles } from '@material-ui/core/styles';
 //import { classes } from 'istanbul-lib-coverage';
 //const useStyles = makeStyles({
-const useStyles = makeStyles({
+//const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     panel:{
-        backgroundColor:'black',
+        //flex:1,
+        backgroundColor:"black",
     },
     label: {
+        backgroundColor:'black',
         color:'white',
         fontSize:8,
+        lineHeight:1.2
        
     },
     price:{
         color:'white',
         fontSize:25,
+        lineHeight:1.2
 
     },
     hkd:{
-        color:'white',
         fontSize:16,
-        color:'#A88663'
+        color:'#A88663',
+        lineHeight:1.2
 
     }
 })
-const BidCallingBidPrice=()=>{
+)
+function BidCallingBidPrice(){
   //const classes = useStyles();
     const classes = useStyles()
 return(
     <>
-    <Grid container direction='column' ClassName={classes.panel}>
+    <Grid container direction='column' className={classes.panel}>
         
         <Grid item>
-            <Typography ClassName={classes.label}>Current Bid Price</Typography>
+            <Typography className={classes.label}>Current Bid Price</Typography>
         </Grid>
         <Grid item container direction="row" >
-            <Typography ClassName={classes.price}>6850000</Typography><Typography ClassName={classes.hkd}>HKD</Typography>
+            <Typography className={classes.price}>6850000</Typography><Typography className={classes.hkd}>HKD</Typography>
         </Grid>
 
 

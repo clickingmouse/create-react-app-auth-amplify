@@ -6,6 +6,8 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid'
+import CapsuleFAB from '../buttons/capsuleFAB'
+import LocationIcon from '../../assets/svg/location.svg'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -66,7 +68,8 @@ fontSize:15,
 {p.address}
 </Grid>
 <Grid item>
-    <button>Map View</button>
+    
+    <CapsuleFAB title="Map View" width="94" height="27.2" color="#A88663" icon={LocationIcon} />
 </Grid>
 </Grid>
 

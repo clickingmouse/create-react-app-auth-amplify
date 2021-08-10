@@ -2,7 +2,7 @@ import React from 'react'
 import CapsuleButton from '../buttons/capsuleButton'
 import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
-
+import Grid from '@material-ui/core/Grid'
 import Bidding from './bidding/bidding';
 function rand() {
     return Math.round(Math.random() * 20) - 10;
@@ -24,15 +24,22 @@ function getModalStyle() {
   const useStyles = makeStyles((theme) => ({
     paper: {
       position: 'absolute',
-      width: 375,
-      height: 165.11,
+      flex:1,
+      width: "100%",
+      //height: 165.11,
       //left:0,
       //top:
       backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
+      //border: '2px solid #000',
+      //boxShadow: theme.shadows[5],
+      //padding: theme.spacing(2, 4, 3),
     },
+    wrapper:{
+      top:287,
+      left:0,
+      display:'absolute',
+      width : 375
+    }
   }));
 const Bid = ()=>{
     const [modalStyle] = React.useState(getModalStyle);
@@ -49,13 +56,14 @@ const Bid = ()=>{
 
 
       const body = (
+       
         <div style={modalStyle} className={classes.paper}>
           <h2 id="simple-modal-title">Place your bid</h2>
           <p id="simple-modal-description"></p>
           <Bidding/>
 
         </div>
-      );
+       );
 
 
 
@@ -67,6 +75,7 @@ const Bid = ()=>{
         onClose={handleClose}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
+        display="flex"
       >
         {body}
       </Modal>

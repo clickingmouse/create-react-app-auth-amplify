@@ -3,8 +3,13 @@ import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles';
 import CapsuleButton from '../buttons/capsuleButton'
 import { Typography } from "@material-ui/core";
+import CapsuleFAB from '../buttons/capsuleFAB'
+import BedIcon from '../../assets/svg/ionic-ios-bed.svg'
+import BathIcon from '../../assets/svg/awesome-bath.svg'
+import AreaIcon from '../../assets/svg/icon-area.svg'
+import MapIcon from '../../assets/svg/map.svg'
 const useStyles = makeStyles((theme) => ({
-    root: {},
+    //root: {},
     price:{
         fontSize:25,
         color:"#3C3C3C"
@@ -14,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
     valuation:{
         fontSize:10,
-        color:"A88663"
+        color:"#A88663"
     },
     district:{
         fontSize:16,
@@ -45,9 +50,20 @@ const classes = useStyles();
                         <Grid item>
                         {p.district}
                         </Grid>
-                        <Grid item>
-                        {p.saleableArea}sqft
-                    </Grid>
+                        
+                        <Grid item container direction="row" alignItems="baseline" spacing={1} justifyContent="flex-end">
+                <img src={BedIcon} alt=''/>
+                <Typography className={classes.info}>  {p.bedrooms} </Typography>
+                <img src = {BathIcon} alt=''/>
+               
+                <Typography className={classes.info}>  {p.bathrooms} </Typography>
+                <img src = {AreaIcon} alt=''/>
+               <Typography className={classes.info}> {p.saleableArea}sqft</Typography>
+                </Grid>
+
+
+                        
+                    
                 </Grid>
                 </Grid>
 
@@ -56,7 +72,7 @@ const classes = useStyles();
             <Grid item>
             <Grid containerdirection="column">
                 <Typography className={classes.propertyType}>Residential</Typography>
-                <CapsuleButton title="FloorPlan" width="94" height="27.2" color="#A88663"/>
+                <CapsuleFAB title="FloorPlan" width="94" height="27.2" color="#A88663" icon={MapIcon} />
             </Grid>
             </Grid>
 

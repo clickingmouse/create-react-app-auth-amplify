@@ -12,6 +12,10 @@ import { classExpression } from '@babel/types';
 import KingBedIcon from '@material-ui/icons/KingBed';
 import BathtubRoundedIcon from '@material-ui/icons/BathtubRounded';
 import HeightRoundedIcon from '@material-ui/icons/HeightRounded';
+import BedIcon from '../../assets/svg/ionic-ios-bed.svg'
+import BathIcon from '../../assets/svg/awesome-bath.svg'
+import AreaIcon from '../../assets/svg/icon-area.svg'
+
 //337-140 = 197
 const useStyles = makeStyles({
   root: {
@@ -76,11 +80,11 @@ function BidCard({p}) {
 
 
                 <Grid item container direction="row" alignItems="baseline" spacing={2} justifyContent="flex-end">
-                <KingBedIcon fontSize="small"/>
+                <img src={BedIcon} alt=''/>
                 <Typography className={classes.info}> {p.bedrooms} </Typography>
-                <BathtubRoundedIcon fontSize="small"/>
+                <img src = {BathIcon} alt=''/>
                 <Typography className={classes.info}> {p.bathrooms} </Typography>
-                <HeightRoundedIcon fontSize="small" className={classes.area}/>
+                <img src = {AreaIcon} alt=''/>
                 <Typography className={classes.info}> {p.saleableArea}sqft</Typography>
                 </Grid>
 

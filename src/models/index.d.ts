@@ -2,46 +2,45 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
+
+
 export declare class Message {
   readonly id: string;
-  readonly channelID: string;
-  readonly author: string;
-  readonly body: string;
-  readonly createdAt?: string;
-  readonly updatedAt?: string;
+  readonly channelID?: string;
+  readonly author?: string;
+  readonly body?: string;
   constructor(init: ModelInit<Message>);
+  static copyOf(source: Message, mutator: (draft: MutableModel<Message>) => MutableModel<Message> | void): Message;
 }
 
 export declare class Auction {
   readonly id: string;
-  readonly auctionID: string;
-  readonly createdAt?: string;
-  readonly updatedAt?: string;
+  readonly auctionID?: string;
   readonly auctionStart?: string;
-  readonly auctionEnd?: string;
   readonly auctionStartTime?: string;
   readonly auctionEndTime?: string;
-  readonly startingBid: number;
-  readonly reservePrice: number;
+  readonly auctionEnd?: string;
+  readonly startingBid?: number;
+  readonly reservePrice?: number;
   readonly bidIncrement?: number;
-  readonly latestBid?: number;
+  readonly lastestBid?: number;
   readonly currentBid?: number;
   readonly finalBid?: number;
-  readonly propertyID: string;
-  readonly testAuctionDay?: number;
+  readonly propertyID?: string;
+  readonly testAuctionDay?: string;
   constructor(init: ModelInit<Auction>);
+  static copyOf(source: Auction, mutator: (draft: MutableModel<Auction>) => MutableModel<Auction> | void): Auction;
 }
 
 export declare class Bid {
   readonly id: string;
-  readonly auctionID: string;
-  readonly bidderName: string;
-  readonly bidderID: string;
-  readonly bid: number;
-  readonly createdAt?: string;
-  readonly updatedAt?: string;
-  readonly submissionTime?: string;
+  readonly auctionID?: string;
+  readonly bidderName?: string;
+  readonly bidderID?: string;
+  readonly bid?: number;
+  readonly submittedTime?: string;
   constructor(init: ModelInit<Bid>);
+  static copyOf(source: Bid, mutator: (draft: MutableModel<Bid>) => MutableModel<Bid> | void): Bid;
 }
 
 export declare class Favorite {

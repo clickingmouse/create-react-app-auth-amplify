@@ -13,7 +13,12 @@ import KingBedIcon from '@material-ui/icons/KingBed';
 import BathtubRoundedIcon from '@material-ui/icons/BathtubRounded';
 import HeightRoundedIcon from '@material-ui/icons/HeightRounded';
 //337-140 = 197
+//87+98=177
 const useStyles = makeStyles({
+  Wrapper:{
+    height:177,
+    width :337,
+  },
   root: {
     width :337,
     //maxWidth: 337,
@@ -43,11 +48,11 @@ const useStyles = makeStyles({
     },
 
 });
-
-function BidCardPlaceHolder({p}) {
+const BidCardPlaceHolder=(props)=> {
   const classes = useStyles();
 
   return (
+    <div className={classes.Wrapper}>
     <Card className={classes.root}>
       
         <CardMedia
@@ -85,11 +90,14 @@ function BidCardPlaceHolder({p}) {
                 </Grid>
 
           </Grid>
-
+         
         </CardContent>
-      
 
+        
     </Card>
+    {props.children}
+</div>
+
   );
 }
 

@@ -4,7 +4,10 @@ import React, { useEffect, useState, useReducer  } from 'react';
 import { withAuthenticator } from 'aws-amplify-react'
 import aws_exports from './aws-exports';
 import Amplify, { API, graphqlOperation, Storage, Auth } from 'aws-amplify';
-import {listPropertys, listFavorites} from './graphql/queries'
+import {listPropertys, listFavorites, listAuctions, listBids, listMessages} from './graphql/queries'
+import { createMessage } from './graphql/mutations';
+import { onCreateMessage } from './graphql/subscriptions';
+
 import {createFavorite} from './graphql/mutations'
 import Store from './store/store'
 import reducer from './reducers/reducers'
@@ -27,6 +30,8 @@ import Profile from './components/profile/profile'
 import MyBid from './components/myBid/myBid'
 import PropertiesList from './components/propertyList/propertiesList'
 import PropertyDetails from './components/propertyDetails/propertyDetails' 
+
+import BiddingPlayground from './components/biddingPlayground/biddingPlayground'
 ///
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
@@ -40,11 +45,15 @@ import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutline
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import GavelOutlinedIcon from '@material-ui/icons/GavelOutlined';
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
+
 Amplify.configure(aws_exports);
 
 const useStyles = makeStyles({
   root:{
     padding:'0px 12px 0px 0px',
+  },
+  navigationWrapper:{
+
   },
   BottomNavigation: {
     //maxWidth: 300,
@@ -53,7 +62,7 @@ const useStyles = makeStyles({
     borderRadius:30,
 
     //bottom: 23,
-    top: 607,
+    top: '90%',
     left:'5%',
     backgroundColor:"#000000"
   },
@@ -83,21 +92,38 @@ const App = () =>{
 
 const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const [isLoadingData, setIsLoadingData]= useState(true)
   const [isLoading, setIsLoading] = useState(true)
   const [isLoadingFav, setIsLoadingFav] = useState(true)
   const [isLoadingFavorites, setIsLoaadingFavorites]= useState(true)
   const [properties, setProperties]= useState()
   const [userProfile, setUserProfile]= useState()
-  const [state, dispatch]= useReducer(reducer, {favorites:[],properties:[],profile:{}})
-
+  const [state, dispatch]= useReducer(reducer, {favorites:[],properties:[],profile:{}, auctions:[]})
+  const [isLoadingAuctions, setIsLoadingAuctions] =useState(false)
+  const [isLoadingBids, setIsLoadingBids] =useState(false)
+  const [auctionRooms, setAuctionRooms] = useState([]);
+  const [messages, setMessages] = useState([]);
   //get properties data
-
-  useEffect(async()=>{
+  console.log('<APP.JS>')
+  useEffect( ()=>{
+    //setIsLoadingData(true)
     //checkUser()
-     fetchProperties()
-    fetchFavorites()
+    //fetchProperties()
+    //fetchFavorites()
     //checkUser()
     //fetchFonts()
+     //fetchAuctionRoom()
+    //setIsLoadingData(false)
+  },[])
+
+  useEffect (()=>{
+    fetchProperties()
+  },[])
+  useEffect (()=>{
+    fetchFavorites()
+  },[])
+  useEffect (()=>{
+    fetchAuctionRoom()
   },[])
 
   const fetchProperties = async () =>{
@@ -141,13 +167,19 @@ const checkUser= async()=> {
 //////
 
 const fetchFavorites = async ()=>{
+  setIsLoadingFav(true)
   console.log('...fetching favorites')
   //kevin.alex.ko@gmail.com
-  let user = await Auth.currentUserInfo()
-  let uid = user.attributes.sub
-  console.log(user)
+ 
+  
   try {
-    setIsLoadingFav(true)
+    let user = await Auth.currentUserInfo()
+    if(!!user){
+      const uid = user.attributes.sub
+
+      console.log(user)
+      console.log(user.attributes.sub)
+       
     const favoriteslist = await API.graphql(graphqlOperation(listFavorites, {
       filter:{
         uid:{eq:uid}
@@ -159,15 +191,11 @@ const fetchFavorites = async ()=>{
     if (favoriteslist.data.listFavorites.items.length == 0){
       // create new list
       console.log('NO FAVORITE LIST FOUND')  
-      try {
+      
     const result = await API.graphql(graphqlOperation(createFavorite,{input:{uid:uid}}))
     console.log('new favoritlist result', + result)
       dispatch({type: 'FETCH_FAVORITES',payload: [] });
       setIsLoadingFav(false)
-      } catch (error){ 
-        console.log(error)
-      }
-
       
     } else {
       //favoriteslist.data.listFavorites.items[0].properties =  (favoriteslist.data.listFavorites.items[0].properties == null) ? []: favoriteslist.data.listFavorites.items[0].properties 
@@ -186,25 +214,166 @@ const fetchFavorites = async ()=>{
     }
 
 console.log(state)
+  }
   }catch(error){
     console.log(error)
   }
 
 }
 
+///
+
+
+const fetchAuctionRoom = async (auctionID) =>{
+  setIsLoadingAuctions(true)
+  console.log('...loading auctions...')
+  
+    try{
+      setIsLoadingAuctions(true)
+      API
+        .graphql(graphqlOperation(listAuctions, {
+          //filter:{
+          //auctionID: auctionID},
+          //sortDirection:'ASC',
+          
+          //sortDirection:'DESC'
+
+       }
+      ))
+        .then((response) => {
+          console.log(response)
+          const items = response.data?.listAuctions?.items;
+          if (items) {
+              setAuctionRooms(items);
+              console.log(items)
+              dispatch({type: 'FETCH_AUCTIONS',payload: response.data.listAuctions.items });
+              //console.log(Store)
+              
+          }
+
+
+        })
+      }catch(error){
+        console.log('error')
+      }
+
+    setIsLoadingAuctions(false)
+    }
+    
+    /*
+    useEffect(() => {
+      try{
+        API
+          .graphql(graphqlOperation(listMessages))
+          .then((response) => {
+          const items = response.data?.listMessages?.items;
+          
+            if (items) {
+              setMessages(items);
+             
+            }
+          })
+        } catch (error) {
+        console.log(error)
+        } 
+      },[]);
+   */
+  const fetchBids =()=>{
+    setIsLoadingBids(true)
+    console.log('...loading bids...')
+    
+      try{
+        
+        API
+          .graphql(graphqlOperation(listBids, {
+            //filter:{
+            //auctionID: auctionID},
+            //sortDirection:'ASC',
+            
+            //sortDirection:'DESC'
+  
+         }
+        ))
+          .then((response) => {
+            console.log(response)
+            const items = response.data?.listBids?.items;
+            if (items) {
+                //setAuctionRooms(items);
+                console.log(items)
+                dispatch({type: 'FETCH_BIDS',payload: items });
+                //console.log(Store)
+                
+            }
+  
+  
+          })
+        }catch(error){
+          console.log('error')
+
+  }
+  setIsLoadingBids(false)
+}
+
+////
+useEffect(() => {
+  const subscription = API
+    .graphql(graphqlOperation(onCreateMessage))
+    .subscribe({
+      next: (event) => {
+        setMessages([...messages, event.value.data.onCreateMessage]);
+      },
+      error:(error)=>{
+        console.log('subscribe', error)
+      }
+    });
+  
+  return () => {
+    subscription.unsubscribe();
+  };
+}, [messages]);
+/*
+const handleChange = (event) => {
+  setMessageBody(event.target.value);
+};
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+
+  const input = {
+    channelID: '1',
+    author: 'Dave',
+    body: messageBody.trim()
+  };
+
+  try {
+    setMessageBody('');
+    await API.graphql(graphqlOperation(createMessage, { input }))
+  } catch (error) {
+    console.warn(error);
+  }
+};
+*/
   const toggleFav =(property)=>{
     //const isFavorite = favorites.find(favorite=>favorite.id === props.item)
     //isFavorite? dispatch({type: 'TOGGLE_REMOVE_FAVORITE', payload: props.property}) : dispatch({type: 'TOGGLE_ADD_FAVORITE', payload: props.property})
   }
 
 //console.log(properties)
+//<Route path exact path="/">
+//<BiddingPlayground />
+//</Route>
   //render() {
     return (<div>
       <Store.Provider value = {{state, dispatch}}>
-{isLoading&&isLoadingFav? <p>...Loading...</p>:
+{ isLoading && isLoadingFav  ?   <p>...Loading...{isLoading && isLoadingFav && isLoadingAuctions}</p>:
 <Router>
 
 <Switch>  
+        <Route  exact path="/">
+          <Landing />
+        </Route>
+
           <Route path="/explore">
             <Landing />
           </Route>
@@ -225,6 +394,9 @@ console.log(state)
           </Route>
           <Route path="/property/:propertyId">
             <PropertyDetails  />
+          </Route>
+          <Route path="/auction/:auctionId">
+            <BiddingPlayground  />
           </Route>
         </Switch>
    
