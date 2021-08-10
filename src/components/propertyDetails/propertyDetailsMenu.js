@@ -54,14 +54,14 @@ const PropertyDetailsMenu=()=>{
         <ButtonGroup variant="contained" fullWidth color="primary" aria-label="contained primary button group" className={classes.buttonGroup}>
         <Button className={classes.button}>
             <Grid container direction="row" justifyContent="center">
-                <img src={require("../../assets/buttons/photos.png")} /> 
+                <img src={require("../../assets/images/buttons/photos.png")} /> 
             <Typography styles={{flex:1}} className={classes.label}>Photos</Typography>
             </Grid>
         </Button>
 
         <Button className={classes.button}>
         <Grid container direction="row" justifyContent="center">
-     <img src={require("../../assets/buttons/video.png")} /> 
+     <img src={require("../../assets/images/buttons/video.png")} /> 
      <Typography styles={{flex:1}} className={classes.label}>Video</Typography>
 </Grid>
             </Button>
@@ -69,14 +69,18 @@ const PropertyDetailsMenu=()=>{
 
         <Button className={classes.button}>
         <Grid container direction="row" justifyContent="center">
-        <img src={require("../../assets/buttons/360vr.png")} />
+        <img src={require("../../assets/images/buttons/360vr.png")} />
         <Typography styles={{flex:1}} className={classes.label}>360 VR</Typography>
         </Grid>
         </Button>
 
         <Button className={classes.button}>
         <Grid container direction="row" justifyContent="center">
-        <img src={require("../../assets/buttons/designplan.png")} />
+        <img src={require("../../assets/images/buttons/designplan.png")} />
+        
+                
+        
+
         <Typography styles={{flex:1}} className={classes.label}>Design Plan</Typography>
             </Grid></Button>
       </ButtonGroup>
