@@ -32,7 +32,7 @@ import PropertiesList from './components/propertyList/propertiesList'
 import PropertyDetails from './components/propertyDetails/propertyDetails' 
 
 import BiddingPlayground from './components/biddingPlayground/biddingPlayground'
-import AuctionPlayground from './components/biddingPlayground/auctionplayground'
+import AuctionPlayground from './components/biddingPlayground/auctionPlayground'
 ///
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
