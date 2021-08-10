@@ -32,6 +32,7 @@ import PropertiesList from './components/propertyList/propertiesList'
 import PropertyDetails from './components/propertyDetails/propertyDetails' 
 
 import BiddingPlayground from './components/biddingPlayground/biddingPlayground'
+import AuctionPlayground from './components/biddingPlayground/auctionplayground'
 ///
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
@@ -394,6 +395,9 @@ const handleSubmit = async (event) => {
           </Route>
           <Route path="/property/:propertyId">
             <PropertyDetails  />
+          </Route>
+          <Route path="/auctionList">
+            <AuctionPlayground  />
           </Route>
           <Route path="/auction/:auctionId">
             <BiddingPlayground  />

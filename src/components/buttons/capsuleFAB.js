@@ -6,6 +6,7 @@ import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
 import { Typography } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid'
 import MapIcon from '../../assets/svg/map.svg'
+import PropertySummary from '../propertyDetails/propertySummary';
 
 const useStyles = makeStyles({
     root: {
@@ -44,7 +45,7 @@ const CapsuleButton = (props)=>{
     const handleClick = ()=>{}
     return (
         <div className = {classes.root} onClick={props.onClick}>
-         <img src={MapIcon} alt=''/>
+         <img src={props.icon} alt=''/>
         <Typography className={classes.title}>{props.children}{props.title}</Typography>
         </div>
     )

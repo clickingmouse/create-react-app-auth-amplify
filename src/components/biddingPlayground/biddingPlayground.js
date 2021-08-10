@@ -15,6 +15,8 @@ import BidCountDownTimer from '../bidPanels/bidCountdownTimer'
 //import BiddingPlayground from './biddingPlayground'
 //import BidCallingBidPrice from '../bidPanels/bidCallingBidPrice'
 //import BidPanel from '../bidPanels/bidPanels'
+import {listPropertys, listFavorites, listAuctions, listBids, listMessages} from '../../graphql/queries'
+import { onCreateBid } from '../../graphql/subscriptions';
 import BidYourBidPrice from '../bidPanels/bidYourBidPrice'
 import BidPanel from '../propertyDetails/bidding/bidPanel'
 import BidsHistorical from './bidsHistorical'
@@ -28,10 +30,23 @@ const BiddingPlayground =()=>{
 
     const [auctionedProperty, setAuctionedProperty]= useState()
     const [messageBody, setMessageBody] = useState('');
-
+    const [bids, setBids]=useState([])
     let { auctionId } = useParams();
-    const data = useContext(Store)
-        console.log(data)
+    console.log(auctionId)
+    
+    // get auction & property data
+    const auctions = useContext(Store).state.auctions
+    const properties = useContext(Store).state.properties
+        //console.log(data)
+    const auction = auctions.find(auction=> auction.id = auctionId)
+    const bidIncrement = auction.bidIncrement
+    const startingBid = auction.startingBid
+    const [lastBid, setLastBid]= useState()
+    const [myBid, setMyBid]=useState()
+
+
+    console.log(auction)
+
 //    useEffect( ()=>{
         /*
     const properties = data.state.properties
@@ -44,6 +59,44 @@ const BiddingPlayground =()=>{
     setAuctionedProperty(auctionedP)
     */
 //},[])
+
+useEffect(() => {
+  // filter by auciontid
+  try{
+    API
+      .graphql(graphqlOperation(listBids,{filter:{auctionId:auctionId}}))
+      .then((response) => {
+      const items = response.data?.listBids?.items;
+      console.log(response)
+        if (items) {
+          //setMessages(items);
+          setBids(items)
+         
+        } else {
+          setLastBid(0)
+        }
+      })
+    } catch (error) {
+    console.log(error)
+    } 
+  },[]);
+ 
+  useEffect(() => {
+    const subscription = API
+      .graphql(graphqlOperation(onCreateBid))
+      .subscribe({
+        next: (event) => {
+          setBids([...bids, event.value.data.onCreateBid]);
+        },
+        error:(error)=>{
+          console.log('subscribe', error)
+        }
+      });
+    
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [bids]);
 
 const handleChange = (event) => {
     setMessageBody(event.target.value);
@@ -74,13 +127,13 @@ return(
     //
     BiddingPlayground
 
-    <BidCallingBidPrice/>
+    <BidCallingBidPrice currentBid={lastBid}/>
     <BidClosesInDate/>
     <BidCountDownTimer/>
-    <BidYourBidPrice/>
+    <BidYourBidPrice />
     <BidPanel bidIncrement={auctionedP.bidIncrement} currentCall="" onSubmit={handleSubmit}/>
     {/*bidController*/}
-    <BidsHistorical/>
+    <BidsHistorical bids={bids}/>
 
 
     </>
