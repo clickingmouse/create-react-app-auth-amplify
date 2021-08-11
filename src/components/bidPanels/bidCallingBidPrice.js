@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     }
 })
 )
-function BidCallingBidPrice(){
+function BidCallingBidPrice({lastBid}){
   //const classes = useStyles();
     const classes = useStyles()
 return(
@@ -44,7 +44,7 @@ return(
             <Typography className={classes.label}>Current Bid Price</Typography>
         </Grid>
         <Grid item container direction="row" >
-            <Typography className={classes.price}>6850000</Typography><Typography className={classes.hkd}>HKD</Typography>
+            <Typography className={classes.price}>{lastBid}</Typography><Typography className={classes.hkd}>HKD</Typography>
         </Grid>
 
 

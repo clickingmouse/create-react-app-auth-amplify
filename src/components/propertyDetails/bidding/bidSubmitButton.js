@@ -33,7 +33,7 @@ const BidSubmitButton = (props)=>{
     //classes.root.height = props.radius
     const handleClick = ()=>{}
     return (
-        <div className = {classes.root} onClick={props.onClick}>
+        <div className = {classes.root} onClick={props.onBid}>
             
         <Typography>{props.title}</Typography>
         </div>

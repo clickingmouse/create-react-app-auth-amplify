@@ -180,7 +180,7 @@ const fetchFavorites = async ()=>{
 
       console.log(user)
       console.log(user.attributes.sub)
-       
+      dispatch({type: 'FETCH_USER',payload: user });
     const favoriteslist = await API.graphql(graphqlOperation(listFavorites, {
       filter:{
         uid:{eq:uid}

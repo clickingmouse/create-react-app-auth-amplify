@@ -1,6 +1,6 @@
 import React from 'react'
 import {List, ListItem} from '@material-ui/core'
-const BidsHistorical =({bids})=>{
+const BidsHistorical =({bids, openingBid, reserveBid, currentCall, bidIncrement})=>{
 
     const biddingHistory = bids.map(bid=>
         <ListItem key={bid.id}>
@@ -10,6 +10,11 @@ const BidsHistorical =({bids})=>{
 
     return(<>
     Bidding History, 
+    <hr/>
+    Opening Bid:{openingBid} ; Reserve Bid: {reserveBid} <br/>
+    Current Call :: {currentCall} <br/>
+    Bidincrement -- {bidIncrement}
+
     <hr/>
     {biddingHistory}
     <List>

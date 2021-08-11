@@ -13,22 +13,24 @@ const useStyles = makeStyles({
     }
 })
 
-const BidPanel = ({bidIncrement})=>{
+const BidPanel = ({bidIncrement, currentCall, onBid, onChangeBid})=>{
     const classes = useStyles();
     //const bidIncrement = 10000
-    const [myBid, setMyBid]=useState(bidIncrement)
+    const [myBid, setMyBid]=useState(bidIncrement + currentCall)
 
 
     const onAdd=(e)=>{
         e.preventDefault()
         setMyBid(myBid+bidIncrement)
-
+        onChangeBid(e, myBid+bidIncrement)
     }
 
     const onDeduct=(e)=>{
         e.preventDefault()
 
         setMyBid(myBid-bidIncrement)
+        onChangeBid(e, myBid-bidIncrement)
+//(e) => this.props.onClick(e, 'home', 'Home'
 
     }
 
@@ -37,7 +39,7 @@ const BidPanel = ({bidIncrement})=>{
         <Grid container direction="row" className={classes.bidPanel} xs={12} justifyContent="space-between">
             <Grid item>
                 
-        <BidCallingBidPrice/>
+        <BidCallingBidPrice lastBid={currentCall}/>
 
 
             </Grid>
@@ -57,7 +59,7 @@ const BidPanel = ({bidIncrement})=>{
         </Grid>
 
         <Grid container>
-<BidSubmitButton width='160' height='37.11' color='#A88663' title='Place a bid'/>
+<BidSubmitButton width='160' height='37.11' color='#A88663' title='Place a bid' onBid={onBid}/>
         </Grid>
 
         </>

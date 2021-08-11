@@ -78,7 +78,9 @@ export default function reducer(state, action){
             return Object.assign(state, {bids: [...action.payload]})
         case 'FETCH_USER':
             console.log('reducer: FETCH USER', action)
-            return Object.assign(state, {user: action.payload})
+            //console.log(Object.assign(state, {profile: action.payload}))
+            //return Object.assign(state, {profile: Object.assign(state.profile,action.payload)})
+            return {...state, profile: {...action.payload}}
         default:
             return state
 

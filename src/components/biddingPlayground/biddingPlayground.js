@@ -16,6 +16,8 @@ import BidCountDownTimer from '../bidPanels/bidCountdownTimer'
 //import BidCallingBidPrice from '../bidPanels/bidCallingBidPrice'
 //import BidPanel from '../bidPanels/bidPanels'
 import {listPropertys, listFavorites, listAuctions, listBids, listMessages} from '../../graphql/queries'
+import {createBid} from '../../graphql/mutations'
+
 import { onCreateBid } from '../../graphql/subscriptions';
 import BidYourBidPrice from '../bidPanels/bidYourBidPrice'
 import BidPanel from '../propertyDetails/bidding/bidPanel'
@@ -27,11 +29,14 @@ import Store from '../../store/store'
 // const auctionid = 2
 const BiddingPlayground =()=>{
     //const store = Store
+    console.log(React.useContext(Store))
+    const user = React.useContext(Store).state.profile
+
 
     const [auctionedProperty, setAuctionedProperty]= useState()
     const [messageBody, setMessageBody] = useState('');
     const [bids, setBids]=useState([])
-    let { auctionId } = useParams();
+    const { auctionId } = useParams();
     console.log(auctionId)
     
     // get auction & property data
@@ -41,10 +46,10 @@ const BiddingPlayground =()=>{
     const auction = auctions.find(auction=> auction.id = auctionId)
     const bidIncrement = auction.bidIncrement
     const startingBid = auction.startingBid
-    const [lastBid, setLastBid]= useState()
+    const [lastBid, setLastBid]= useState(startingBid)
     const [myBid, setMyBid]=useState()
 
-
+    //setMyBid(auction.startingBid)
     console.log(auction)
 
 //    useEffect( ()=>{
@@ -74,19 +79,25 @@ useEffect(() => {
          
         } else {
           setLastBid(0)
+          //setMyBid(auction.startingBid)
         }
       })
     } catch (error) {
     console.log(error)
     } 
   },[]);
- 
+ //
+ //
+ //
+
   useEffect(() => {
     const subscription = API
       .graphql(graphqlOperation(onCreateBid))
       .subscribe({
         next: (event) => {
           setBids([...bids, event.value.data.onCreateBid]);
+          //
+
         },
         error:(error)=>{
           console.log('subscribe', error)
@@ -101,39 +112,60 @@ useEffect(() => {
 const handleChange = (event) => {
     setMessageBody(event.target.value);
   };
+
+  const handleBidCall= (event, value)=>{
+    console.log(value)
+    setMyBid(value)
+  }
   
   const handleSubmit = async (event) => {
     event.preventDefault();
     event.stopPropagation();
-  
+    console.log('submitting bid::')
+    console.log(event.target)
     const input = {
-      channelID: '1',
-      author: 'Dave',
-      body: messageBody.trim()
+      //get time, username, useruid, bid,uid, bid,
+      auctionID:auctionId,
+      bidderName:user.username,
+      bidderID: user.id,
+      bid: myBid,
+      submittedTime: new Date().toISOString()
+      //body: messageBody.trim()
     };
-  
+
+    console.log(input)
+    try {
+      setMyBid('');
+      await API.graphql(graphqlOperation(createBid, { input }))
+    } catch (error) {
+      console.warn(error);
+    }
+  /*
     try {
       setMessageBody('');
       await API.graphql(graphqlOperation(createMessage, { input }))
     } catch (error) {
       console.warn(error);
     }
+*/
   };
 const auctionedP=useContext(Store).state.auctions.find(property => property.testAuctionDay == 2 )
  //   const bidController = <BidPanel bidIncrement={auctionedP.bidIncrement} currentCall=""/>
 
 return(
     <>
-    //
+    
     BiddingPlayground
 
     <BidCallingBidPrice currentBid={lastBid}/>
     <BidClosesInDate/>
     <BidCountDownTimer/>
     <BidYourBidPrice />
-    <BidPanel bidIncrement={auctionedP.bidIncrement} currentCall="" onSubmit={handleSubmit}/>
+
+    <BidPanel bidIncrement={auctionedP.bidIncrement} currentCall={lastBid ==0?lastBid:auction.startingBid}  onBid={handleSubmit} onChangeBid={handleBidCall}/>
+    
     {/*bidController*/}
-    <BidsHistorical bids={bids}/>
+    <BidsHistorical bids={bids} openingBid={auction.startingBid} reserveBid={auction.reserveBid} currentCall={lastBid ==0?lastBid:auction.startingBid} bidIncrement={auction.bidIncrement}/>
 
 
     </>
