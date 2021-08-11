@@ -10,6 +10,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import Fab from '@material-ui/core/Fab';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import BackButton from '../buttons/backButton';
+import {
+  Link
+} from "react-router-dom"
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -92,6 +95,7 @@ const handleFilter =()=>{
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
+          <Link to= {'/filter'} >
           <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -120,6 +124,7 @@ const handleFilter =()=>{
             left:"8%"}}/>
         </div>
               </IconButton>
+              </Link>
         </Toolbar>
       </AppBar>
     </div>

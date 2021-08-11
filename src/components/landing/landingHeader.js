@@ -11,6 +11,12 @@ import Fab from '@material-ui/core/Fab';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import FilterButton from '../buttons/filterButton';
 import FiberManualRecordSharpIcon from '@material-ui/icons/FiberManualRecordSharp';
+import Filter from '../filter/filter'
+import {
+  Link
+} from "react-router-dom"
+
+
 //import Logo from '../../assets/images/logo'
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -125,7 +131,7 @@ const handleFilter =()=>{
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-          
+          <Link to= {'/filter'} >
           <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -154,7 +160,7 @@ const handleFilter =()=>{
             top:"45%",
             left:"8%"}}/>
         </div>
-              </IconButton>
+              </IconButton></Link>
 
         </Toolbar>
       </AppBar>

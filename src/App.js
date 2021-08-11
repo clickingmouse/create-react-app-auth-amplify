@@ -47,6 +47,8 @@ import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import GavelOutlinedIcon from '@material-ui/icons/GavelOutlined';
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
 
+import Filter from './components/filter/filter'
+
 Amplify.configure(aws_exports);
 
 const useStyles = makeStyles({
@@ -401,6 +403,9 @@ const handleSubmit = async (event) => {
           </Route>
           <Route path="/auction/:auctionId">
             <BiddingPlayground  />
+          </Route>
+          <Route path="/filter">
+            <Filter  />
           </Route>
         </Switch>
    

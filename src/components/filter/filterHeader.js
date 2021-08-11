@@ -1,19 +1,17 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import Fab from '@material-ui/core/Fab';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import BackButton from '../buttons/backButton';
-import {
-  Link
-} from "react-router-dom"
-
+import CloseIcon from '@material-ui/icons/Close';
+import ResetButton from './resetButton'
+import CrossIcon from '../../assets/svg/cross-icon.svg'
+import { useHistory } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -28,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'block',
       color:'#A88663',
       fontSize:24
+    
     },
   },
   search: {
@@ -72,65 +71,30 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const FavoritesHeader=()=> {
+const FilterHeader=()=> {
   const classes = useStyles();
-const handleFilter =()=>{
-    console.log('filter clicked')
+  let history = useHistory();
+  const handleClick = ()=>{
+    console.log('cancel clicked')
+    history.goBack()
 }
+
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="white" elevation={0}>
+      <AppBar position="static"  color="white" elevation={0}>
         <Toolbar>
-            
-          <Typography className={classes.title} variant="h6" noWrap>
-            Saved
+        <Button onClick={handleClick}>
+            <CloseIcon radius="39" fill="#A88663" iconColor="black" />
+        </Button>
+          <Typography className={classes.title} >
+            Filter
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
-          <Link to={'/filter'}>
-          <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleFilter}
-                color="inherit"
-              >
-                               <div style={{    width:51,
-      height:36,
-      backgroundColor:"#A88663",
-      borderTopLeftRadius:"50%",
-      borderBottomLeftRadius:25,
-      position:"absolute"}}>
-                      <div style={{width:8,height: 8,
-    backgroundColor: 'white',
-    borderRadius: '50%',
-    position: "absolute",
-    transform: "translateX(100%) translateY(165%)"}}/>
-
-          <div style={{height:2,
-            width:16,
-            //length:20,
-            backgroundColor: 'white',
-            position:"absolute",
-            top:"45%",
-            left:"8%"}}/>
-        </div>
-              </IconButton></Link>
+        <ResetButton/>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
 
-export default FavoritesHeader
+export default FilterHeader
+//        <BackButton radius="39" fill="#A88663" iconColor="black" />
