@@ -67,14 +67,20 @@ const BiddingPlayground =()=>{
 
 useEffect(() => {
   // filter by auciontid
+  console.log('fetching existing bids')
   try{
     API
-      .graphql(graphqlOperation(listBids,{filter:{auctionId:auctionId}}))
+      .graphql(graphqlOperation(listBids,{
+        filter:{
+          auctionID:{eq:auctionId}
+        }
+      }))
       .then((response) => {
       const items = response.data?.listBids?.items;
       console.log(response)
         if (items) {
           //setMessages(items);
+          console.log(items)
           setBids(items)
          
         } else {
