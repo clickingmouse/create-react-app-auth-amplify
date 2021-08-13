@@ -12,6 +12,7 @@ const useStyles=makeStyles({
     root: {
         maxWidth: 356,
         height: 205,
+
         //display:'flex'
         
       },
@@ -30,15 +31,37 @@ const useStyles=makeStyles({
         width:'100%',
         height:'auto'
     },
-    memberType:{},
-    memberName:{},
+    card:{
+      //padding:10
+    },
+    typediv:{
+      display:'flex',
+      justifyContent:'flex-end',
+      paddingTop:15,
+      paddingRight:21
+    },
+    namediv:{
+      display:'flex',
+      justifyContent:'flex-end',
+      padding:5,
+    },
+    memberType:{
+      color:'white',
+      fontSize:10
+    },
+    memberName:{
+      color:'white',
+      fontSize:13,
+      paddingBottom:14,
+      paddingRight:21
+    },
 
 })
 const MembershipCard = () =>{
     const classes=useStyles()
     return(<>
 
-    <Card>
+    <Card className={classes.card} elevation={0}>
         
         <CardMedia
         component="image"
@@ -47,8 +70,9 @@ const MembershipCard = () =>{
 
         className={classes.media}>
 
-<div><Typography>Gold Card Member</Typography></div>
-        <div><Typography>Chris Chan Tai Man</Typography></div>
+<div className={classes.typediv}><Typography className={classes.memberType}>Gold Card Member</Typography></div>
+        <div className={classes.namediv}><Typography className={classes.memberName}>Chris Chan Tai Man</Typography></div>
+        
         </CardMedia>
 
 

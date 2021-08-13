@@ -39,8 +39,12 @@ const classes = useStyles();
     return(
 
         <Grid container justifyContent="space-between">
+                        <br/><br/><br/><br/>
+
             <Grid item>
+
                 <Grid container direction="column">
+                   
                     <Grid item container direction="row" alignItems="baseline">
                         <Typography className={classes.price}>{p.price}</Typography> 
                         <Typography className={classes.hkd}>hkd</Typography>

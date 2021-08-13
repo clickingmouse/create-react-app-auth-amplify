@@ -8,13 +8,21 @@ import MembershipCard from './membershipCard';
 
 import ProfileDetails from './profileDetails'
 import ProfileContactUs from './profileContactUs';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles=makeStyles({
+    container :{height:'100%'},
+    details:{height:'40%'}
+
+})
 const Profile = ()=>{
+    const classes=useStyles()
     return(
-        <Container maxWidth="sm" >
+        <Container maxWidth="sm" className={classes.container}>
             <ProfileHeader/>
             
             <MembershipCard/>
-            <ProfileDetails/>
+            <ProfileDetails className={classes.details}/>
             <ProfileContactUs/>
 
 

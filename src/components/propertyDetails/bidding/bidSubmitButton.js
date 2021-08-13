@@ -41,3 +41,4 @@ const BidSubmitButton = (props)=>{
 }
 
 export default BidSubmitButton
+//(e) => this.props.onClick(e, 'home', 'Home'

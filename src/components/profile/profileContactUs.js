@@ -24,9 +24,10 @@ const ProfileContactUs = ()=>{
 
   const classes= useStyles()
 return (<>
-<Typography className={classes.hdr}>
+<Typography className={classes.hdr} align='center'>
 Contact Us</Typography>
 <hr/>
+<br/>
 <Grid container
 spacing ={3}
   direction="row"

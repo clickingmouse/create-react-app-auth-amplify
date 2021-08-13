@@ -26,7 +26,7 @@ import {
 //  BrowserRouter as Router,
 //  Switch,
 //  Route,
-//  Link,
+  Link,
   useParams
 } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -66,12 +66,45 @@ const images = [
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
+
+    },
+    appBar:{
+      display:'flex',
+      flexDirection:'row',
+      justifyContent:'space-between',
     },
     menuButton: {
       marginRight: theme.spacing(2),
     },
     title: {
       flexGrow: 1,
+    },
+    wrapper:{
+      padding:0
+    },
+    swiperWrapper:{
+      height:287,
+      zIndex:-1
+    },
+    menuWrapper:{
+     // position:'absolute'
+     marginTop: '-8%'
+
+    },
+    swiperWrapperEnd:{
+      backgroundColor:'black',
+      zIndex:2,
+      //position:'absolute'
+    },
+    swiperContainerEnd:{
+    position:'absolute',
+      backgroundColor:'#eee',
+      color:'black',
+      padding:10,
+      zIndex:3
+    }, 
+    summaryWrapper:{
+      padding:''
     },
     buttonGroup: {
         display: 'flex',
@@ -80,6 +113,7 @@ const images = [
         '& > *': {
           margin: theme.spacing(1),
         },
+        
     },
     button:{
         display:'flex!important',
@@ -113,12 +147,11 @@ const PropertyDetails = ()=>{
     const liveAuction = true
     return(<>
 
-        <Container xs={12}>
+        <Container xs={12} className={classes.wrapper}>
         <AppBar position="absolute" color="transparent" elevation={0} styles={{color: "transparent!important"}}>
-        <Toolbar styles={{justifyContent:"space-between"}}>
-        <Button>
-        <BackButton radius="39" fill="#A88663" iconColor="black" />
-        </Button>
+        <Toolbar className={classes.appBar}>
+        
+        <BackButton radius="39" fill="black" iconColor="white" />
         
         <FavoriteButton radius="39" item={property.id} property={property}/>
         
@@ -127,24 +160,32 @@ const PropertyDetails = ()=>{
 
         
         <Swiper
+        className={classes.swiperWrapper}
       spaceBetween={50}
       slidesPerView={1}
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
       navigation
       pagination
-
+      
     >
       <SwiperSlide ><div height="287" width="375"><img src={require("../../assets/placeholders/駿景園.jpg")} height="287" width="375"/> </div></SwiperSlide>
       <SwiperSlide><img src={require("../../assets/placeholders/駿景園02.jpg")} height="287" width="511"/></SwiperSlide>
       <SwiperSlide><img src={require("../../assets/placeholders/駿景園03.jpg")} height="287"/></SwiperSlide>
       <SwiperSlide><img src={require("../../assets/placeholders/駿景園04.jpg")} height="287"/></SwiperSlide>
-      
+      <span slot="wrapper-end" className={classes.swiperWrapperEnd}>Wrapper End</span>
+      <span slot="container-end" className={classes.swiperContainerEnd}>Container End</span>
     </Swiper>
-<Grid container direction="row" justifyContent="center">
-  <Grid item>
-<PropertyDetailsMenu /></Grid></Grid>
-<PropertySummary p={property}/>
+
+<Grid container direction="row" justifyContent="center" className={classes.menuWrapper}>
+  <Grid item >
+    <PropertyDetailsMenu />
+  </Grid>
+  </Grid>
+
+  <br/><br/><br/>
+
+<PropertySummary className={classes.summaryWrapper} p={property}/>
 <PropertyMoreInfo p={property}/>
 
 
@@ -158,3 +199,7 @@ const PropertyDetails = ()=>{
 export default PropertyDetails
 //position:"fixed"
 //<div className="123" styles={{ display:"flex", flexDirection:"row"}}><FavoriteButton radius="39" styles={{flex:1}}/><BackButton radius="39" styles={{flex:1}}/></div>
+
+//<Grid container direction="row" justifyContent="center">
+//  <Grid item><PropertyDetailsMenu /></Grid>
+//  </Grid>

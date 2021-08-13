@@ -26,13 +26,16 @@ const useStyles = makeStyles((theme) => ({
         //},
         backgroundColor:"transparent",
         width:297,
-        height:62
+        height:62,
+        //position:'absolute',
+
     },
     button:{
         //display:'flex',
         //flexDirection:'column',
         //alignItems: 'center'
-        backgroundColor:"transparent"
+        backgroundColor:"transparent",
+        padding:0
     },
     label: {
         // Aligns the content of the button vertically.
@@ -53,24 +56,41 @@ const PropertyDetailsMenu=()=>{
     return(
         <ButtonGroup variant="contained" fullWidth color="primary" aria-label="contained primary button group" className={classes.buttonGroup}>
         <Button className={classes.button}>
-            <Grid container direction="row" justifyContent="center">
+        <Grid container direction='column'>
+            <Grid item container direction="row" justifyContent="center">
                 <img src={require("../../assets/images/buttons/photos.png")} /> 
+                </Grid>
+                <Grid item>
             <Typography styles={{flex:1}} className={classes.label}>Photos</Typography>
+            </Grid>
             </Grid>
         </Button>
 
+
+
         <Button className={classes.button}>
-        <Grid container direction="row" justifyContent="center">
+        <Grid container direction='column'>
+       
+        <Grid item container direction="row" justifyContent="center">
+         
      <img src={require("../../assets/images/buttons/video.png")} /> 
+     </Grid>
+          <Grid item>
+
      <Typography styles={{flex:1}} className={classes.label}>Video</Typography>
-</Grid>
+
+</Grid></Grid>
             </Button>
 
 
         <Button className={classes.button}>
-        <Grid container direction="row" justifyContent="center">
+          <Grid container direction='column'>
+        <Grid item container direction="row" justifyContent="center">
         <img src={require("../../assets/images/buttons/360vr.png")} />
+        </Grid>
+        <Grid item>
         <Typography styles={{flex:1}} className={classes.label}>360 VR</Typography>
+        </Grid>
         </Grid>
         </Button>
 
