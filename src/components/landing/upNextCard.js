@@ -16,7 +16,7 @@ import FavoriteButton from '../buttons/favoriteButton'
 import Bed from '../../assets/propertyListing/bed.svg'
 const useStyles = makeStyles({
     root: {
-      maxWidth: 177,
+      maxWidth: 169,
       height: 156,
 
     },

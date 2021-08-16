@@ -60,17 +60,18 @@ const useStyles = makeStyles({
   },
   BottomNavigation: {
     //maxWidth: 300,
+    width:'95%',
     height:57,
     position: 'fixed',
     borderRadius:30,
 
     //bottom: 23,
-    top: '90%',
-    left:'5%',
+    top: '85%',
+    //left:'5%',
     backgroundColor:"#000000"
   },
   navWrapper:{
-    width:283,
+    width:'283',
     height:57,
     borderRadius:30,
     backgroundColor:'black',

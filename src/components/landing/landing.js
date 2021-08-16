@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
     container: {
         display: 'grid',
         //gridTemplateColumns: 'repeat(12, 1fr)',
+        paddingRight:0,
         gridGap: theme.spacing(3),
       },
     paper: {
@@ -70,7 +71,7 @@ console.log(inAuctionProperty)
 
     return(
     
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" className={classes.container}>
       <LandingHeader/>
     <div className={classes.root}>
 
@@ -88,7 +89,7 @@ console.log(inAuctionProperty)
     <Typography variant="subtitle1" gutterBottom> Up Next:</Typography>
     <Grid container spacing={1}>
 
-        <Grid container item xs={12} spacing={1}>
+        <Grid container item xs={12} spacing={0}>
           <UpNext />
         </Grid>
 

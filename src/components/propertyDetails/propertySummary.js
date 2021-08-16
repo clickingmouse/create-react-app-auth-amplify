@@ -37,10 +37,10 @@ const useStyles = makeStyles((theme) => ({
 const PropertySummary =({p})=>{
 const classes = useStyles();
     return(
+        
 
         <Grid container justifyContent="space-between">
-                        <br/><br/><br/><br/>
-
+ 
             <Grid item>
 
                 <Grid container direction="column">
