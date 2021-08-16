@@ -64,7 +64,11 @@ paddingRight:19
       fontSize:10,
       color:"#A88663",
       backgroundColor:"white",
-      borderTopLeftRadius:"15",
+      //borderTopLeftRadius:"15",
+      paddingRight:'5%',
+      paddingTop:'1%',
+      paddingLeft:'3%',
+      borderTopLeftRadius:5
       
     },
     fav:{
