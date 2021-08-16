@@ -81,19 +81,15 @@ const Communities = ()=>{
     }
     
     return(
-        <>
         <div className={classes.root}>
       <ImageList className={classes.imageList} cols={3.5} gap={8}>
         {itemData.map((item) => (
           <ImageListItem key={item.img} >
             <img src={item.img} alt={item.title} className={classes.img}/>
-
           </ImageListItem>
         ))}
       </ImageList>
     </div>
-
-            </>
         
     )
 }
