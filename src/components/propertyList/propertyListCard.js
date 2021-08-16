@@ -40,6 +40,8 @@ const useStyles = makeStyles({
       display:"flex",
       flexDirection:"column",
       justifyContent:"space-between",
+      //marginTop:5%,
+      //margin
 
     },
     content:{
@@ -67,6 +69,8 @@ paddingRight:19
     },
     fav:{
       flex:1, display:"flex", flexDirection:"row-reverse",
+      marginTop:'2%',
+      marginRight:'5%',
     }
   });
 
