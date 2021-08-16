@@ -66,7 +66,7 @@ const PropertyCardContent =({p})=>{
     const classes = useStyles();
 
     return(<div style={{backgroundColor:'white', flexGrow:1}}>
-        <Grid container direction="row" justifyContent="space-between" alignItems="center">
+        <Grid container direction="row" justifyContent="space-between" alignItems="flex-end">
             <Grid  item direction="column" xs={6} container>
                 <Grid item container direction="row" alignItems="baseline">
                     <Grid item><Typography className={classes.price}>{p.price}</Typography></Grid>
@@ -79,15 +79,29 @@ const PropertyCardContent =({p})=>{
                 </Grid>
             </Grid>
 
-            <Grid  item direction="column" xs={6} container alignItems="baseline">
+
+            <Grid id='rhs' item container direction="column" flexGrow={1} xs={6} alignItems="stretch" justifyContent='stretch'>
+
                 <Grid item container direction="row" alignItems="baseline" spacing={1} justifyContent="flex-end">
-                <img src={BedIcon} alt=''/>
-                <Typography className={classes.info}>  {p.bedrooms} </Typography>
-                <img src = {BathIcon} alt=''/>
+                
+                <Grid item>
+                <img src={BedIcon} alt=''/></Grid>
+
+                <Grid item>
+                <Typography className={classes.info}>  {p.bedrooms} </Typography></Grid> 
+                
+                <Grid item>
+                <img src = {BathIcon} alt=''/></Grid> 
                
-                <Typography className={classes.info}>  {p.bathrooms} </Typography>
-                <img src = {AreaIcon} alt=''/>
-               <Typography className={classes.info}> {p.saleableArea}sqft</Typography>
+                <Grid item>
+                <Typography className={classes.info}>  {p.bathrooms}- </Typography></Grid> 
+                
+                <Grid item>
+                <img src = {AreaIcon} alt=''/></Grid> 
+
+                <Grid item>
+               <Typography className={classes.info}> {p.saleableArea}sqft</Typography></Grid> 
+
                 </Grid>
             </Grid>
 
