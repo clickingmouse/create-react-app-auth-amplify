@@ -75,12 +75,22 @@ const UpNextContent =()=>{
                 </Grid>
 
                 <Grid item container direction="row" alignItems="baseline" spacing={1} justifyContent="flex-start" >
-                <img src={BedIcon} alt=''/>
-                <Typography className={classes.info}> 2 </Typography>
-                <img src = {BathIcon} alt=''/>
-                <Typography className={classes.info}> 2 </Typography>
-                <img src = {AreaIcon} alt=''/>
-                <Typography className={classes.info}> 680sqft</Typography>
+                <Grid item>
+                <img src={BedIcon} alt=''/></Grid>  
+                <Grid item>
+                <Typography className={classes.info}> 2 </Typography></Grid>
+
+                <Grid item>
+                <img src = {BathIcon} alt=''/></Grid>
+
+                <Grid item>
+                <Typography className={classes.info}> 2 </Typography></Grid>
+
+                <Grid item>
+                <img src = {AreaIcon} alt=''/></Grid>
+
+                <Grid item>
+                <Typography className={classes.info}> 680sqft</Typography></Grid>
                 </Grid>
 
         </Grid>
