@@ -48,46 +48,14 @@ import GavelOutlinedIcon from '@material-ui/icons/GavelOutlined';
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
 
 import Filter from './components/filter/filter'
+import ExploreIcon from './assets/svg/nav/explore.svg'
+import SavedIcon from './assets/svg/nav/saved.svg'
+import MyBidIcon from './assets/svg/nav/myBid.svg'
+import ProfileIcon from './assets/svg/nav/profile.svg'
+import SvgIcon from '@material-ui/core/SvgIcon';
 
 Amplify.configure(aws_exports);
 
-const useStyles = makeStyles({
-  root:{
-    padding:'0px 12px 0px 0px',
-  },
-  navigationWrapper:{
-
-  },
-  BottomNavigation: {
-    //maxWidth: 300,
-    width:'95%',
-    height:57,
-    position: 'fixed',
-    borderRadius:30,
-
-    //bottom: 23,
-    top: '85%',
-    //left:'5%',
-    backgroundColor:"#000000"
-  },
-  navWrapper:{
-    width:'283',
-    height:57,
-    borderRadius:30,
-    backgroundColor:'black',
-    position:'fixed',
-    top:'60%',
-    left:'10%'
-
-
-  },
-  wrapper:{
-    padding:0,
-  },
-
-
-  label:{color:'white'},
-});
 
 
 //class App extends Component {
@@ -418,12 +386,12 @@ const handleSubmit = async (event) => {
       showLabels
       className={classes.BottomNavigation}
     >
-      <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label }} label="Explore" icon={<ExploreOutlinedIcon style={{fill:"white"}}/>}  component={Link} to='/explore'/>} />
+      <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label }} label="Explore" icon={<img src={require('./assets/svg/nav/explore.svg')}/>}  component={Link} to='/explore'/>} />
 
-      <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label}} label="Saved" icon={<FavoriteBorderOutlinedIcon style={{fill:"white"}} />} component={Link} to='/saved' />
+      <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label}} label="Saved" icon={<img src={require('./assets/svg/nav/saved.svg')}/>} component={Link} to='/saved' />
 
-      <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label}} label="MyBid" icon={<GavelOutlinedIcon style={{fill:"white"}}/>} component={Link} to='/myBid'/>
-      <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label}} label="Profile" icon={<PersonOutlineOutlinedIcon style={{fill:"white"}}/>} component={Link} to='/profile'/>
+      <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label}} label="MyBid" icon={<img src={require('./assets/svg/nav/myBid.svg')}/>} component={Link} to='/myBid'/>
+      <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label}} label="Profile"icon={<img src={require('./assets/svg/nav/profile.svg')}/>} component={Link} to='/profile'/>
     </BottomNavigation>
     </Router>}
     </Store.Provider>
@@ -436,3 +404,60 @@ const handleSubmit = async (event) => {
 export default withAuthenticator(App);
 
 //export default withAuthenticator(App, true);
+
+{/* <BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label }} label="Explore" icon={<ExploreOutlinedIcon style={{fill:"white"}}/>}  component={Link} to='/explore'/>} />
+
+<BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label}} label="Saved" icon={<FavoriteBorderOutlinedIcon style={{fill:"white"}} />} component={Link} to='/saved' />
+
+<BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label}} label="MyBid" icon={<GavelOutlinedIcon style={{fill:"white"}}/>} component={Link} to='/myBid'/>
+<BottomNavigationAction classes={{root:classes.root, wrapper:classes.wrapper, label:classes.label}} label="Profile" icon={<PersonOutlineOutlinedIcon style={{fill:"white"}}/>} component={Link} to='/profile'/> */}
+
+
+const useStyles = makeStyles({
+  root:{
+    //padding:'0px 12px 0px 0px',
+    padding:0,
+    //display:'flex'
+    width:'70%'
+    
+  },
+  navigationWrapper:{
+    //width:'25%'
+
+  },
+  BottomNavigation: {
+    //maxWidth: 300,
+    //width:'75%',
+    height:57,
+    position: 'fixed',
+    borderRadius:30,
+    padding:0,
+
+    //bottom: 23,
+    top: '85%',
+    //alignContent: 'center',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    //left:'5%',
+    backgroundColor:"#000000"
+  },
+  navWrapper:{
+    //width:'283',
+    width:'85%',
+
+    height:57,
+    borderRadius:30,
+    backgroundColor:'black',
+    position:'fixed',
+    top:'60%',
+    left:'10%'
+
+
+  },
+  wrapper:{
+    padding:0,
+  },
+
+
+  label:{color:'white'},
+});
