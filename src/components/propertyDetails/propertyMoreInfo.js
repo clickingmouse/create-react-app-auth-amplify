@@ -65,12 +65,14 @@ color:"#A88663",
     </AccordionSummary>
     <AccordionDetails>
         <Grid container direction='column'>
+
         <Grid container direction='row' justifyContent="space-between">
-<Grid item>
+<Grid item xs={7}>
 <Typography className={classes.label}>Address</Typography>
 {p.address}
 </Grid>
-<Grid item>
+
+<Grid item xs={5} container direction='column' alignItems='flex-end' justifyContent='center'>
     
     <CapsuleFAB title="Map View" width="94" height="27.2" color="#A88663" icon={LocationIcon} />
 </Grid>
