@@ -183,7 +183,7 @@ const PropertyDetails = ()=>{
   </Grid>
   </Grid>
 
-  <br/><br/><br/>
+  <br/>
 
 <PropertySummary className={classes.summaryWrapper} p={property}/>
 <PropertyMoreInfo p={property}/>

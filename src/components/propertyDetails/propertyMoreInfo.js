@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
       flexShrink: 0,
       backgroundColor:"#FBFBFB",
 color:"#A88663",
-fontSize:15,
+
     },
     secondaryHeading: {
       fontSize: theme.typography.pxToRem(15),
