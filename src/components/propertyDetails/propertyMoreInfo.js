@@ -37,6 +37,10 @@ color:"#A88663",
       fontSize:13,
       color:"#A88663"
     },
+    address:{
+      color:'#3C3C3C',
+      fontSize:13
+    },
     info:{
       fontSize:13,
       color:"#3C3C3C",
@@ -69,7 +73,7 @@ color:"#A88663",
         <Grid container direction='row' justifyContent="space-between">
 <Grid item xs={7}>
 <Typography className={classes.label}>Address</Typography>
-{p.address}
+<Typography className={classes.address}>{p.address}</Typography>
 </Grid>
 
 <Grid item xs={5} container direction='column' alignItems='flex-end' justifyContent='center'>
