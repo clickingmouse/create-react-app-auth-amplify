@@ -47,6 +47,11 @@ const useStyles = makeStyles((theme) => ({
         //text-align: center;
         //text-transform: uppercase;
 
+    },
+    placeHolder:{
+        backgroundColor:'black',
+        height:40,
+        width:95
     }
 }))
 const PropertySummary =({p})=>{
@@ -99,10 +104,15 @@ const classes = useStyles();
 
 
             <Grid item>
-            <Grid container direction="column" justifyContent='space-between'>
+            <Grid container direction="column" justifyContent='space-between' spacing={1}>
                 <Grid item container direction="row" justifyContent='flex-end' >
                 <div className={classes.flag}/><Typography className={classes.propertyType}>Residential</Typography></Grid>
-                <CapsuleFAB title="FloorPlan" width="94" height="27.2" color="#A88663" icon={MapIcon} />
+                
+                <Grid item>
+                <div className={classes.placeHolder}></div></Grid>
+
+                <Grid item>
+                <CapsuleFAB title="FloorPlan" width="94" height="27.2" color="#A88663" icon={MapIcon} /></Grid>
             </Grid>
             </Grid>
 
