@@ -47,6 +47,10 @@ color:"#A88663",
       //alignItems:"flex-start",
       justifyContent:"flex-start"
 
+    },
+    facilities:{
+      fontSize:13,
+      color:"#3C3C3C",
     }
   }));
 
@@ -111,7 +115,7 @@ color:"#A88663",
 
             </Grid>
 
-      <Typography>
+      <Typography className={classes.facilities}>
         Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat. Aliquam eget
         maximus est, id dignissim quam.
       </Typography>
