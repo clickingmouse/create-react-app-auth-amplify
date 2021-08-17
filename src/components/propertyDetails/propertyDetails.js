@@ -176,7 +176,7 @@ const PropertyDetails = ()=>{
       <span slot="wrapper-end" className={classes.swiperWrapperEnd}>Wrapper End</span>
       <span slot="container-end" className={classes.swiperContainerEnd}>Container End</span>
     </Swiper>
-
+<Container>
 <Grid container direction="row" justifyContent="center" className={classes.menuWrapper}>
   <Grid item >
     <PropertyDetailsMenu />
@@ -190,7 +190,7 @@ const PropertyDetails = ()=>{
 
 
 {liveAuction?<Grid container justifyContent="center" direction="row"  className={classes.options} spacing={2}><Grid item><Enquire/></Grid>  <Grid item><Bid/></Grid></Grid>:<Grid container direction="row"><CapsuleButton title="Enquire" color="black" width="160" height="37.11"/></Grid> }
-
+</Container>
         </Container>
 </>
     )

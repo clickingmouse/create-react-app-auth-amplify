@@ -27,7 +27,10 @@ color:"#A88663",
       color: theme.palette.text.secondary,
     },
     accordianHeader:{
-
+      '&:before': {
+        display: 'none',
+      },
+      backgroundColor:'#F3F3F3'
 
     },
     label:{

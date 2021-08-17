@@ -32,6 +32,21 @@ const useStyles = makeStyles((theme) => ({
     propertyType:{
     fontSize:10,
     color:"#A88663"
+    },
+    flag:{      
+        width: 6.86,
+        height: 8.82,
+        boxSizing: 'content-box',
+        //paddingTop: 15,
+        position: 'relative',
+        background: 'red',
+        color: 'white',
+        borderColor:'#A88663'
+        //font-size: 11
+        //letter-spacing: 0.2em;
+        //text-align: center;
+        //text-transform: uppercase;
+
     }
 }))
 const PropertySummary =({p})=>{
@@ -55,14 +70,24 @@ const classes = useStyles();
                         {p.district}
                         </Grid>
                         
-                        <Grid item container direction="row" alignItems="baseline" spacing={1} justifyContent="flex-end">
-                <img src={BedIcon} alt=''/>
-                <Typography className={classes.info}>  {p.bedrooms} </Typography>
-                <img src = {BathIcon} alt=''/>
+                        <Grid item container direction="row" alignItems="baseline" spacing={1} justifyContent="flex-start">
+                <Grid item>
+                <img src={BedIcon} alt=''/></Grid>
+
+                <Grid item>
+                <Typography className={classes.info}>  {p.bedrooms} </Typography></Grid>
+                
+                <Grid item>
+                <img src = {BathIcon} alt=''/></Grid>
                
-                <Typography className={classes.info}>  {p.bathrooms} </Typography>
-                <img src = {AreaIcon} alt=''/>
-               <Typography className={classes.info}> {p.saleableArea}sqft</Typography>
+               <Grid item>
+                <Typography className={classes.info}>  {p.bathrooms} </Typography></Grid>
+                
+                <Grid item>
+                <img src = {AreaIcon} alt=''/></Grid>
+               
+                <Grid item>
+                <Typography className={classes.info}> {p.saleableArea}sqft</Typography></Grid>
                 </Grid>
 
 
@@ -74,8 +99,9 @@ const classes = useStyles();
 
 
             <Grid item>
-            <Grid containerdirection="column">
-                <Typography className={classes.propertyType}>Residential</Typography>
+            <Grid container direction="column" justifyContent='space-between'>
+                <Grid item container direction="row" justifyContent='flex-end' >
+                <div className={classes.flag}/><Typography className={classes.propertyType}>Residential</Typography></Grid>
                 <CapsuleFAB title="FloorPlan" width="94" height="27.2" color="#A88663" icon={MapIcon} />
             </Grid>
             </Grid>
