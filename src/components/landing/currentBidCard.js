@@ -14,12 +14,18 @@ import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined'
 const useStyles = makeStyles({
   root: {
     maxWidth: 337,
-    height:87
+    //height:87
+    height:147
   },
   media: {
     height: 87,
     width:140
   },
+  bid:{
+    height:60,
+    width:337,
+    backgroundColor:'black',
+  }
 });
 
 function CurrentBidCard({p}) {
@@ -49,6 +55,7 @@ function CurrentBidCard({p}) {
           Learn More
         </Button>
       </CardActions>
+      <div className={classes.bid}>placeholder</div>
     </Card>
     <BidPanel/>
     </>

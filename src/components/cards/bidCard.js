@@ -45,6 +45,12 @@ const useStyles = makeStyles({
     color:'#A88663',
     fontWeight:400,
     },
+    bid:{
+backgroundColor:'black',
+height:60,
+width:337,
+    },
+    wrapper:{}
 
 });
 
@@ -52,6 +58,7 @@ function BidCard({p}) {
   const classes = useStyles();
 
   return (
+    <div className={classes.wrapper}>
     <Card className={classes.root}>
       
         <CardMedia
@@ -89,11 +96,15 @@ function BidCard({p}) {
                 </Grid>
 
           </Grid>
-
+          
         </CardContent>
-      
+
+       
 
     </Card>
+    <div className={classes.bid}>PLACEHOLDER</div>
+
+    </div>
   );
 }
 

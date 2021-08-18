@@ -81,7 +81,7 @@ console.log(inAuctionProperty)
         <Grid container item xs={12} spacing={1}>
         <Link to= {`/property/${inAuctionProperty.id}`} >
           <BidCard p={inAuctionProperty}/></Link>
-          <BidPanel height="60" width="337" amt="6,850,000" color="#000000" closingtime="23:55:30"/>
+          
        
         </Grid>
     </Grid>
@@ -166,3 +166,5 @@ export default Landing
       </ListItem>
     </List>
     */
+   
+    //<BidPanel height="60" width="337" amt="6,850,000" color="#000000" closingtime="23:55:30"/>
