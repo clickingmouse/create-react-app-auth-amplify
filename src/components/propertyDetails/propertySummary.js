@@ -8,6 +8,7 @@ import BedIcon from '../../assets/svg/ionic-ios-bed.svg'
 import BathIcon from '../../assets/svg/awesome-bath.svg'
 import AreaIcon from '../../assets/svg/icon-area.svg'
 import MapIcon from '../../assets/svg/map.svg'
+import Flag from '../../assets/svg/flag.svg'
 const useStyles = makeStyles((theme) => ({
     //root: {},
     price:{
@@ -34,14 +35,16 @@ const useStyles = makeStyles((theme) => ({
     color:"#A88663"
     },
     flag:{      
-        width: 6.86,
-        height: 8.82,
-        boxSizing: 'content-box',
+        //width: 6.86,
+        //height: 8.82,
+        //boxSizing: 'content-box',
         //paddingTop: 15,
-        position: 'relative',
-        background: 'red',
-        color: 'white',
-        borderColor:'#A88663'
+        //position: 'relative',
+        //background: 'red',
+        //color: 'white',
+        //color:'A88663',
+        //fill:'A88663'
+        //borderColor:'#A88663'
         //font-size: 11
         //letter-spacing: 0.2em;
         //text-align: center;
@@ -105,8 +108,14 @@ const classes = useStyles();
 
             <Grid item>
             <Grid container direction="column" justifyContent='space-between' spacing={1}>
-                <Grid item container direction="row" justifyContent='flex-end' >
-                <div className={classes.flag}/><Typography className={classes.propertyType}>Residential</Typography></Grid>
+                <Grid item container direction="row" justifyContent='flex-end' alignItems='center' spacing={1}>
+                
+                <Grid item>
+                <img src={Flag} alt='' className={classes.flag}/></Grid>
+
+                <Grid item>
+                <Typography className={classes.propertyType}>Residential</Typography></Grid>
+                </Grid>
                 
                 <Grid item>
                 <div className={classes.placeHolder}></div></Grid>
