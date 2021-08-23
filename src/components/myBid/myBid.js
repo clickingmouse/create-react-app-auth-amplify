@@ -10,6 +10,8 @@ import BidCallingBidPrice from '../bidPanels/bidCallingBidPrice'
 import BidYourBidPrice from '../bidPanels/bidYourBidPrice';
 import BidCountDownTimer from '../bidPanels/bidCountdownTimer';
 
+import {Link} from 'react-router-dom'
+
 const MyBid = ()=>{
     return(<>
     <MyBidHeader/>
@@ -26,9 +28,11 @@ const MyBid = ()=>{
         </Grid>
 
         </BidCard>
+        < Link to={'/myAuctions/won'} style={{textDecoration: 'none'}}>
+        <CapsuleButton title="Successful Bids" height="50" width="337" color="#A88663" fontColor=""/></Link>
         
-        <CapsuleButton title="Successful Bids" height="50" width="337" color="#A88663" fontColor=""/>
-        <CapsuleButton title="Lost Bids" height="50" width="337" color="#000000" fontColor=""/>
+        <Link to ={'/myAuctions/lost'} style={{textDecoration: 'none'}}>
+        <CapsuleButton title="Lost Bids" height="50" width="337" color="#000000" fontColor=""/></Link>
         
 
 

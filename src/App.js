@@ -29,7 +29,11 @@ import Favorites from './components/favorites/favorites'
 import Profile from './components/profile/profile'
 import MyBid from './components/myBid/myBid'
 import PropertiesList from './components/propertyList/propertiesList'
-import PropertyDetails from './components/propertyDetails/propertyDetails' 
+import PropertyDetails from './components/propertyDetails/propertyDetails'
+
+import WonAuctions from './components/auctionResults/wonAuctions'
+import LostAuctions from './components/auctionResults/lostAuctions'
+
 
 import BiddingPlayground from './components/biddingPlayground/biddingPlayground'
 import AuctionPlayground from './components/biddingPlayground/auctionPlayground'
@@ -375,6 +379,12 @@ const handleSubmit = async (event) => {
           </Route>
           <Route path="/filter">
             <Filter  />
+          </Route>
+          <Route path="/myAuctions/won">
+            <WonAuctions  />
+          </Route>
+          <Route path="/myAuctions/lost">
+            <LostAuctions  />
           </Route>
         </Switch>
    
