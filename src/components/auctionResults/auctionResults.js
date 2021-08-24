@@ -23,7 +23,7 @@ const useStyles=makeStyles({
 })
 
 
-const WonAuctions = () =>{
+const AuctionResults = () =>{
 
     const classes = useStyles()
     return(
@@ -49,4 +49,4 @@ const WonAuctions = () =>{
 }
 
 
-export default WonAuctions
+export default AuctionResults

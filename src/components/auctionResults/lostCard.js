@@ -13,6 +13,9 @@ import BedIcon from '../../assets/svg/ionic-ios-bed.svg'
 import BathIcon from '../../assets/svg/awesome-bath.svg'
 import AreaIcon from '../../assets/svg/icon-area.svg'
 import FinalBidPanel from './finalBidPanel'
+import LostFinalBidPanel from './lostFinalBidPanel'
+
+import YourBidPanel from './yourBidPanel';
 const useStyles = makeStyles({
     root: {
       maxWidth: 345,
@@ -92,7 +95,8 @@ const WonCard = (props=data)=>{
         </CardContent>
         
     </Card>
-    <div> <FinalBidPanel/></div>
+    <div> <LostFinalBidPanel/></div>
+    <div> <YourBidPanel/></div>
     </div>
 
 

@@ -33,6 +33,7 @@ import PropertyDetails from './components/propertyDetails/propertyDetails'
 
 import WonAuctions from './components/auctionResults/wonAuctions'
 import LostAuctions from './components/auctionResults/lostAuctions'
+import AuctionResults from './components/auctionResults/auctionResults'
 
 
 import BiddingPlayground from './components/biddingPlayground/biddingPlayground'
@@ -379,6 +380,9 @@ const handleSubmit = async (event) => {
           </Route>
           <Route path="/filter">
             <Filter  />
+          </Route>
+          <Route path="/myAuctions/results">
+            <AuctionResults  />
           </Route>
           <Route path="/myAuctions/won">
             <WonAuctions  />
