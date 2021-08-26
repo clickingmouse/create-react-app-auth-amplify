@@ -28,6 +28,8 @@ export declare class Auction {
   readonly finalBid?: number;
   readonly propertyID?: string;
   readonly testAuctionDay?: string;
+  readonly isActive?: boolean;
+  readonly isLive?: boolean;
   constructor(init: ModelInit<Auction>);
   static copyOf(source: Auction, mutator: (draft: MutableModel<Auction>) => MutableModel<Auction> | void): Auction;
 }

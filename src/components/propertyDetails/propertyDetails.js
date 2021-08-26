@@ -61,6 +61,10 @@ const images = [
       thumbnail: 'https://picsum.photos/id/1019/250/150/',
     },
   ];
+  // bidding stuff
+
+
+
 
 
   const useStyles = makeStyles((theme) => ({
@@ -139,10 +143,12 @@ const PropertyDetails = ()=>{
     console.log(property)
     console.log(propertyId)
     const auctions=data.state.auctions
-    const auctionDetail = auctions.find(auction => auction.propertyID == property.prn)
-    console.log(auctionDetail)
+    const auctionDetails = auctions.find(auction => auction.propertyID == property.prn)
+    console.log(auctionDetails)
     //const [liveAuction, setLiveAuction] = useState(true)
-
+    // check if auction is live
+    const [isLive, setIsLive]=useState(auctionDetails.isLive)
+    console.log(isLive)
 
     //setLiveAuction(false)
     //const actionButtons = liveAuction?return(<><button/><button/></>):<button/> 
@@ -191,7 +197,7 @@ const PropertyDetails = ()=>{
 <PropertyMoreInfo p={property}/>
 
 
-{liveAuction?<Grid container justifyContent="center" direction="row"  className={classes.options} spacing={2}><Grid item><Enquire/></Grid>  <Grid item><Bid auctionDetail={auctionDetail}/></Grid></Grid>
+{liveAuction?<Grid container justifyContent="center" direction="row"  className={classes.options} spacing={2}><Grid item><Enquire/></Grid>  <Grid item><Bid auctionDetails={auctionDetails}/></Grid></Grid>
 :<Grid container direction="row"><CapsuleButton title="Enquire" color="black" width="160" height="37.11"/></Grid> }
 </Container>
         </Container>

@@ -20,6 +20,8 @@ type Auction @model @auth(rules: [{allow: public}]) {
   finalBid: Int
   propertyID: String
   testAuctionDay: String
+  isActive: Boolean
+  isLive: Boolean
 }
 
 type Bid @model @auth(rules: [{allow: public}]) {

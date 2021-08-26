@@ -157,6 +157,20 @@ export const schema = {
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
+                },
+                "isActive": {
+                    "name": "isActive",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "isLive": {
+                    "name": "isLive",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
                 }
             },
             "syncable": true,
@@ -507,5 +521,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "3e0a600b4d0cea1c294ba47fb7632def"
+    "version": "3792190a774144c796a22dd574a36884"
 };

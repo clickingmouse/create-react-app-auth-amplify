@@ -68,6 +68,16 @@ console.log(allProperties)
 //const inAuctionProperty = allProperties.find(property => property.testAuctionDay === day )
 const inAuctionProperty = allProperties.find(property => property.testAuctionDay == "2" )
 console.log(inAuctionProperty)
+const allAuctions = React.useContext(Store).state.auctions 
+console.log(allAuctions)
+
+const liveAuction = allAuctions.find(auction => auction.isLive == true)
+console.log(liveAuction)
+const liveAuctionProperty = allProperties.find (property => property.prn = liveAuction.propertyID)
+console.log(liveAuctionProperty)
+
+{/* <Link to= {`/property/${inAuctionProperty.id}`} >
+<BidCard p={inAuctionProperty}/></Link> */}
 
     return(
     
@@ -79,8 +89,8 @@ console.log(inAuctionProperty)
       <Grid container spacing={1}>
 
         <Grid container item xs={12} spacing={1}>
-        <Link to= {`/property/${inAuctionProperty.id}`} >
-          <BidCard p={inAuctionProperty}/></Link>
+        <Link to= {`/property/${liveAuctionProperty.id}`} >
+          <BidCard p={liveAuctionProperty}/></Link>
           
        
         </Grid>

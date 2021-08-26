@@ -5,6 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
 import Bidding from './bidding/bidding';
 import BidCross from '../../assets/svg/bid-cross.svg'
+import BidPanel from './bidding/bidPanel'
+
 
 function rand() {
     return Math.round(Math.random() * 20) - 10;
@@ -49,9 +51,14 @@ function getModalStyle() {
       color:'#A88663',
     }
   }));
-const Bid = ()=>{
+  //
+
+const Bid = ({auctionDetails})=>{
+    console.log(auctionDetails)
+
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
+    
     const classes = useStyles();
 
     const handleOpen = () => {
@@ -62,7 +69,7 @@ const Bid = ()=>{
         setOpen(false);
       };
 
-
+      // place your bid modal
       const body = (
        
         <div style={modalStyle} className={classes.paper}>
@@ -73,8 +80,8 @@ const Bid = ()=>{
            <img src={BidCross} alt='' onClick={handleClose}/></Grid>
           </Grid>
           <p id="simple-modal-description"></p>
-          <Bidding/>
-
+          {/**{bidIncrement, currentCall, onBid, onChangeBid} */}
+          <BidPanel bidIncrement={auctionDetails.bidIncrement} currentCall={''} onBid={''} onChangeBid={''}   />
         </div>
        );
 
@@ -99,3 +106,4 @@ const Bid = ()=>{
 
 
 export default Bid
+//<Bidding propertyDetails={propertyDetails}/>

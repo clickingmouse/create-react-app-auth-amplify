@@ -85,6 +85,8 @@ export const getAuction = /* GraphQL */ `
       finalBid
       propertyID
       testAuctionDay
+      isActive
+      isLive
       _version
       _deleted
       _lastChangedAt
@@ -115,6 +117,8 @@ export const listAuctions = /* GraphQL */ `
         finalBid
         propertyID
         testAuctionDay
+        isActive
+        isLive
         _version
         _deleted
         _lastChangedAt
@@ -154,6 +158,8 @@ export const syncAuctions = /* GraphQL */ `
         finalBid
         propertyID
         testAuctionDay
+        isActive
+        isLive
         _version
         _deleted
         _lastChangedAt
