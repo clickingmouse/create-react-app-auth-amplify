@@ -80,6 +80,9 @@ const classes = useStyles();
   const [isLoadingBids, setIsLoadingBids] =useState(false)
   const [auctionRooms, setAuctionRooms] = useState([]);
   const [messages, setMessages] = useState([]);
+  //const [isLoadingAuctions, setIsLoadingAuctions]= useState(false)
+  //const [isLoadingBids, setIsLoadingBids]= useState(false)
+
   //get properties data
   console.log('<APP.JS>')
   useEffect( ()=>{

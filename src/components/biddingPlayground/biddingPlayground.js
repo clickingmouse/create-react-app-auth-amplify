@@ -166,6 +166,7 @@ return(
     <BidCallingBidPrice currentBid={lastBid}/>
     <BidClosesInDate/>
     <BidCountDownTimer/>
+    
     <BidYourBidPrice />
 
     <BidPanel bidIncrement={auctionedP.bidIncrement} currentCall={lastBid ==0?lastBid:auction.startingBid}  onBid={handleSubmit} onChangeBid={handleBidCall}/>

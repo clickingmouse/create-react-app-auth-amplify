@@ -138,7 +138,9 @@ const PropertyDetails = ()=>{
     const property = properties.find(property => property.id == propertyId)
     console.log(property)
     console.log(propertyId)
-
+    const auctions=data.state.auctions
+    const auctionDetail = auctions.find(auction => auction.propertyID == property.prn)
+    console.log(auctionDetail)
     //const [liveAuction, setLiveAuction] = useState(true)
 
 
@@ -189,7 +191,8 @@ const PropertyDetails = ()=>{
 <PropertyMoreInfo p={property}/>
 
 
-{liveAuction?<Grid container justifyContent="center" direction="row"  className={classes.options} spacing={2}><Grid item><Enquire/></Grid>  <Grid item><Bid/></Grid></Grid>:<Grid container direction="row"><CapsuleButton title="Enquire" color="black" width="160" height="37.11"/></Grid> }
+{liveAuction?<Grid container justifyContent="center" direction="row"  className={classes.options} spacing={2}><Grid item><Enquire/></Grid>  <Grid item><Bid auctionDetail={auctionDetail}/></Grid></Grid>
+:<Grid container direction="row"><CapsuleButton title="Enquire" color="black" width="160" height="37.11"/></Grid> }
 </Container>
         </Container>
 </>

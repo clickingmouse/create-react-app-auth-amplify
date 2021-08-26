@@ -48,7 +48,7 @@ const classes=useStyles()
                 <Grid item container direction='row'>
                     <Grid item container direction='row' xs={6}>
 
-                        <Typography className={classes.price}>6850000</Typography><Typography className={classes.white}>hkd</Typography>
+                        <Typography className={classes.price}>6850000</Typography><Typography className={classes.hkd}>hkd</Typography>
                     </Grid>
                     
                     <Grid item xs={6}><Typography className={classes.date}>11/5/2021</Typography></Grid>
