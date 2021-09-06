@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useContext, useState, useEffect} from 'react';
 import LandingHeader from './landingHeader';
 import Container from '@material-ui/core/Container';
 
@@ -27,6 +27,11 @@ import {
   Route,
   Link
 } from "react-router-dom"
+
+import Amplify, { API, graphqlOperation, Storage, Auth } from 'aws-amplify';
+import {listPropertys, listFavorites, listAuctions, listBids, listMessages} from '../../graphql/queries'
+
+
 import Store from '../../store/store'
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -53,7 +58,8 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 
-const Landing = ()=>{
+const Landing = (props)=>{
+  console.log(props)
     const classes = useStyles();
 const today = new Date()
 const day = today.getDay()
@@ -75,6 +81,47 @@ const liveAuction = allAuctions.find(auction => auction.isLive == true)
 console.log(liveAuction)
 const liveAuctionProperty = allProperties.find (property => property.prn = liveAuction.propertyID)
 console.log(liveAuctionProperty)
+
+
+    // bidding functions
+    const [bids, setBids]=useState([]) 
+    const [lastBid, setLastBid]= useState(liveAuction.startingBid)
+    const [myBid, setMyBid]=useState()
+    useEffect(() => {
+      // filter by auciontid
+      console.log('fetching existing bids')
+      try{
+        API
+          .graphql(graphqlOperation(listBids,{
+            filter:{
+              auctionID:{eq:liveAuctionProperty.id}
+            }
+          }))
+          .then((response) => {
+          const items = response.data?.listBids?.items;
+          console.log(response)
+            if (items) {
+              //setMessages(items);
+              console.log(items)
+              setBids(items)
+             
+            } else {
+              setLastBid(0)
+              //setMyBid(auction.startingBid)
+            }
+          })
+        } catch (error) {
+        console.log(error)
+        } 
+        //},[]);
+      },[]);
+ 
+    const handleBidCall= (event, value)=>{
+        console.log(value)
+        setMyBid(value)
+    }    
+
+
 
 {/* <Link to= {`/property/${inAuctionProperty.id}`} >
 <BidCard p={inAuctionProperty}/></Link> */}

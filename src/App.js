@@ -83,6 +83,10 @@ const classes = useStyles();
   //const [isLoadingAuctions, setIsLoadingAuctions]= useState(false)
   //const [isLoadingBids, setIsLoadingBids]= useState(false)
 
+  // bidding states
+  
+
+
   //get properties data
   console.log('<APP.JS>')
   useEffect( ()=>{
@@ -228,6 +232,12 @@ const fetchAuctionRoom = async (auctionID) =>{
               console.log(items)
               dispatch({type: 'FETCH_AUCTIONS',payload: response.data.listAuctions.items });
               //console.log(Store)
+              //08-26
+
+              // setLiveAuction
+              setLiveAuction(response.data.listAuctions.items.find(auction=>auction.isLive==true))
+             
+
               
           }
 
@@ -239,6 +249,15 @@ const fetchAuctionRoom = async (auctionID) =>{
 
     setIsLoadingAuctions(false)
     }
+
+const [liveAuction, setLiveAuction]=useState()
+const [liveAuctionProperty, setLiveAuctionProperty]=useState()
+const [myBid, setMyBid]=useState()
+const handleBidCall= (event, value)=>{
+  console.log(value)
+  setMyBid(value)
+}
+
     
     /*
     useEffect(() => {
@@ -355,7 +374,7 @@ const handleSubmit = async (event) => {
         </Route>
 
           <Route path="/explore">
-            <Landing />
+            <Landing liveAuction={liveAuction} onChangeBid={handleBidCall} myBid={myBid}/>
           </Route>
           <Route path="/saved">
             <Favorites />

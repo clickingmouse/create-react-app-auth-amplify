@@ -4,6 +4,7 @@ import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider'
+import Container from '@material-ui/core/Container'
 
 import CircleButton from '../buttons/circleButton';
 import Grid from '@material-ui/core/Grid';
@@ -12,6 +13,8 @@ import Icon from '@material-ui/core/Icon';
 import SmsRoundedIcon from '@material-ui/icons/SmsRounded';
 import MailOutlineRoundedIcon from '@material-ui/icons/MailOutlineRounded';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+import BidCross from '../../assets/svg/bid-cross.svg'
+
 
 function rand() {
     return Math.round(Math.random() * 20) - 10;
@@ -32,13 +35,57 @@ function getModalStyle() {
   const useStyles = makeStyles((theme) => ({
     paper: {
       position: 'absolute',
-      width: 375,
-      height: 165.11,
+      //width: 375,
+      width:'90%',
+      height:'60%',
+      //height: 165.11,
       backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
+      //border: '2px solid #000',
       boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
+      //padding: theme.spacing(2, 4, 3),
+      //padding:'5%'
+      paddingLeft:'5%',
+      paddingRight:'5%'
+
     },
+    wrapper:{
+      //top:"287",
+      top:'40%',
+      left:0,
+      display:'absolute',
+      width : 375
+    },
+    title:{
+      fontSize:24,
+      color:'#A88663',
+
+    },
+    closeIcon:{
+      position:'absolute',
+      right:0,
+      paddingRight:'5%'
+      //padding: 
+      //display:'float',
+      //float:'right'
+      //marginLeft:'auto'
+    },
+    ty:{
+      fontSize:32,
+      color:'#A88663',
+      
+
+    },
+    txt:{
+      color:'#3D3D3D',
+      fontSize:20
+
+    },
+    contact:{
+      fontSize:'13',
+      color:'#A88663'
+
+    }
+
   }));
 const Enquire = ()=>{
     const [modalStyle] = React.useState(getModalStyle);
@@ -56,15 +103,31 @@ const Enquire = ()=>{
 
       const body = (
         <>
-        <div style={modalStyle} className={classes.paper}>  
-          <h2 id="simple-modal-title">Enquire</h2>
+        
+        <div style={modalStyle} className={classes.paper}>
+        <Grid container direction='row' xs={12} alignItems='center' justifyContent='center' >
+            <Grid item>
+          <h2 id="simple-modal-title" className={classes.title}>Enquire</h2></Grid>
+            <Grid item className={classes.closeIcon}>
+           <img src={BidCross} alt='' onClick={handleClose}/></Grid>
+          </Grid>  
           <p id="simple-modal-description">
             
           </p>
-          <Typography>Thank You</Typography>          
-          <Typography>for your interest!</Typography>
+
+          <Grid Container direction='column' xs={12} alignItems='center' justifyContent='center'>
+          
+          <Typography className={classes.ty} align='center'>Thank You</Typography>
+          <Grid item>          
+          <Typography className={classes.txt } align='center'>for your interest!</Typography>
+          </Grid>
+          </Grid>
+
           <br/>
-          <Typography>Contact Us</Typography>
+          <Typography  className={classes.contact } align='center'> Contact Us</Typography>
+          
+
+
           <Divider/>
           <Grid container
 spacing ={3}
@@ -84,6 +147,7 @@ spacing ={3}
 
 </Grid>
 </div>
+
         </>
       );
 

@@ -16,6 +16,9 @@ const MyBid = ()=>{
     return(<>
     <MyBidHeader/>
         <Container xs={12}>
+        < Link to={'/myAuctions/won'} style={{textDecoration: 'none'}}>
+        <CapsuleButton title="Past Bids" height="50" width="337" color="#A88663" fontColor=""/></Link>
+        <br/>
             
         <BidCard>
         <BidCallingBidPrice/>
@@ -28,11 +31,6 @@ const MyBid = ()=>{
         </Grid>
 
         </BidCard>
-        < Link to={'/myAuctions/won'} style={{textDecoration: 'none'}}>
-        <CapsuleButton title="Successful Bids" height="50" width="337" color="#A88663" fontColor=""/></Link>
-        
-        <Link to ={'/myAuctions/lost'} style={{textDecoration: 'none'}}>
-        <CapsuleButton title="Lost Bids" height="50" width="337" color="#000000" fontColor=""/></Link>
         
 
 
@@ -42,3 +40,9 @@ const MyBid = ()=>{
 }
 
 export default MyBid
+
+// < Link to={'/myAuctions/won'} style={{textDecoration: 'none'}}>
+// <CapsuleButton title="Successful Bids" height="50" width="337" color="#A88663" fontColor=""/></Link>
+
+// <Link to ={'/myAuctions/lost'} style={{textDecoration: 'none'}}>
+// <CapsuleButton title="Lost Bids" height="50" width="337" color="#000000" fontColor=""/></Link>

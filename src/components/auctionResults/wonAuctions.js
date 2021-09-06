@@ -11,8 +11,8 @@ import WonHeader from './wonHeader'
 import WonCard from './wonCard'
 import WonButton from './wonButton'
 import LostButton from './lostButton'
-
-
+import {Link} from 'react-router-dom'
+import LostAuctions from './lostAuctions'
 
 const useStyles=makeStyles({
     appBar:{},
@@ -36,8 +36,9 @@ const WonAuctions = () =>{
           <WonHeader/>
           <Grid container direction='row'>
 
-              <WonButton title='Won Auctions' color='#A88663'/> 
-              <LostButton title='Lost Auctions' color='#777777'/>
+              <WonButton title='Won Auctions' color='#A88663'/>
+              < Link to={'/myAuctions/lost'} style={{textDecoration: 'none'}}> 
+              <LostButton title='Lost Auctions' color='#777777'/></Link>
           </Grid>
 <br/>
       <WonCard/>
