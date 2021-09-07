@@ -11,6 +11,7 @@ const FETCH_AUCTIONS = 'FETCH_AUCTIONS'
 const FETCH_BIDS = 'FETCH_BIDS'
 const FETCH_USER = 'FETCH_USER'
 const initial = 'INITIAL'
+const ONCHANGE_BID='ONCHANGE_BID'
 export default function reducer(state, action){
     console.log(state)
     console.log(action)
@@ -81,6 +82,9 @@ export default function reducer(state, action){
             //console.log(Object.assign(state, {profile: action.payload}))
             //return Object.assign(state, {profile: Object.assign(state.profile,action.payload)})
             return {...state, profile: {...action.payload}}
+        case 'ONCHANGE_BID':
+            console.log('reducer: ONCHANGE_BID')
+            return {...state, myBid: action.payload }
         default:
             return state
 

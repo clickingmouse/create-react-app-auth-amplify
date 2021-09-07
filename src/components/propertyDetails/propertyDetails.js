@@ -36,6 +36,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Enquire from './enquire'
 import Bid from './bid'
 
+import {createBid} from '../../graphql/mutations'
+
 //import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 
@@ -130,7 +132,7 @@ flexGrow:1
     }
     
   }));
-const PropertyDetails = ()=>{
+const PropertyDetails = ({test})=>{
     const classes = useStyles();
  
     let { propertyId } = useParams();
@@ -150,9 +152,48 @@ const PropertyDetails = ()=>{
     const [isLive, setIsLive]=useState(auctionDetails.isLive)
     console.log(isLive)
 
+    const user = React.useContext(Store).state.profile
+    console.log(user)
+
+    const bids = data.state.bids
+    //const bidIncrement = 10000
+    //const [myBid, setMyBid]=useState(bidIncrement + currentCall)
+    console.log(bids)
+
     //setLiveAuction(false)
     //const actionButtons = liveAuction?return(<><button/><button/></>):<button/> 
     const liveAuction = true
+
+    //const auctionId = data.state.properties.find(property=> property.prn= )
+    const submitBid =  async(event)=>{
+      console.log(data.state)
+      console.log('submitting bid for property' + propertyId) 
+      event.preventDefault();
+      event.stopPropagation();
+      console.log('submitting bid::')
+      console.log(event.target)
+      const input = {
+        //get time, username, useruid, bid,uid, bid,
+        auctionID:auctionDetails.id,
+        bidderName:user.username,
+        bidderID: user.id,
+        bid: data.state.myBid,
+        submittedTime: new Date().toISOString()
+        //body: messageBody.trim()
+      };
+  
+      console.log(input)
+      try {
+        //setMyBid('');
+        //await API.graphql(graphqlOperation(createBid, { input }))
+      } catch (error) {
+        console.warn(error);
+      }
+    
+
+
+    }
+
     return(<>
 
         <Container xs={12} className={classes.wrapper}>
@@ -197,7 +238,8 @@ const PropertyDetails = ()=>{
 <PropertyMoreInfo p={property}/>
 
 
-{liveAuction?<Grid container justifyContent="center" direction="row"  className={classes.options} spacing={2}><Grid item><Enquire/></Grid>  <Grid item><Bid auctionDetails={auctionDetails}/></Grid></Grid>
+{liveAuction?<Grid container justifyContent="center" direction="row"  className={classes.options} spacing={2}><Grid item><Enquire/></Grid>  
+<Grid item><Bid auctionDetails={auctionDetails} onChange={test} handleSubmit={submitBid}/></Grid></Grid>
 :<Grid container direction="row"><CapsuleButton title="Enquire" color="black" width="160" height="37.11"/></Grid> }
 </Container>
         </Container>

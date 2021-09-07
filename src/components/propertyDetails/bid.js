@@ -38,6 +38,8 @@ function getModalStyle() {
       //border: '2px solid #000',
       //boxShadow: theme.shadows[5],
       //padding: theme.spacing(2, 4, 3),
+      //paddingLeft:'5%',
+      //paddingRight:'5%'
     },
     wrapper:{
       //top:"287",
@@ -49,11 +51,20 @@ function getModalStyle() {
     title:{
       fontSize:24,
       color:'#A88663',
-    }
+    },
+    closeIcon:{
+      position:'absolute',
+      right:0,
+      paddingRight:'5%'
+      //padding: 
+      //display:'float',
+      //float:'right'
+      //marginLeft:'auto'
+    },
   }));
   //
 
-const Bid = ({auctionDetails})=>{
+const Bid = ({auctionDetails, onChange, handleSubmit})=>{
     console.log(auctionDetails)
 
     const [modalStyle] = React.useState(getModalStyle);
@@ -73,15 +84,15 @@ const Bid = ({auctionDetails})=>{
       const body = (
        
         <div style={modalStyle} className={classes.paper}>
-          <Grid container direction='row' xs={12} alignItems='center'>
+          <Grid container direction='row' xs={12} alignItems='center' justifyContent='center' >
             <Grid item>
           <h2 id="simple-modal-title" className={classes.title}>Place your bid</h2></Grid>
-            <Grid item>
+            <Grid item className={classes.closeIcon}>
            <img src={BidCross} alt='' onClick={handleClose}/></Grid>
           </Grid>
           <p id="simple-modal-description"></p>
           {/**{bidIncrement, currentCall, onBid, onChangeBid} */}
-          <BidPanel bidIncrement={auctionDetails.bidIncrement} currentCall={''} onBid={''} onChangeBid={''}   />
+          <BidPanel bidIncrement={auctionDetails.bidIncrement} currentCall={''} onBid={''} onChangeBid={onChange} onSubmitBid={handleSubmit}  />
         </div>
        );
 

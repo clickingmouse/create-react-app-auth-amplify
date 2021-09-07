@@ -14,7 +14,7 @@ root: {
     display:"flex",
     //flex:1,
 //        width:43.62,
-    width:337,
+    width:'100%',
     height:props => `${props.height}px`,
 //        height:43.62,
     //backgroundColor:props=>`${props.color}`,

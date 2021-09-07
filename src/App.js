@@ -75,9 +75,9 @@ const classes = useStyles();
   const [isLoadingFavorites, setIsLoaadingFavorites]= useState(true)
   const [properties, setProperties]= useState()
   const [userProfile, setUserProfile]= useState()
-  const [state, dispatch]= useReducer(reducer, {favorites:[],properties:[],profile:{}, auctions:[]})
-  const [isLoadingAuctions, setIsLoadingAuctions] =useState(false)
-  const [isLoadingBids, setIsLoadingBids] =useState(false)
+  const [state, dispatch]= useReducer(reducer, {favorites:[],properties:[],profile:{}, auctions:[], bids:[], myBid:null })
+  const [isLoadingAuctions, setIsLoadingAuctions] =useState(true)
+  const [isLoadingBids, setIsLoadingBids] =useState(true)
   const [auctionRooms, setAuctionRooms] = useState([]);
   const [messages, setMessages] = useState([]);
   //const [isLoadingAuctions, setIsLoadingAuctions]= useState(false)
@@ -108,6 +108,9 @@ const classes = useStyles();
   },[])
   useEffect (()=>{
     fetchAuctionRoom()
+  },[])
+  useEffect (()=>{
+    fetchBids()
   },[])
 
   const fetchProperties = async () =>{
@@ -236,7 +239,8 @@ const fetchAuctionRoom = async (auctionID) =>{
 
               // setLiveAuction
               setLiveAuction(response.data.listAuctions.items.find(auction=>auction.isLive==true))
-             
+              //console.log(liveAuction)
+
 
               
           }
@@ -248,6 +252,7 @@ const fetchAuctionRoom = async (auctionID) =>{
       }
 
     setIsLoadingAuctions(false)
+    console.log(liveAuction)
     }
 
 const [liveAuction, setLiveAuction]=useState()
@@ -278,8 +283,9 @@ const handleBidCall= (event, value)=>{
       },[]);
    */
   const fetchBids =()=>{
+    
     setIsLoadingBids(true)
-    console.log('...loading bids...')
+    console.log('...loading bids... for' + liveAuction)
     
       try{
         
@@ -311,6 +317,7 @@ const handleBidCall= (event, value)=>{
 
   }
   setIsLoadingBids(false)
+
 }
 
 ////
@@ -358,6 +365,10 @@ const handleSubmit = async (event) => {
     //isFavorite? dispatch({type: 'TOGGLE_REMOVE_FAVORITE', payload: props.property}) : dispatch({type: 'TOGGLE_ADD_FAVORITE', payload: props.property})
   }
 
+  const test =()=>{
+    console.log('test')
+  }
+
 //console.log(properties)
 //<Route path exact path="/">
 //<BiddingPlayground />
@@ -392,7 +403,7 @@ const handleSubmit = async (event) => {
             <PropertiesList propertyType='1' />
           </Route>
           <Route path="/property/:propertyId">
-            <PropertyDetails  />
+            <PropertyDetails test={handleBidCall}/>
           </Route>
           <Route path="/auctionList">
             <AuctionPlayground  />

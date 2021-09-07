@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import CircleButtonMinus from '../../../assets/svg/CircleButtonMinus.svg'
+
 const useStyles = makeStyles({
     root:{
     display:"flex",
@@ -11,7 +13,7 @@ const useStyles = makeStyles({
     height:props => `${props.radius}px`,
 //        height:43.62,
     backgroundColor:props=>`${props.color}`,
-    borderRadius:30,
+    borderRadius:'50%',
     alignItems:"center",
     justifyContent:"center",
     }
@@ -27,7 +29,7 @@ const BidDecButton = (props)=>{
     
     return (
         <div className = {classes.root} onClick={props.onClick}>
-            <RemoveCircleIcon />
+            <img src={CircleButtonMinus} alt=''/>
         </div>
     )
 }
