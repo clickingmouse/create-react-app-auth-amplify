@@ -27,12 +27,12 @@ import {
   Route,
   Link
 } from "react-router-dom"
+import Store from '../../store/store'
 
 import Amplify, { API, graphqlOperation, Storage, Auth } from 'aws-amplify';
 import {listPropertys, listFavorites, listAuctions, listBids, listMessages} from '../../graphql/queries'
 
 
-import Store from '../../store/store'
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -60,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Landing = (props)=>{
   console.log(props)
+  const { state, dispatch } = React.useContext(Store);
     const classes = useStyles();
 const today = new Date()
 const day = today.getDay()
@@ -77,9 +78,11 @@ console.log(inAuctionProperty)
 const allAuctions = React.useContext(Store).state.auctions 
 console.log(allAuctions)
 
-const liveAuction = allAuctions.find(auction => auction.isLive == true)
+const liveAuction = allAuctions.find(auction => auction.isLive === true)
 console.log(liveAuction)
-const liveAuctionProperty = allProperties.find (property => property.prn = liveAuction.propertyID)
+
+//dispatch({type: 'LIVE_AUCTION',payload: liveAuction});
+const liveAuctionProperty = allProperties.find (property => property.prn == liveAuction.propertyID)
 console.log(liveAuctionProperty)
 
 
@@ -102,6 +105,8 @@ console.log(liveAuctionProperty)
           console.log(response)
             if (items) {
               //setMessages(items);
+              console.log(items)
+              items.sort((a,b)=>{return b.bid - a.bid})
               console.log(items)
               setBids(items)
              
@@ -126,6 +131,8 @@ console.log(liveAuctionProperty)
 {/* <Link to= {`/property/${inAuctionProperty.id}`} >
 <BidCard p={inAuctionProperty}/></Link> */}
 
+// <Link to= {`/property/${liveAuctionProperty.id}`}>
+
     return(
     
     <Container maxWidth="sm" className={classes.container}>
@@ -136,8 +143,9 @@ console.log(liveAuctionProperty)
       <Grid container spacing={1}>
 
         <Grid container item xs={12} spacing={1}>
-        <Link to= {`/property/${liveAuctionProperty.id}`} >
-          <BidCard p={liveAuctionProperty}/></Link>
+       
+        <Link to={{pathname:`/property/${liveAuctionProperty.id}`, state:{auctionID: liveAuction.id} } }>
+          <BidCard p={liveAuctionProperty} /></Link>
           
        
         </Grid>

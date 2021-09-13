@@ -132,9 +132,10 @@ flexGrow:1
     }
     
   }));
-const PropertyDetails = ({test})=>{
+const PropertyDetails = ({test, location})=>{
     const classes = useStyles();
- 
+    //const { auctionID} = location.state || {}
+    //console.log(auctionID)
     let { propertyId } = useParams();
     
     const data = React.useContext(Store)
@@ -143,8 +144,13 @@ const PropertyDetails = ({test})=>{
     console.log(properties)
     const property = properties.find(property => property.id == propertyId)
     console.log(property)
+
     console.log(propertyId)
     const auctions=data.state.auctions
+console.log(property.prn)
+
+    const liveAuctionProperty = auctions.find(auction =>  auction.propertyID == property.prn)
+    console.log(liveAuctionProperty)
     const auctionDetails = auctions.find(auction => auction.propertyID == property.prn)
     console.log(auctionDetails)
     //const [liveAuction, setLiveAuction] = useState(true)
@@ -239,7 +245,7 @@ const PropertyDetails = ({test})=>{
 
 
 {liveAuction?<Grid container justifyContent="center" direction="row"  className={classes.options} spacing={2}><Grid item><Enquire/></Grid>  
-<Grid item><Bid auctionDetails={auctionDetails} onChange={test} handleSubmit={submitBid}/></Grid></Grid>
+<Grid item><Bid auctionDetails={auctionDetails} onChange={test} handleSubmit={submitBid} propertyID={propertyId} auctionID={auctionDetails.id}/></Grid></Grid>
 :<Grid container direction="row"><CapsuleButton title="Enquire" color="black" width="160" height="37.11"/></Grid> }
 </Container>
         </Container>

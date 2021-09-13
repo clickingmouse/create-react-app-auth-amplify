@@ -1,4 +1,8 @@
 
+import  {  graphqlOperation } from 'aws-amplify';
+
+
+
 
 const fetchproperties = 'FETCH_PROPERTIES'
 const FETCH_PROPERTIES = 'FETCH_PROPERTIES'
@@ -12,6 +16,10 @@ const FETCH_BIDS = 'FETCH_BIDS'
 const FETCH_USER = 'FETCH_USER'
 const initial = 'INITIAL'
 const ONCHANGE_BID='ONCHANGE_BID'
+const SEND_BID='SEND_BID'
+const LIVE_AUCTION='LIVE_AUCTION'
+
+
 export default function reducer(state, action){
     console.log(state)
     console.log(action)
@@ -61,8 +69,8 @@ export default function reducer(state, action){
                 
         // return {...state, favorites:newFavorites}
         case TOGGLE_ADD_FAVORITE: 
-        console.log(state)
-        console.log(action)
+        //console.log(state)
+        //console.log(action)
         //return {...state, favorites: state.favorites.push(action.payload)}
         return {...state, favorites: state.favorites.concat(action.payload)}
 
@@ -74,17 +82,27 @@ export default function reducer(state, action){
             //Object.assign(state, {favorites:action.payload})
             return Object.assign(state, {auctions: action.payload})
 
-        case 'FETCH_BIDS':
+        case FETCH_BIDS:
             console.log('reducer: FETCH BIDS', action)
             return Object.assign(state, {bids: [...action.payload]})
-        case 'FETCH_USER':
+        case FETCH_USER:
             console.log('reducer: FETCH USER', action)
             //console.log(Object.assign(state, {profile: action.payload}))
             //return Object.assign(state, {profile: Object.assign(state.profile,action.payload)})
             return {...state, profile: {...action.payload}}
-        case 'ONCHANGE_BID':
+        case ONCHANGE_BID:
             console.log('reducer: ONCHANGE_BID')
-            return {...state, myBid: action.payload }
+            return {...state, myBid: action.payload  }
+        case SEND_BID:
+            console.log('....sending bid ' + action.payload)
+            console.log(state.myBid +''+ state.profile.id)
+            return{...state}
+        case LIVE_AUCTION:
+            return{...state, liveAuction:{...action.payload}}
+            
+
+
+
         default:
             return state
 

@@ -28,15 +28,29 @@ const useStyles = makeStyles({
 
 const BidPanel = ({bidIncrement, currentCall, onBid, onChangeBid, onSubmitBid})=>{
     const classes = useStyles();
-    const [state, dispatch]= useReducer(reducer, {favorites:[],properties:[],profile:{}, auctions:[], bids:[], myBid:null })
+    const { state, dispatch } = React.useContext(Store);
 
+    //const [state, dispatch]= useReducer(reducer, )
+   //                                                items.sort((a,b)=>{return b.bid - a.bid})
+    const [currentBid, setCurrentBid]= useState(state.bids.sort((a,b)=>{return b.bid-a.bid}))
+    console.log(state.bids.sort((a,b)=>{return b.bid-a.bid}))
+    console.log(currentBid[0].bid)
+    const bids = state.bids
+    bids.sort((a,b)=>{return b.bid-a.bid})
+    console.log(bids[0])
 
     const [myBid, setMyBid]=useState(bidIncrement + currentCall)
     const onAdd=(e)=>{
         e.preventDefault()
+        console.log(myBid + ' ' + bidIncrement)
         setMyBid(+myBid + +bidIncrement)
+        console.log(+myBid + +bidIncrement)
         onChangeBid(e, myBid+bidIncrement)
-        dispatch({type: 'ONCHANGE_BID', payload: MyBid } );
+        console.log(state.myBid)
+        console.log(myBid)
+        dispatch({type: 'ONCHANGE_BID', payload: myBid } );
+        console.log(myBid)
+
     }
 
     const onDeduct=(e)=>{
@@ -54,7 +68,7 @@ const BidPanel = ({bidIncrement, currentCall, onBid, onChangeBid, onSubmitBid})=
         <Grid container direction="row" className={classes.bidPanel} xs={12} justifyContent="space-between">
             <Grid item>
                 
-        <BidCallingBidPrice lastBid={currentCall}/>
+        <BidCallingBidPrice lastBid={currentBid[0].bid}/>
 
 
             </Grid>
@@ -76,7 +90,7 @@ const BidPanel = ({bidIncrement, currentCall, onBid, onChangeBid, onSubmitBid})=
           label=''
           type="number"
           defaultValue={myBid}
-          value = {myBid}
+          value = {state.myBid}
 
           InputLabelProps={{
             shrink: true,

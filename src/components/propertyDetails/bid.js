@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useReducer, useContext} from 'react'
 import CapsuleButton from '../buttons/capsuleButton'
 import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,7 +6,9 @@ import Grid from '@material-ui/core/Grid'
 import Bidding from './bidding/bidding';
 import BidCross from '../../assets/svg/bid-cross.svg'
 import BidPanel from './bidding/bidPanel'
-
+//import { useReducer } from 'react';
+//import reducer from '../reducers/reducers'
+import store from '../../store/store'
 
 function rand() {
     return Math.round(Math.random() * 20) - 10;
@@ -64,8 +66,13 @@ function getModalStyle() {
   }));
   //
 
-const Bid = ({auctionDetails, onChange, handleSubmit})=>{
-    console.log(auctionDetails)
+const Bid = ({auctionDetails, onChange, handleSubmit, auctionID, propertyID, })=>{
+  //const [state, dispatch]= useReducer(reducer)
+  //const [userData, dispatch] = useContext(store)
+  //const [state, dispatch] = useContext(store)
+  const { state, dispatch } = React.useContext(store);
+  console.log(state)
+  console.log(auctionDetails)
 
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
@@ -80,6 +87,33 @@ const Bid = ({auctionDetails, onChange, handleSubmit})=>{
         setOpen(false);
       };
 
+    const handleSubmitBid = async(event)=>{
+
+      
+      event.preventDefault();
+      event.stopPropagation();
+      console.log('submitting bid::')
+      console.log(event.target)
+      //console.log(store)
+      console.log(state)
+
+      const input = {
+        //get time, username, useruid, bid,uid, bid,
+        auctionID:auctionID,
+        bidderName:state.profile.username,
+        bidderID: state.profile.id,
+        bid: state.myBid,
+        submittedTime: new Date().toISOString()
+        //body: messageBody.trim()
+      };
+      console.log(input)
+      dispatch({type: 'SEND_BID',payload: auctionID});
+
+
+
+
+    }
+
       // place your bid modal
       const body = (
        
@@ -92,7 +126,7 @@ const Bid = ({auctionDetails, onChange, handleSubmit})=>{
           </Grid>
           <p id="simple-modal-description"></p>
           {/**{bidIncrement, currentCall, onBid, onChangeBid} */}
-          <BidPanel bidIncrement={auctionDetails.bidIncrement} currentCall={''} onBid={''} onChangeBid={onChange} onSubmitBid={handleSubmit}  />
+          <BidPanel bidIncrement={auctionDetails.bidIncrement} currentCall={''} onBid={''} onChangeBid={onChange} onSubmitBid={handleSubmitBid}  />
         </div>
        );
 

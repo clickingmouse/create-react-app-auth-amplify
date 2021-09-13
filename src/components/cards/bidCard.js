@@ -16,6 +16,7 @@ import BedIcon from '../../assets/svg/ionic-ios-bed.svg'
 import BathIcon from '../../assets/svg/awesome-bath.svg'
 import AreaIcon from '../../assets/svg/icon-area.svg'
 
+import Store from '../../store/store'
 //337-140 = 197
 const useStyles = makeStyles({
   root: {
@@ -56,6 +57,11 @@ width:337,
 
 function BidCard({p}) {
   const classes = useStyles();
+  const { state, dispatch } = React.useContext(Store);
+  const bids = state.bids
+  console.log(bids)
+  bids.sort((a,b)=>{return b.bid - a.bid})
+  console.log(bids)
 
   return (
     <div className={classes.wrapper}>
