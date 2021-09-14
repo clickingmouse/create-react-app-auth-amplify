@@ -85,7 +85,7 @@ console.log(liveAuction)
 const liveAuctionProperty = allProperties.find (property => property.prn == liveAuction.propertyID)
 console.log(liveAuctionProperty)
 
-
+/*
     // bidding functions
     const [bids, setBids]=useState([]) 
     const [lastBid, setLastBid]= useState(liveAuction.startingBid)
@@ -105,9 +105,9 @@ console.log(liveAuctionProperty)
           console.log(response)
             if (items) {
               //setMessages(items);
-              console.log(items)
+              //console.log(items)
               items.sort((a,b)=>{return b.bid - a.bid})
-              console.log(items)
+              //console.log(items)
               setBids(items)
              
             } else {
@@ -125,6 +125,7 @@ console.log(liveAuctionProperty)
         console.log(value)
         setMyBid(value)
     }    
+    */
 
 
 

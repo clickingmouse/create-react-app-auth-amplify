@@ -18,6 +18,7 @@ const initial = 'INITIAL'
 const ONCHANGE_BID='ONCHANGE_BID'
 const SEND_BID='SEND_BID'
 const LIVE_AUCTION='LIVE_AUCTION'
+const CURRENT_BID='CURRENT_BID'
 
 
 export default function reducer(state, action){
@@ -52,7 +53,7 @@ export default function reducer(state, action){
                 ]
             } else {
                 
-                newFavorites = [...state.favorites, action.payload]
+                newFavorites = [...state.favorites, ...action.payload]
             }
             
     return {...state, favorites:newFavorites}
@@ -99,6 +100,9 @@ export default function reducer(state, action){
             return{...state}
         case LIVE_AUCTION:
             return{...state, liveAuction:{...action.payload}}
+        case CURRENT_BID:
+            console.log(action.payload)
+            return {...state, currentBid:action.payload}
             
 
 

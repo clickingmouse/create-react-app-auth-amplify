@@ -51,7 +51,13 @@ backgroundColor:'black',
 height:60,
 width:337,
     },
-    wrapper:{}
+    wrapper:{},
+    txt:{fontSize:8, color:'#FFFFFF'},
+    currency:{fontSize:20, color:'#FFFFFF'},
+    bidhkd:{color:'#A88663', fontSize:11},
+    timer:{color:'#FFFFFF', fontSize:20},
+    timeUnits:{ color:'#FFFFFF', fontSize:8}
+
 
 });
 
@@ -108,7 +114,33 @@ function BidCard({p}) {
        
 
     </Card>
-    <div className={classes.bid}>PLACEHOLDER</div>
+    <div className={classes.bid}>
+    
+    <Grid container direction='row' xs={12}>
+      <Grid container item  direction='column' xs={6}>
+
+      <Grid item><Typography className={classes.txt}>Current Bid price</Typography>
+      </Grid>
+
+      <Grid item><Typography className={classes.currency}>{state.currentBid}</Typography></Grid>
+
+      </Grid>
+
+      <Grid container item  direction='column' xs={6}>
+      <Grid item><Typography className={classes.txt}>Auction closes in</Typography></Grid>
+
+      <Grid item><Typography className={classes.timer}>22 : 55 :30</Typography></Grid>
+      <Grid item><Typography className={classes.timeUnits}>HR MN S</Typography></Grid>
+
+
+      </Grid>
+
+
+
+
+    </Grid>
+    
+    </div>
 
     </div>
   );

@@ -75,7 +75,7 @@ const classes = useStyles();
   const [isLoadingFavorites, setIsLoaadingFavorites]= useState(true)
   const [properties, setProperties]= useState()
   const [userProfile, setUserProfile]= useState()
-  const [state, dispatch]= useReducer(reducer, {favorites:[],properties:[],profile:{}, auctions:[], bids:[], myBid:0,liveAuction:{} })
+  const [state, dispatch]= useReducer(reducer, {favorites:[],properties:[],profile:{}, auctions:[], bids:[], myBid:0,liveAuction:{}, currentBid:0 })
   const [isLoadingAuctions, setIsLoadingAuctions] =useState(true)
   const [isLoadingBids, setIsLoadingBids] =useState(true)
   const [auctionRooms, setAuctionRooms] = useState([]);
@@ -306,6 +306,11 @@ const handleBidCall= (event, value)=>{
                 //setAuctionRooms(items);
                 console.log(items)
                 dispatch({type: 'FETCH_BIDS',payload: items });
+
+                //find highest bid
+                items.sort((a,b)=>{return b.bid - a.bid})
+                console.log(items[0].bid)
+                dispatch({type:'CURRENT_BID', payload: parseInt(items[0].bid)})
                 //console.log(Store)
                 
             }
