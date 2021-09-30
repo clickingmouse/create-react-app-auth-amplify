@@ -84,8 +84,14 @@ const classes = useStyles();
   //const [isLoadingBids, setIsLoadingBids]= useState(false)
 
   // bidding states
-  
 
+  function getTime(){
+    try{
+      const data = API.get('getAWSTime')
+      console.log(data)
+    }catch(err){ console.log(err)}
+  }
+  useEffect(()=>{getTime()},[])
 
   //get properties data
   console.log('<APP.JS>')

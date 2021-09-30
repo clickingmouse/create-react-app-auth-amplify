@@ -102,6 +102,7 @@ useEffect(() => {
       .subscribe({
         next: (event) => {
           setBids([...bids, event.value.data.onCreateBid]);
+          console.log('a bid was created')
           //
 
         },

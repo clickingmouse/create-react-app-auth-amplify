@@ -42,6 +42,8 @@ function getModalStyle() {
       //padding: theme.spacing(2, 4, 3),
       //paddingLeft:'5%',
       //paddingRight:'5%'
+      borderTopLeftRadius: 35,
+      borderTopRightRadius: 35
     },
     wrapper:{
       //top:"287",
@@ -106,6 +108,7 @@ const Bid = ({auctionDetails, onChange, handleSubmit, auctionID, propertyID, })=
         submittedTime: new Date().toISOString()
         //body: messageBody.trim()
       };
+      console.log(state.myBid)
       console.log(input)
       dispatch({type: 'SEND_BID',payload: auctionID});
 
@@ -126,7 +129,7 @@ const Bid = ({auctionDetails, onChange, handleSubmit, auctionID, propertyID, })=
           </Grid>
           <p id="simple-modal-description"></p>
           {/**{bidIncrement, currentCall, onBid, onChangeBid} */}
-          <BidPanel bidIncrement={auctionDetails.bidIncrement} currentCall={''} onBid={''} onChangeBid={onChange} onSubmitBid={handleSubmitBid}  />
+          <BidPanel bidIncrement={auctionDetails.bidIncrement} currentCall={''} onBid={''} onChangeBid={onChange} onSubmitBid={handleSubmitBid} auctionID={auctionID} />
         </div>
        );
 

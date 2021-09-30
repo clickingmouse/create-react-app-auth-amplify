@@ -48,9 +48,17 @@ return(
         <Grid item>
             <Typography className={classes.label}>Bid closes in</Typography>
         </Grid>
-        <Grid item   >
+
+
+
+        <Grid item container direction='row' >
+        <Grid item><Typography className={classes.timer}>23</Typography></Grid>
+        <Grid item><Typography className={classes.timer}>55 </Typography></Grid>
+        <Grid item><Typography className={classes.timer}>30</Typography></Grid>
+
             <Typography className={classes.timer}>23 : 55 :30</Typography>
-            </Grid>
+        </Grid>
+        
             <Grid item >
 
             <Typography className={classes.timerLabel}>Hours Minutes Seconds</Typography>
@@ -66,3 +74,14 @@ return(
 
 
 export default BidClosesInDate
+{/* <Grid item  >
+
+<Typography className={classes.timer}>23 : 55 :30</Typography>
+</Grid>
+<Grid item >
+
+<Typography className={classes.timerLabel}>Hours Minutes Seconds</Typography>
+</Grid>
+
+
+</Grid> */}

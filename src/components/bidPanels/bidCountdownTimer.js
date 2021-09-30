@@ -26,7 +26,9 @@ const useStyles = makeStyles((theme) => ({
         color:'white',
         fontSize:20,
         padding:0,
-        lineHeight:1.2
+        lineHeight:1.2,
+        fontWeight:'bold'
+
 
     },
     timerLabel:{
@@ -48,12 +50,20 @@ return(
         <Grid item>
             <Typography className={classes.label}>Bid closes in</Typography>
         </Grid>
-        <Grid item   >
-            <Typography className={classes.timer}>23 : 55 :30</Typography>
-            </Grid>
-            <Grid item >
+        <Grid item  container direction='row' spacing={1} justifyContent='center'>
 
-            <Typography className={classes.timerLabel}>Hours Minutes Seconds</Typography>
+        <Grid item><Typography className={classes.timer}>23</Typography></Grid>
+        <Grid item><Typography className={classes.timer}>:</Typography></Grid>
+        <Grid item><Typography className={classes.timer}>55 </Typography></Grid>
+        <Grid item><Typography className={classes.timer}>:</Typography></Grid>
+        <Grid item><Typography className={classes.timer}>30</Typography></Grid>
+
+           
+            </Grid>
+            <Grid item container direction='row' spacing={3} justifyContent='center'>
+            <Grid item><Typography className={classes.timerLabel}>Minutes</Typography></Grid>
+            <Grid item><Typography className={classes.timerLabel}>Hours</Typography></Grid>
+            <Grid item><Typography className={classes.timerLabel}>Seconds</Typography></Grid>
         </Grid>
 
 
@@ -66,3 +76,4 @@ return(
 
 
 export default BidCountDownTimer
+//<Typography className={classes.timer}>23 : 55 :30</Typography>

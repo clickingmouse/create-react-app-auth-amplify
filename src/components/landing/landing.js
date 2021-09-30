@@ -145,7 +145,7 @@ console.log(liveAuctionProperty)
 
         <Grid container item xs={12} spacing={1}>
        
-        <Link to={{pathname:`/property/${liveAuctionProperty.id}`, state:{auctionID: liveAuction.id} } }>
+        <Link to={{pathname:`/property/${liveAuctionProperty.id}`, state:{auctionID: liveAuction.id} } }  style={{textDecoration: 'none'}}>
           <BidCard p={liveAuctionProperty} /></Link>
           
        
