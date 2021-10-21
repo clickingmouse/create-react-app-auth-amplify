@@ -25,6 +25,8 @@ import BidsHistorical from './bidsHistorical'
 
 import Store from '../../store/store'
 
+import CountDownTimer from '../timer/countDownTimer';
+
 
 // const auctionid = 2
 const BiddingPlayground =()=>{
@@ -175,7 +177,7 @@ return(
     {/*bidController*/}
     <BidsHistorical bids={bids} openingBid={auction.startingBid} reserveBid={auction.reserveBid} currentCall={lastBid ==0?lastBid:auction.startingBid} bidIncrement={auction.bidIncrement}/>
 
-
+    <CountDownTimer/>
     </>
 )
 

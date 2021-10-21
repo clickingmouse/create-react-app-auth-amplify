@@ -18,11 +18,11 @@
       "function": {
         "getAWSTime": {
           "deploymentBucketName": "amplify-authcra-devf-135655-deployment",
-          "s3Key": "amplify-builds/getAWSTime-6c7073425a4d506c6138-build.zip"
+          "s3Key": "amplify-builds/getAWSTime-51476976535659785349-build.zip"
         },
         "getTime": {
           "deploymentBucketName": "amplify-authcra-devf-135655-deployment",
-          "s3Key": "amplify-builds/getTime-4f684463787731433532-build.zip"
+          "s3Key": "amplify-builds/getTime-645776524471717a6d4f-build.zip"
         }
       }
     }

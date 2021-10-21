@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/time",
+            "lambdaFunction": "getAWSTime",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/time"
+        }
+    ],
+    "resourceName": "AWSTime",
+    "apiName": "AWSTime",
+    "functionArns": [
+        {
+            "lambdaFunction": "getAWSTime"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-authcra-devf-135655-authRole",
+        "unAuthRoleName": "amplify-authcra-devf-135655-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "getAWSTime",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

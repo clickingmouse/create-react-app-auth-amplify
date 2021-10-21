@@ -8,7 +8,8 @@ import KingBedIcon from '@material-ui/icons/KingBed';
 import BedIcon from '../../assets/svg/ionic-ios-bed.svg'
 import BathIcon from '../../assets/svg/awesome-bath.svg'
 import AreaIcon from '../../assets/svg/icon-area.svg'
-
+import NumberFormat from "react-number-format";
+import TextField from '@material-ui/core/TextField';
 import BathtubRoundedIcon from '@material-ui/icons/BathtubRounded';
 import HeightRoundedIcon from '@material-ui/icons/HeightRounded';
 import { RequireNewPassword } from 'aws-amplify-react';
@@ -69,7 +70,17 @@ const PropertyCardContent =({p})=>{
         <Grid container direction="row" justifyContent="space-between" alignItems="flex-end">
             <Grid  item direction="column" xs={6} container>
                 <Grid item container direction="row" alignItems="baseline">
-                    <Grid item><Typography className={classes.price}>{p.price}</Typography></Grid>
+                    <Grid item>
+                    <NumberFormat
+  customInput={TextField}
+  displayType={'text'}
+  className={classes.price}
+  value={p.price}
+  // you can define additional custom props that are all forwarded to the customInput e. g.
+  variant="standard"
+  thousandSeparator
+/></Grid>
+                        
                     <Grid item><Typography className={classes.hkd}>HKD</Typography></Grid>
                     <Grid item><Typography className={classes.valuation}>(Valuation)</Typography></Grid>
                 </Grid>

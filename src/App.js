@@ -89,6 +89,8 @@ const classes = useStyles();
     try{
       const data = API.get('getAWSTime')
       console.log(data)
+      const data2 = API.get('AWSTime','time')
+      console.log(data2)
     }catch(err){ console.log(err)}
   }
   useEffect(()=>{getTime()},[])
