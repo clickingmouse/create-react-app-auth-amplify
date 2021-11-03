@@ -7,7 +7,8 @@ import Amplify, { API, graphqlOperation, Storage, Auth } from 'aws-amplify';
 import {listPropertys, listFavorites, listAuctions, listBids, listMessages} from './graphql/queries'
 import { createMessage } from './graphql/mutations';
 import { onCreateMessage } from './graphql/subscriptions';
-
+import { ConfirmSignIn, ConfirmSignUp,ForgotPassword, RequireNewPassword, SignIn, SignUp, VerifyContact } from 'aws-amplify-react';
+import Login from './components/auth/login/Login'
 import {createFavorite} from './graphql/mutations'
 import Store from './store/store'
 import reducer from './reducers/reducers'
@@ -461,7 +462,15 @@ const handleSubmit = async (event) => {
 }
 
 
-export default withAuthenticator(App);
+//export default withAuthenticator(App);
+export default withAuthenticator(App, false, [
+  <ConfirmSignIn/>, 
+  <ConfirmSignUp/>,
+  <ForgotPassword/>, 
+  <RequireNewPassword/>, 
+  <Login/>, 
+  <SignUp/>, 
+  <VerifyContact/> ], null, null);
 
 //export default withAuthenticator(App, true);
 

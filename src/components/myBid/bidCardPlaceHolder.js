@@ -12,6 +12,13 @@ import { classExpression } from '@babel/types';
 import KingBedIcon from '@material-ui/icons/KingBed';
 import BathtubRoundedIcon from '@material-ui/icons/BathtubRounded';
 import HeightRoundedIcon from '@material-ui/icons/HeightRounded';
+import BedIcon from '../../assets/svg/ionic-ios-bed.svg'
+import BathIcon from '../../assets/svg/awesome-bath.svg'
+import AreaIcon from '../../assets/svg/icon-area.svg'
+import NumberFormat from "react-number-format";
+import TextField from '@material-ui/core/TextField';
+
+
 //337-140 = 197
 //87+98=177
 const useStyles = makeStyles({
@@ -35,9 +42,9 @@ const useStyles = makeStyles({
     width:197,
     //paaddingBottom:2
   },
-  price: {fontSize:18},
-  hkd:{fontSize:11},
-  valuation:{fontSize:8},
+  price: {fontSize:18, fontWeight:'bold'},
+  hkd:{fontSize:11, fontWeight:'bold'},
+  valuation:{fontSize:8, color:'#A88663'},
   district:{fontSize:10},
   info:{
     //flexDirection:'row',
@@ -63,11 +70,21 @@ const BidCardPlaceHolder=(props)=> {
         <CardContent className={classes.content}>
         <Grid container direction="column">
           <Grid item>
-            <Grid container direction="row">
-            <Typography className={classes.price}>8600000</Typography>
+            <Grid container direction="row" alignItems='flex-end' >
+              <Grid item>
+            <NumberFormat
+  customInput={TextField}
+  displayType={'text'}
+  className={classes.price}
+  value='8600000'
+  // you can define additional custom props that are all forwarded to the customInput e. g.
+  variant="standard"
+  thousandSeparator
+/></Grid>
+            
           
-            <Typography  className={classes.hkd}>HKD</Typography> 
-            <Typography  className={classes.valuation}> (valuation)</Typography>
+            <Grid item><Typography  className={classes.hkd}>HKD</Typography> </Grid>
+            <Grid item><Typography  className={classes.valuation}> (valuation)</Typography></Grid>
           
           </Grid>
           </Grid>
@@ -81,11 +98,11 @@ const BidCardPlaceHolder=(props)=> {
 
 
                 <Grid item container direction="row" alignItems="baseline" spacing={2} justifyContent="flex-end">
-                <KingBedIcon fontSize="small"/>
+                <Grid item><img src={BedIcon} alt=''/></Grid>
                 <Typography className={classes.info}> 2 </Typography>
-                <BathtubRoundedIcon fontSize="small"/>
+                <Grid item><img src = {BathIcon} alt=''/></Grid>
                 <Typography className={classes.info}> 2 </Typography>
-                <HeightRoundedIcon fontSize="small" className={classes.area}/>
+                <Grid item><img src = {AreaIcon} alt=''/></Grid>
                 <Typography className={classes.info}> 680sqft</Typography>
                 </Grid>
 

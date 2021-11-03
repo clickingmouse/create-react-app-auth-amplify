@@ -13,6 +13,10 @@ import KingBedIcon from '@material-ui/icons/KingBed';
 import BathtubRoundedIcon from '@material-ui/icons/BathtubRounded';
 import HeightRoundedIcon from '@material-ui/icons/HeightRounded';
 import BidCallingBidPrice from '../bidPanels/bidCallingBidPrice';
+
+import NumberFormat from "react-number-format";
+import TextField from '@material-ui/core/TextField';
+
 //337-140 = 197
 const useStyles = makeStyles({
   root: {
@@ -60,7 +64,8 @@ function BidCard({p}) {
         <Grid container direction="column">
           <Grid item>
             <Grid container direction="row">
-            <Typography className={classes.price}>{p.price}</Typography>
+              
+            <Typography className={classes.price}>-{p.price}</Typography>
           
             <Typography  className={classes.hkd}>HKD</Typography> 
             <Typography  className={classes.valuation}> (valuation)</Typography>

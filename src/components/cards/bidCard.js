@@ -15,6 +15,8 @@ import HeightRoundedIcon from '@material-ui/icons/HeightRounded';
 import BedIcon from '../../assets/svg/ionic-ios-bed.svg'
 import BathIcon from '../../assets/svg/awesome-bath.svg'
 import AreaIcon from '../../assets/svg/icon-area.svg'
+
+
 import NumberFormat from "react-number-format";
 import TextField from '@material-ui/core/TextField';
 
